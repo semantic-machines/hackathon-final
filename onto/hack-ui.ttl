@@ -13,7 +13,7 @@
 
 <http://semantic-machines.com/veda/hack-request-ui>
   rdf:type owl:Ontology ;
-  rdfs:label "Онтология ОБЩИЕ РЕШЕНИЯ. Запросы. UI"@ru ;
+  rdfs:label "Онтология ОБЩИЕ РЕШЕНИЯ. Обращения. UI"@ru ;
   rdfs:label "GEN ontology. Request. UI"@en ;
   v-s:loadPriority 20 ;
 .

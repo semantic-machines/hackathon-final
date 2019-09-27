@@ -13,7 +13,7 @@
 
 <http://semantic-machines.com/veda/hack-request-blanks>
   rdf:type owl:Ontology ;
-  rdfs:label "Онтология ОБЩИЕ РЕШЕНИЯ. Запросы. Бланки"@ru ;
+  rdfs:label "Онтология ОБЩИЕ РЕШЕНИЯ. Обращения. Бланки"@ru ;
   rdfs:label "Gen ontology. Request. Blanks"@en ;
   v-s:loadPriority 20 ;
 .
@@ -22,14 +22,14 @@
 
 hack:RequestBlank
   a v-fc:Blank;
-  rdfs:label "Запрос"@ru ;
+  rdfs:label "Обращение"@ru ;
   rdfs:label "Request"@en ;
   v-fc:targetType hack:Request ;
 .
 
 hack:RequestSearchBlank
   a v-fc:Blank;
-  rdfs:label "Запросы"@ru ;
+  rdfs:label "Обращения"@ru ;
   rdfs:label "Requests"@en ;
   v-fc:targetType hack:Request ;
 .

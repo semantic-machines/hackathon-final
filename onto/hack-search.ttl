@@ -13,7 +13,7 @@
 
 <http://semantic-machines.com/veda/hack-request-search>
   rdf:type owl:Ontology ;
-  rdfs:label "Онтология ОБЩИЕ РЕШЕНИЯ. Запрос. Поиск"@ru ;
+  rdfs:label "Онтология ОБЩИЕ РЕШЕНИЯ. Обращение. Поиск"@ru ;
   rdfs:label "GEN ontology. Request. Search"@en ;
   v-s:loadPriority 20 ;
 .
@@ -21,8 +21,8 @@
 
 hack:RequestSearch
   a v-fs:AttributiveSearch;
-  rdfs:label "Запрос"@ru ;
-  rdfs:label "Request"@en ;
+  rdfs:label "Обращения"@ru ;
+  rdfs:label "Requests"@en ;
   v-fs:searchBlank hack:RequestSearchBlank ;
   v-fs:searchBlankTemplate hack:RequestTemplate ;
   v-fs:searchResultTemplate hack:RequestSearchResultTemplate ;
@@ -32,7 +32,7 @@ hack:RequestSearch
 
 hack:RequestSearchResultTemplate
   rdf:type v-ui:ClassTemplate ;
-  rdfs:label "Шаблон результатов реестра Запрос"@ru ;
+  rdfs:label "Шаблон результатов реестра Обращение"@ru ;
   rdfs:label "Request registry result template"@en ;
   v-ui:template """
 <table class="table table-bordered">

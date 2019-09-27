@@ -15,7 +15,7 @@
 
 <http://semantic-machines.com/veda/hack-request-net>
   rdf:type owl:Ontology ;
-  rdfs:label "Онтология Общие решения. Запросы. Сеть"@ru ;
+  rdfs:label "Онтология Общие решения. Обращения. Сеть"@ru ;
   rdfs:label "GEN ontology. Request. Net"@en ;
   v-s:loadPriority 10 ;
 .

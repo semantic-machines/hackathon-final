@@ -16,7 +16,7 @@
 
 <http://semantic-machines.com/veda/hack-schema-Requests-application>
   rdf:type owl:Ontology ;
-  rdfs:label "Онтология ОБЩИЕ РЕШЕНИЯ. Приложение. Запросы"@ru ;
+  rdfs:label "Онтология ОБЩИЕ РЕШЕНИЯ. Приложение. Обращения"@ru ;
   rdfs:label "GEN ontology. Application. Requests"@en ;
   v-s:loadPriority 10 ;
 .
@@ -25,11 +25,11 @@
 
 hack:RequestsManagementApplication
   rdf:type v-s:Application ;
-  rdfs:label "Запросы"@ru ;
+  rdfs:label "Обращения"@ru ;
   rdfs:label "Requests"@en ;
-  rdfs:comment "Создаем новое. Каждый день."@ru ;
-  rdfs:comment "Innovative. Every day."@en ;
-  v-s:shortLabel "Запросы"@ru ;
+  rdfs:comment "Поддержка на высшем уровне."@ru ;
+  rdfs:comment "Highest-level support."@en ;
+  v-s:shortLabel "Обращения"@ru ;
   v-s:shortLabel "Requests"@en ;
 
   v-s:hasCreate hack:RequestCreate ;
@@ -45,16 +45,16 @@ hack:RequestsManagementApplication
 - Регистрировать заявки в автоматическом режиме.
 - Автоматически определять категорию обращения.
 - Ранжировать обращения по приоритетам.
-- Задавать маршрут прохождения обращения.
+- Задавать маршрут и отслеживать процесс прохождения обращения.
   """@ru ;
   v-s:description """
-The application is designed to improve the efficiency of the operators of the management company in the processing of a large flow of requests from homeowners.
+The application is designed to improve the efficiency of the operators of the management company while processing of a large flow of requests from homeowners.
 
 ** The application is designed to: **
 - Register requests in automatic mode.
 - Automatically determine the category of request.
 - Rank requests by priority.
-- Set the route of the request.
+- Set the route and keep track of the request's execution.
   """@en ;
   v-s:attachment hack:UserGuide_pdf ;
 .

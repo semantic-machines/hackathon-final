@@ -13,7 +13,7 @@
 
 <http://semantic-machines.com/veda/hack-request-schema>
   rdf:type owl:Ontology ;
-  rdfs:label "Онтология ОБЩИЕ РЕШЕНИЯ. Запросы. Схема"@ru ;
+  rdfs:label "Онтология ОБЩИЕ РЕШЕНИЯ. Обращения. Схема"@ru ;
   rdfs:label "Gen ontology. Request. Schema"@en ;
   v-s:loadPriority 20 ;
 .
@@ -26,7 +26,7 @@ hack:Request
   rdfs:label "Request"@en ;
 .
 
-#-------------------------------------------------------------- Запрос------
+#-------------------------------------------------------------- Обращение------
 hack:TS_Request
   rdf:type v-ui:TemplateSpecification ;
   v-ui:forClass hack:Request ;
