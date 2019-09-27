@@ -130,8 +130,6 @@ hack:LayoutTemplate
     </div>
   </nav>
 
-  <div class="go-up text-primary" id="to-top">&uarr; <span about="hack:UpBundle" property="rdfs:label"></span></div>
-
   <div id="main"></div>
 
   <nav id="copyright" class="navbar-fixed-bottom container clearfix">
