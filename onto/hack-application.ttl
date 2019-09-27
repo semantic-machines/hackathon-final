@@ -66,3 +66,10 @@ hack:RequestsManagementIcon
   v-s:fileName "requests.svg"^^xsd:string ;
   v-s:filePath "/hack"^^xsd:string ;
 .
+
+hack:UserGuide_pdf
+  a v-s:File ;
+  v-s:fileUri "User Guide Veda 5_0.pdf"^^xsd:string ;
+  v-s:fileName "User Guide Veda 5_0.pdf"^^xsd:string ;
+  v-s:filePath "/hack/manuals"^^xsd:string ;
+.
