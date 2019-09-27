@@ -28,7 +28,7 @@ hack:Request_Bundle
 # ------------------------------------------------------------ ШАБЛОНЫ --
 hack:RequestTemplate
   rdf:type v-ui:ClassTemplate ;
-  v-ui:forClass v-s:Idea ;
+  v-ui:forClass hack:Request ;
   rdfs:label "Шаблон инновации"@ru ;
   rdfs:label "Request template"@en ;
   v-ui:template """

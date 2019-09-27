@@ -19,10 +19,17 @@
 .
 # ------------------------------------------------------------ КЛАССЫ --
 
+hack:Request
+  rdf:type owl:Class ;
+  rdfs:subClassOf v-s:Request ;
+  rdfs:label "Заявка"@ru ;
+  rdfs:label "Request"@en ;
+.
+
 #-------------------------------------------------------------- Запрос------
 hack:TS_Request
   rdf:type v-ui:TemplateSpecification ;
-  v-ui:forClass v-s:Idea ;
+  v-ui:forClass hack:Request ;
   v-ui:defaultTemplate hack:RequestTemplate ;
   v-s:loadPriority 10 ;
 .
@@ -31,7 +38,7 @@ hack:TS_Request
 #v-s:registrationNumber
 hack:PS_registrationNumber_Request
 	rdf:type v-ui:DatatypePropertySpecification ;
-	v-ui:forClass v-s:Idea ;
+	v-ui:forClass hack:Request ;
 	v-ui:forProperty v-s:registrationNumber ;
 	v-ui:maxCardinality 1 ;
 	v-ui:minCardinality 0 ;
@@ -45,7 +52,7 @@ hack:PS_registrationNumber_Request
 #v-s:hasStatus
 hack:PS_hasStatus_Request
 	rdf:type v-ui:ObjectPropertySpecification ;
-	v-ui:forClass v-s:Idea ;
+	v-ui:forClass hack:Request ;
 	v-ui:forProperty v-s:hasStatus ;
 	v-ui:maxCardinality 30 ;
 	v-ui:minCardinality 1 ;
@@ -61,7 +68,7 @@ hack:PS_hasStatus_Request
 # v-s:title
 hack:PS_title_Request
 	rdf:type v-ui:DatatypePropertySpecification ;
-	v-ui:forClass v-s:Idea ;
+	v-ui:forClass hack:Request ;
 	v-ui:forProperty v-s:title ;
 	v-ui:maxCardinality 1 ;
 	v-ui:minCardinality 1 ;
@@ -73,7 +80,7 @@ hack:PS_title_Request
 # v-s:actualState
 hack:PS_actualState_Request
 	rdf:type v-ui:DatatypePropertySpecification ;
-	v-ui:forClass v-s:Idea ;
+	v-ui:forClass hack:Request ;
 	v-ui:forProperty v-s:actualState ;
 	v-ui:maxCardinality 1 ;
 	v-ui:minCardinality 1 ;
@@ -87,7 +94,7 @@ hack:PS_actualState_Request
 # v-s:description
 hack:PS_description_Request
 	rdf:type v-ui:DatatypePropertySpecification ;
-	v-ui:forClass v-s:Idea ;
+	v-ui:forClass hack:Request ;
 	v-ui:forProperty v-s:description ;
 	v-ui:maxCardinality 1 ;
 	v-ui:minCardinality 1 ;
@@ -101,7 +108,7 @@ hack:PS_description_Request
 #v-s:hasSector
 hack:PS_hasSector_Request
 	rdf:type v-ui:ObjectPropertySpecification ;
-	v-ui:forClass v-s:Idea ;
+	v-ui:forClass hack:Request ;
 	v-ui:forProperty v-s:hasSector ;
 	v-ui:maxCardinality 3 ;
 	v-ui:minCardinality 0 ;
@@ -119,7 +126,7 @@ hack:PS_hasSector_Request
 #v-s:author
 hack:PS_author_Request
 	rdf:type v-ui:ObjectPropertySpecification ;
-	v-ui:forClass v-s:Idea ;
+	v-ui:forClass hack:Request ;
 	v-ui:forProperty v-s:author ;
 	v-ui:maxCardinality 1 ;
 	v-ui:minCardinality 1 ;
@@ -136,7 +143,7 @@ hack:PS_author_Request
 #v-s:stakeholder
 hack:PS_stakeholder_Request
 	rdf:type v-ui:ObjectPropertySpecification ;
-	v-ui:forClass v-s:Idea ;
+	v-ui:forClass hack:Request ;
 	v-ui:forProperty v-s:stakeholder ;
 	v-ui:maxCardinality 1 ;
 	v-ui:minCardinality 1 ;
