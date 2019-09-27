@@ -1,0 +1,68 @@
+@prefix d: <http://semantic-machines.com/veda/veda-data/> .
+@prefix : <http://semantic-machines.com/veda/mondi-schema/> .
+@prefix hack: <http://semantic-machines.com/veda/hack-schema/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix v-s: <http://semantic-machines.com/veda/veda-schema/> .
+@prefix v-ui: <http://semantic-machines.com/veda/veda-ui/> .
+@prefix v-wf: <http://semantic-machines.com/veda/veda-workflow/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix v-fs: <http://semantic-machines.com/veda/veda-search/> .
+@prefix v-fc: <http://semantic-machines.com/veda/veda-function-create/> .
+@prefix td: <http://semantic-machines.com/veda/test-data/> .
+@prefix s-wf: <http://semantic-machines.com/veda/simple-workflow-base/> .
+@prefix cfg: <http://semantic-machines.com/veda/config/> .
+
+<http://semantic-machines.com/veda/hack-schema-Requests-application>
+  rdf:type owl:Ontology ;
+  rdfs:label "Онтология ОБЩИЕ РЕШЕНИЯ. Приложение. Запросы"@ru ;
+  rdfs:label "GEN ontology. Application. Requests"@en ;
+  v-s:loadPriority 10 ;
+.
+
+# ------------------------------------------------------------ Приложение --
+
+hack:RequestsManagementApplication
+  rdf:type v-s:Application ;
+  rdfs:label "Запросы"@ru ;
+  rdfs:label "Requests"@en ;
+  rdfs:comment "Создаем новое. Каждый день."@ru ;
+  rdfs:comment "Innovative. Every day."@en ;
+  v-s:shortLabel "Запросы"@ru ;
+  v-s:shortLabel "Requests"@en ;
+
+  v-s:hasCreate hack:RequestCreate ;
+  v-s:hasRegistry hack:RequestSearch ;
+
+  v-s:hasIcon hack:RequestsManagementIcon  ;
+  v-ui:hasTemplate v-s:ApplicationTemplate ;
+
+  v-s:description """
+Приложение предназначено для повышения эффективности работы операторов УК при обработке большого потока обращений собственников жилья.
+
+**Приложение обеспечивает возможность:**
+- Регистрировать заявки в автоматическом режиме.
+- Автоматически определять категорию обращения.
+- Ранжировать обращения по приоритетам.
+- Задавать маршрут прохождения обращения.
+  """@ru ;
+  v-s:description """
+The application is designed to improve the efficiency of the operators of the management company in the processing of a large flow of requests from homeowners.
+
+** The application is designed to: **
+- Register requests in automatic mode.
+- Automatically determine the category of request.
+- Rank requests by priority.
+- Set the route of the request.
+  """@en ;
+  v-s:attachment hack:UserGuide_pdf ;
+.
+
+# ------------------------------------------------------------ ИЗОБРАЖЕНИЯ --
+hack:RequestsManagementIcon
+  a v-s:File ;
+  v-s:fileUri "requests.svg"^^xsd:string ;
+  v-s:fileName "requests.svg"^^xsd:string ;
+  v-s:filePath "/hack"^^xsd:string ;
+.

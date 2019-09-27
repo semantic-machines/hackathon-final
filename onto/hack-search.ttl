@@ -1,0 +1,69 @@
+@prefix d: <http://semantic-machines.com/veda/veda-data/> .
+@prefix hack: <http://semantic-machines.com/veda/hack-schema/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix v-s: <http://semantic-machines.com/veda/veda-schema/> .
+@prefix v-ui: <http://semantic-machines.com/veda/veda-ui/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix v-wf: <http://semantic-machines.com/veda/veda-workflow/> .
+@prefix cfg: <http://semantic-machines.com/veda/config/> .
+@prefix v-fc: <http://semantic-machines.com/veda/veda-function-create/> .
+@prefix v-fs: <http://semantic-machines.com/veda/veda-search/> .
+
+<http://semantic-machines.com/veda/hack-request-search>
+  rdf:type owl:Ontology ;
+  rdfs:label "Онтология ОБЩИЕ РЕШЕНИЯ. Запрос. Поиск"@ru ;
+  rdfs:label "GEN ontology. Request. Search"@en ;
+  v-s:loadPriority 20 ;
+.
+# ------------------------------------------------------------ Registry --
+
+hack:RequestSearch
+  a v-fs:AttributiveSearch;
+  rdfs:label "Запрос"@ru ;
+  rdfs:label "Request"@en ;
+  v-fs:searchBlank hack:RequestSearchBlank ;
+  v-fs:searchBlankTemplate hack:RequestTemplate ;
+  v-fs:searchResultTemplate hack:RequestSearchResultTemplate ;
+.
+
+# ---------------------------------------------------- Registry result template--
+
+hack:RequestSearchResultTemplate
+  rdf:type v-ui:ClassTemplate ;
+  rdfs:label "Шаблон результатов реестра Запрос"@ru ;
+  rdfs:label "Request registry result template"@en ;
+  v-ui:template """
+<table class="table table-bordered">
+  <thead class="result-header">
+    <tr>
+      <th colspan="11" about="hack:Request" property="rdfs:label"></th>
+    </tr>
+    <tr class="active">
+      <th width="1%"><span class="glyphicon glyphicon-search"></span></th>
+      <th class="orderby" data-orderby="v-s:registrationNumber">№</th>
+      <th><span about="v-s:creator" property="rdfs:label"></span></th>
+      <th><span about="v-s:hasStatus" property="rdfs:label"></span></th>
+      <th><span about="v-s:title" property="rdfs:label"></span></th>
+      <th><span about="v-s:description" property="rdfs:label"></span></th>
+      <th><span about="v-s:attachment" property="rdfs:label"></span></th>
+      <th><span about="v-s:author" property="rdfs:label"></span></th>
+    </tr>
+  </thead>
+  <tbody class="result-container">
+    <tr>
+      <td><a href="#/@" class="glyphicon glyphicon-search"></a></td>
+      <td property="v-s:registrationNumber"></td>
+      <td rel="v-s:creator" data-template="v-ui:LabelTemplate"></td>
+      <td rel="v-s:hasStatus" data-template="v-ui:LabelTemplate"></td>
+      <td property="v-s:title"></td>
+      <td property="v-s:description"></td>
+      <td rel="v-s:attachment" data-template="v-ui:FileMinTemplate"></td>
+      <td rel="v-s:author" data-template="v-ui:LabelTemplate"></td>
+    </tr>
+  </tbody>
+</table>
+  """ ;
+.
+
