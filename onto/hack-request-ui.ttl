@@ -39,6 +39,7 @@ hack:RequestTemplate
     </h2>
     <hr>
     <section id="MainProperties">
+      <h4 class="section-header" about="v-s:MainProperties" property="rdfs:label"></h4>
       <div class="row row-attribute">
         <div class="col-sm-3 col-xs-5">
           <label about="v-s:registrationNumber" property="rdfs:label"></label>
@@ -103,40 +104,12 @@ hack:RequestTemplate
         </div>
       </div>
       <div class="row row-attribute">
-        <div class="col-sm-3 col-xs-5">
-          <label about="v-s:hasPriorityLevel" property="rdfs:label"></label>
-        </div>
-        <div class="col-sm-9 col-xs-7">
-          <div rel="v-s:hasPriorityLevel" class="view -edit search" data-template="v-ui:LabelTemplate"></div>
-          <veda-control data-type="link" rel="v-s:hasPriorityLevel" class="-view edit search fulltext dropdown"></veda-control>
-        </div>
-      </div>
-      <div class="row row-attribute">
         <div class="col-sm-3 col-xs-5"/>
         <div class="col-sm-3 col-xs-3">
           <veda-control property="hack:isPlanned" data-type="booleanRadio"></veda-control>
         </div>
         <div class="col-sm-3 col-xs-3">
           <veda-control data-type="radio" rel="hack:hasFailureRate"></veda-control>
-        </div>
-      </div>
-      <div class="row row-attribute">
-        <div class="col-sm-3 col-xs-5">
-          <label about="v-s:hasDelivery" property="rdfs:label"></label>
-        </div>
-        <div class="col-sm-9 col-xs-7">
-          <div about="@" rel="v-s:hasDelivery" data-embedded="true">
-            <div>
-              <em about="v-s:deliverBy" property="rdfs:label"></em>
-              <div property="v-s:deliverBy" class="view -edit search" style="display: none;"></div>
-              <veda-control data-type="link" rel="v-s:deliverBy" class="-view edit search fulltext dropdown"></veda-control>
-            </div>
-            <div>
-              <em about="rdfs:comment" property="rdfs:label"></em>
-              <div property="rdfs:comment" class="view -edit search" style="display: none;"></div>
-              <veda-control data-type="text" rel="rdfs:comment" class="-view edit search"></veda-control>
-            </div>
-          </div>
         </div>
       </div>
       <hr>
@@ -147,6 +120,29 @@ hack:RequestTemplate
         <div class="col-sm-9 col-xs-7">
           <div property="rdfs:comment" class="view -edit search" style="display: none;"></div>
           <veda-control data-type="text" rel="rdfs:comment" class="-view edit search"></veda-control>
+        </div>
+      </div>
+    </section>
+    <section id="Delivery">
+      <h4 class="section-header" about="v-s:hasDelivery" property="rdfs:label"></h4>
+      <div about="@" rel="v-s:hasDelivery" data-embedded="true">
+        <div class="row row-attribute">
+          <div class="col-sm-3 col-xs-5">
+            <label about="v-s:deliverBy" property="rdfs:label"></label>
+          </div>
+          <div class="col-sm-9 col-xs-7">
+            <div property="v-s:deliverBy" class="view -edit search" style="display: none;"></div>
+            <veda-control data-type="link" rel="v-s:deliverBy" class="-view edit search fulltext dropdown"></veda-control>
+          </div>
+        </div>
+        <div class="row row-attribute">
+          <div class="col-sm-3 col-xs-5">
+            <label about="rdfs:comment" property="rdfs:label"></label>
+          </div>
+          <div class="col-sm-9 col-xs-7">
+            <div property="rdfs:comment" class="view -edit search" style="display: none;"></div>
+            <veda-control data-type="text" rel="rdfs:comment" class="-view edit search"></veda-control>
+          </div>
         </div>
       </div>
     </section>
