@@ -45,8 +45,8 @@ hack:RequestTemplate
           <label about="v-s:registrationNumber" property="rdfs:label"></label>
         </div>
         <div class="col-sm-3 col-xs-3">
-          <div property="v-s:registrationNumber" class="view -edit search"></div>
-          <veda-control property="v-s:registrationNumber" data-type="string" class="-view edit search"></veda-control>
+          <div property="v-s:registrationNumber" class="view edit search"></div>
+          <veda-control property="v-s:registrationNumber" data-type="string" class="-view -edit search"></veda-control>
         </div>
       </div>
       <div class="row row-attribute">
@@ -72,7 +72,7 @@ hack:RequestTemplate
           <label about="v-s:hasStatus" property="rdfs:label"></label>
         </div>
         <div class="col-sm-9 col-xs-7">
-          <div rel="v-s:hasStatus" class="view -edit search" data-template="v-ui:LabelTemplate"></div>
+          <div rel="v-s:hasStatus" class="view edit search" data-template="v-ui:LabelTemplate"></div>
           <veda-control data-type="link" rel="v-s:hasStatus" class="-view edit search fulltext dropdown"></veda-control>
         </div>
       </div>
@@ -180,6 +180,28 @@ hack:RequestTemplate
     });
   });
 
+  function processHandler() {
+    individual.canUpdate().then(function (canUpdate) {
+      if (individual.hasValue("v-wf:isProcess")) {
+        $('#send.action', template).remove();
+        $('#delete.action', template).remove();
+      } else if (individual.isNew() || canUpdate) {
+        $('#send.action', template).off("click");
+        $('#send.action', template).on('click', function () {
+          veda.Util.send(individual, template, 's-wf:complexRouteTransform', undefined, 'hack:Request_ComplexRouteStartForm_Template');
+        });
+      } else {
+        $('#send.action', template).remove();
+        $('#delete.action', template).remove();
+      }
+    });
+  }
+  processHandler();
+
+  individual.on("afterReset", processHandler);
+  template.one("remove", function () {
+    individual.off("afterReset", processHandler);
+  });
   //# sourceURL=hack:RequestTemplate_post
 </script>
 """
