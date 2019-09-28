@@ -13,6 +13,7 @@ struct ResultNBC {
 }
 
 pub struct NBC {
+    id: String,
     nb: NaiveBayes,
     dict: HashSet<String>,
 }
@@ -57,25 +58,33 @@ pub fn load_stopwords() -> HashSet<String> {
 }
 
 pub fn learn(indv: &mut Individual, id2nb: &mut HashMap<String, NBC>, stemmer: &Stemmer, stopwords: &HashSet<String>) {
-    let wpfrase = indv.get_first_literal("pfrase");
-    let wgroup_id = indv.get_first_literal("group_id");
-    let wtag_id = indv.get_first_literal("tag_id");
+    let wphrase = indv.get_first_literal("hack:keyPhrases");
+    let wgroup_id = indv.get_first_literal("v-s:parent");
+    let wtag_id = indv.get_first_literal("rdf:value");
 
-    if wpfrase.is_ok() && wgroup_id.is_ok() && wtag_id.is_ok() {
+    if wphrase.is_ok() && wgroup_id.is_ok() && wtag_id.is_ok() {
         let tag = wtag_id.unwrap();
+        let phrase = wphrase.unwrap();
+        let nb_id = wgroup_id.unwrap();
 
-        let nb = id2nb.entry(wgroup_id.unwrap()).or_insert(NBC {
+        let nb = id2nb.entry(nb_id.to_string()).or_insert(NBC {
             nb: NaiveBayes::new(),
             dict: HashSet::new(),
+            id: nb_id,
         });
 
-        let nel = normailze_str(&stemmer, &stopwords, &wpfrase.unwrap());
+        for el in phrase.split('\n') {
+            if el.trim().is_empty() {
+                continue;
+            }
+            let nel = normailze_str(&stemmer, &stopwords, &el);
 
-        println!("train {:?}: {:?}", &tag, &nel);
-        nb.nb.train(&nel, &tag.to_lowercase());
+            println!("train {} {:?}: {:?}", nb.id, &tag, &nel);
+            nb.nb.train(&nel, &tag.to_lowercase());
 
-        for el in nel {
-            nb.dict.insert(el);
+            for el in nel {
+                nb.dict.insert(el);
+            }
         }
     }
 }
