@@ -155,6 +155,12 @@ hack:Object
 	rdfs:label "Object"@en ;
 	v-ui:hasTemplate hack:ObjectTemplate ;
 .
-
+hack:hasObjectKind
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "Вид объекта"@ru ;
+  rdfs:label "Вид объекта"@en ;
+  rdfs:range hack:ObjectKind ;
+  rdfs:domain hack:Object;
+.
 #rfds:label
 #v-s:parentUnit

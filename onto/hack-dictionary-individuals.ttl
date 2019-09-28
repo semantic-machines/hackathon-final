@@ -1,0 +1,48 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix v-s: <http://semantic-machines.com/veda/veda-schema/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix v-ui: <http://semantic-machines.com/veda/veda-ui/> .
+@prefix d: <http://semantic-machines.com/veda/veda-data/> .
+@prefix hack: <http://semantic-machines.com/veda/hack-schema/> .
+
+<http://semantic-machines.com/veda/hack-individual-dictionaries>
+  rdf:type owl:Ontology ;
+  rdfs:label "Онтология. Записи справочника"@ru ;
+  rdfs:label "Ontology. Individuals"@en ;
+  v-s:loadPriority 10 ;
+.
+# ------------------------------------------------------------ ИНДИВИДЫ --
+
+#Виды объектов
+d:a9hth4r4dphbhwnkon7bru2gqsu
+  rdf:type hack:ObjectKind ;
+  rdfs:label "Территория"@ru ;
+  rdfs:label "Territory"@en ;
+.
+d:jkufz2c9pxa5d8q242703fc5jm
+  rdf:type hack:ObjectKind ;
+  rdfs:label "Группа зданий"@ru ;
+  rdfs:label "Several buildings"@en ;
+.
+d:a04234lrb448fer62qohhlw9jew
+  rdf:type hack:ObjectKind ;
+  rdfs:label "Здание"@ru ;
+  rdfs:label "Building"@en ;
+.
+d:tdmroj9jwx56mtgioxobk9ib4l
+  rdf:type hack:ObjectKind ;
+  rdfs:label "Участок здания"@ru ;
+  rdfs:label "Part of the building"@en ;
+.
+d:dgdt8bm0gig2k5q0df60fi4qyq
+  rdf:type hack:ObjectKind ;
+  rdfs:label "Группа сооружений"@ru ;
+  rdfs:label "Several constructions"@en ;
+.
+d:a3nyqc2yjnthclux6kppar8n000
+  rdf:type hack:ObjectKind ;
+  rdfs:label "Сооружение"@ru ;
+  rdfs:label "Construction"@en ;
+.
