@@ -113,16 +113,11 @@ hack:RequestTemplate
       </div>
       <div class="row row-attribute">
         <div class="col-sm-3 col-xs-5"/>
-        <div class="col-sm-9 col-xs-7">
-          <strong about="hack:isPlanned" property="rdfs:label"></strong>
+        <div class="col-sm-3 col-xs-3">
           <veda-control property="hack:isPlanned" data-type="booleanRadio"></veda-control>
         </div>
-      </div>
-      <div class="row row-attribute">
-        <div class="col-sm-3 col-xs-5"/>
-        <div class="col-sm-9 col-xs-7">
-          <strong about="hack:isFailure" property="rdfs:label"></strong>
-          <veda-control property="hack:isFailure" data-type="booleanRadio"></veda-control>
+        <div class="col-sm-3 col-xs-3">
+          <veda-control data-type="radio" rel="hack:hasFailureRate"></veda-control>
         </div>
       </div>
       <div class="row row-attribute">
@@ -130,13 +125,28 @@ hack:RequestTemplate
           <label about="v-s:hasDelivery" property="rdfs:label"></label>
         </div>
         <div class="col-sm-9 col-xs-7">
-          <div rel="v-s:hasDelivery" class="view edit search" data-template="v-s:DeliveryEmbeddedTemplate"></div>
-          <div id="add-hasDelivery">
-            <button type="button" class="action btn btn-success pull-right view -edit -search" id="add-Delivery" about="v-s:hasDelivery" property="rdfs:label"></button>
-            <br>
-            <br>
+          <div about="@" rel="v-s:hasDelivery" data-embedded="true">
+            <div>
+              <em about="v-s:deliverBy" property="rdfs:label"></em>
+              <div property="v-s:deliverBy" class="view -edit search" style="display: none;"></div>
+              <veda-control data-type="link" rel="v-s:deliverBy" class="-view edit search fulltext dropdown"></veda-control>
+            </div>
+            <div>
+              <em about="rdfs:comment" property="rdfs:label"></em>
+              <div property="rdfs:comment" class="view -edit search" style="display: none;"></div>
+              <veda-control data-type="text" rel="rdfs:comment" class="-view edit search"></veda-control>
+            </div>
           </div>
-          <veda-control data-type="link" rel="v-s:hasDelivery" class="-view edit search create create-modal margin-md"></veda-control>
+        </div>
+      </div>
+      <hr>
+      <div class="row row-attribute">
+        <div class="col-sm-3 col-xs-5">
+          <label about="rdfs:comment" property="rdfs:label"></label>
+        </div>
+        <div class="col-sm-9 col-xs-7">
+          <div property="rdfs:comment" class="view -edit search" style="display: none;"></div>
+          <veda-control data-type="text" rel="rdfs:comment" class="-view edit search"></veda-control>
         </div>
       </div>
     </section>
@@ -149,7 +159,10 @@ hack:RequestTemplate
         </button>
       </h4>
       <div rel="v-s:hasComment" data-template="hack:CommentTemplate" data-embedded="true"></div>      
-    </section>  
+    </section>
+    <div class="actions view edit -search">
+      <span about="@" data-template="v-ui:StandardButtonsTemplate" data-embedded="true" data-buttons="send edit save cancel delete journal task"></span>
+   </div>
   </div>
 </div>
 <script>
@@ -184,6 +197,24 @@ hack:RequestTemplate
 """
 .
 
+hack:DeliveryTemplateEmbedded
+  rdf:type v-ui:ClassTemplate ;
+  v-ui:forClass hack:PersonalAccount ;
+  rdfs:label "Template for hack:PersonalAccount class"@en ;
+  rdfs:label "Шаблон для класса hack:PersonalAccount"@ru ;
+  v-ui:template """
+  <div>
+    <em about="v-s:deliverBy" property="rdfs:label">Дата</em>
+    <div property="v-s:deliverBy" class="view -edit search" style="display: none;"></div>
+    <veda-control data-type="link" rel="v-s:deliverBy" class="-view edit search fulltext dropdown"></veda-control>
+  </div>
+  <div>
+    <em about="rdfs:comment" property="rdfs:label">Дата</em>
+    <div property="rdfs:commenty" class="view -edit search" style="display: none;"></div>
+    <veda-control data-type="text" rel="rdfs:comment" class="-view edit search"></veda-control>
+  </div>
+"""
+  .
 hack:PersonalAccountTemplate
   rdf:type v-ui:ClassTemplate ;
   v-ui:forClass hack:PersonalAccount ;

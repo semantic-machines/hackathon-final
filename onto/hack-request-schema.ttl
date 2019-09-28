@@ -61,6 +61,15 @@ hack:hasPersonalAccount
 .
 
 #v-s:hasDelivery метод доставки (в шаблоне как получили + коммент email)
+hack:PS_isPlanned_Request
+  rdf:type v-ui:DatatypePropertySpecification ;
+  v-ui:forProperty v-s:hasDelivery ;
+  v-ui:forClass hack:Request ;
+  v-ui:maxCardinality 1 ;
+  v-ui:minCardinality 1 ;
+  rdfs:label "Спецификация к свойству isPlanned для класса Request"@ru ;
+  rdfs:label "Spec for property isPlanned for class Request"@en ;
+.
 
 hack:isPlanned
   rdf:type owl:DatatypeProperty ;
@@ -73,8 +82,8 @@ hack:PS_isPlanned_Request
   rdf:type v-ui:DatatypePropertySpecification ;
   v-ui:forProperty hack:isPlanned ;
   v-ui:forClass hack:Request ;
-  v-ui:maxCardinality 0 ;
-  v-ui:minCardinality 1 ;
+  v-ui:maxCardinality 1 ;
+  v-ui:minCardinality 0 ;
   v-ui:trueLabel "Плановые работы"@ru ;
   v-ui:trueLabel "Planned works"@en ;
   v-ui:falseLabel "Внеплановые работы"@ru ;
