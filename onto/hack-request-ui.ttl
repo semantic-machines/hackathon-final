@@ -135,6 +135,7 @@ hack:RequestTemplate
         </div>
       </div>
     </section>
+    <br>
     <div class="actions view edit -search">
       <span about="@" data-template="v-ui:StandardButtonsTemplate" data-embedded="true" data-buttons="send edit save cancel delete journal"></span>
     </div>
