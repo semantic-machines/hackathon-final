@@ -92,7 +92,7 @@ hack:hasPersonalAccount
 .
 
 #v-s:hasDelivery метод доставки (в шаблоне как получили + коммент email)
-hack:PS_isPlanned_Request
+hack:PS_hasDelivery_Request
   rdf:type v-ui:DatatypePropertySpecification ;
   v-ui:forProperty v-s:hasDelivery ;
   v-ui:forClass hack:Request ;
@@ -170,7 +170,6 @@ hack:PS_hasObject_Request
 	rdfs:label "hack:hasObject property specification for hack:Request class"@en ;
 .
 
-
 #v-s:hasComment (отчет об исполнении c шаблоном в новой верстке без связанных документов)
 
 #delivery
@@ -181,8 +180,8 @@ hack:PS_deliverBy_Request
 	v-ui:queryPrefix "('@'=='d:727' || '@'=='d:b9d2da6785ee42b2bcb054fd8295c539' || '@'=='d:683' || '@'=='d:700')"^^xsd:string ;
 	v-ui:minCardinality 0 ;
 	v-ui:maxCardinality 100 ;
-	rdfs:label "Спецификация свойства hasStatus для класса hack:Request"@ru ;
-	rdfs:label "hasStatus property specification for hack:Request class"@en ;
+	rdfs:label "Спецификация свойства deliverBy для класса hack:Request"@ru ;
+	rdfs:label "deliverBy property specification for hack:Request class"@en ;
 .
 
 #--------------------------------------------------------------------------

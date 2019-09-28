@@ -1,0 +1,25 @@
+@prefix d: <http://semantic-machines.com/veda/veda-data/> .
+@prefix td: <http://semantic-machines.com/veda/test-data/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix v-s: <http://semantic-machines.com/veda/veda-schema/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix hack: <http://semantic-machines.com/veda/hack-schema/> .
+
+<http://semantic-machines.com/veda/hack-Rights>
+  rdf:type owl:Ontology ;
+  rdfs:label "Онтология. Права"@ru ;
+  rdfs:label "Ontology. Rights"@en ;
+# owl:versionInfo "1.3" ;
+.
+
+#----------------------------
+hack:Request_Persons_permission1
+  rdf:type v-s:PermissionStatement ;
+  v-s:permissionObject hack:Request ;
+#Физ лица
+  v-s:permissionSubject d:org_RU000000000000 ;
+  v-s:canCreate "true"^^xsd:boolean ;
+  rdfs:label "C. Физ лица. Обращения" ;
+.

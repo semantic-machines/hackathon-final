@@ -1,0 +1,80 @@
+@prefix d: <http://semantic-machines.com/veda/veda-data/> .
+@prefix td: <http://semantic-machines.com/veda/test-data/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix v-s: <http://semantic-machines.com/veda/veda-schema/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix hack: <http://semantic-machines.com/veda/hack-schema/> .
+
+<http://semantic-machines.com/veda/hack-individual-ExternalUsers>
+  rdf:type owl:Ontology ;
+  rdfs:label "Онтология индивидов. Внешние пользователи"@ru ;
+  rdfs:label "Individuals. External user"@en ;
+# owl:versionInfo "1.3" ;
+.
+
+#-------------------------------------
+d:RU000000000000_employee_1
+  a v-s:Person;
+  v-s:owner d:RU000000000000_employee_1;
+  v-s:origin "InternalUser"^^xsd:string;
+  v-s:lastName "Иванов"@ru;
+  v-s:lastName "Ivanov"@en;
+  v-s:firstName "Иван"@ru;
+  v-s:firstName "Ivan"@en;
+  v-s:middleName "Иванович"@ru;
+  v-s:hasAccount d:hack_account_ivanovv;
+  v-s:hasAppointment d:RU000000000000_employee_1_position_1;
+  v-s:hasCommunicationMean d:RU000000000000_employee_1_CommunicationMean_1, d:RU000000000000_employee_1_CommunicationMean_2;
+  rdfs:label "Иванов И.И."@ru;
+  rdfs:label "Ivanov I.I."@en;
+  v-s:parentOrganization d:org_RU000000000000;
+.
+d:RU000000000000_employee_1_CommunicationMean_1
+  a v-s:CommunicationMean;
+  v-s:backwardProperty v-s:hasCommunicationMean;
+  v-s:backwardTarget d:RU000000000000_employee_1;
+  v-s:canRead "true"^^xsd:boolean;
+  v-s:description "lapshin.a.v.395@gmail.com"^^xsd:string;
+  v-s:hasCommunicationMeanChannel d:a1iwni0b54fvcz41vuts08bxqsh;
+  v-s:hasCommunicationMeanTarget d:a3nx3vnoo4akfu67c0709dr33j;
+.
+d:RU000000000000_employee_1_CommunicationMean_2
+  a v-s:CommunicationMean;
+  v-s:backwardProperty v-s:hasCommunicationMean;
+  v-s:backwardTarget d:RU000000000000_employee_1;
+  v-s:canRead "true"^^xsd:boolean;
+  v-s:description "89090000000"^^xsd:string;
+  v-s:hasCommunicationMeanChannel <d:o3q2gagyvfwh430io88vvb8vel>;
+  v-s:hasCommunicationMeanTarget <d:a3nx3vnoo4akfu67c0709dr33j>;
+.
+d:hack_account_ivanovv
+  a v-s:Account;
+  v-s:origin "InternalUser"^^xsd:string;
+  v-s:owner d:RU000000000000_employee_1;
+  v-s:login "user"^^xsd:string;
+  v-s:mailbox "lapshin.a.v.395@gmail.com"^^xsd:string;
+  v-s:password "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"^^xsd:string ;
+  rdfs:label "user"@ru;
+  rdfs:label "user"@en;
+.
+d:RU000000000000_position_1
+  a v-s:Position;
+  v-s:origin "InternalUser"^^xsd:string;
+  v-s:parentUnit d:org_RU000000000000;
+  rdfs:label "Собственник"@ru;
+  rdfs:label "Owner"@en;
+  v-s:parentOrganization d:org_RU000000000000;
+.
+d:RU000000000000_employee_1_position_1
+  a v-s:Appointment;
+  v-s:origin "InternalUser"^^xsd:string;
+  v-s:employee d:RU000000000000_employee_1;
+  v-s:occupation d:RU000000000000_position_1;
+  v-s:official "true"^^xsd:boolean;
+  rdfs:label "Иванов И.И. Собственник"@ru;
+  rdfs:label "Ivanov I.I. Собственник"@en;
+  v-s:parentOrganization d:org_RU000000000000;
+  v-s:parentUnit d:org_RU000000000000;
+.
