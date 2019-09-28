@@ -149,68 +149,107 @@ hack:RequestTemplate
     <section id="Report">
       <h4 class="section-header clearfix">
         <span about="hack:ReportBundle" property="rdfs:label"></span>
-        <button class="btn btn-xs btn-success pull-right" id="add-report">
+        <button class="btn btn-xs btn-success pull-right view -edit -search" id="add-Report">
           <span class="glyphicon glyphicon-search"></span>
           <span about="hack:ReportBundle" property="rdfs:label"></span>
         </button>
       </h4>
-      <div rel="v-s:hasComment" data-template="hack:CommentTemplate" data-embedded="true"></div>      
+      <div rel="v-s:hasComment" data-template="hack:ShortCommentTemplateEmbedded" data-embedded="true"></div>
     </section>
     <div class="actions view edit -search">
-      <span about="@" data-template="v-ui:StandardButtonsTemplate" data-embedded="true" data-buttons="send edit save cancel delete journal task"></span>
+      <span about="@" data-template="v-ui:StandardButtonsTemplate" data-embedded="true" data-buttons="send edit save cancel delete journal"></span>
    </div>
   </div>
 </div>
 <script>
-  $("#add-Delivery", template).click(function () {
-    var modal = veda.Util.showModal();
-    template.one("remove", function () {
+  $("#add-Report", template).click(function () {
+    var _class = new veda.IndividualModel("v-s:Comment"),
+        comment = new veda.IndividualModel(),
+        cntr = $("#new-comment", template).empty(),
+        tmpl = "hack:ShortCommentTemplate";
+    comment["rdf:type"] = [_class];
+    comment["v-s:backwardTarget"] = [individual];
+    comment["v-s:backwardProperty"] = [new veda.IndividualModel("v-s:hasComment")];
+    comment["v-s:canRead"] = [ true ];
+    var modal = veda.Util.showModal(comment, tmpl, "edit");
+    comment.one("afterReset", function () {
       modal.modal("hide").remove();
     });
-
-    var cntr = $(".modal-body", modal),
-        _class = new veda.IndividualModel("v-s:Delivery"),
-        Delivery = new veda.IndividualModel(),
-        tmpl = new veda.IndividualModel("v-s:DeliveryTemplate");
-    Delivery["rdf:type"] = [_class];
-    Delivery["v-s:backwardTarget"] = [individual];
-    Delivery["v-s:backwardProperty"] = [new veda.IndividualModel("v-s:hasDelivery")];
-    Delivery["v-s:canRead"] = [true];
-    var data=new Date();
-    Delivery["v-s:date"] = [data];
-    Delivery["v-s:deliverBy"] = individual["v-s:deliverBy"];
-
-    Delivery.present(cntr, tmpl, "edit");
-    Delivery.one("beforeReset", function () {
-      modal.modal("hide").remove();
-    });
-    Delivery.one("afterSave", function () {
+    comment.one("afterSave", function () {
       modal.modal("hide").remove();
     });
   });
+
   //# sourceURL=hack:RequestTemplate_post
 </script>
 """
 .
 
-hack:DeliveryTemplateEmbedded
+hack:ShortCommentTemplate
   rdf:type v-ui:ClassTemplate ;
-  v-ui:forClass hack:PersonalAccount ;
   rdfs:label "Template for hack:PersonalAccount class"@en ;
   rdfs:label "Шаблон для класса hack:PersonalAccount"@ru ;
   v-ui:template """
-  <div>
-    <em about="v-s:deliverBy" property="rdfs:label">Дата</em>
-    <div property="v-s:deliverBy" class="view -edit search" style="display: none;"></div>
-    <veda-control data-type="link" rel="v-s:deliverBy" class="-view edit search fulltext dropdown"></veda-control>
+<div class="panel panel-default" style="margin-top: 20px">
+  <div class="panel-body">
+    <em about="rdfs:comment" property="rdfs:label"></em>
+    <div property="rdfs:label" class="view -edit -search"></div>
+    <veda-control data-type="text" rows="3" property="rdfs:label" class="-view edit -search"></veda-control>
+    <em about="v-s:attachment" property="rdfs:label">Вложение</em>
+    <div rel="v-s:attachment" data-template="v-ui:FileTemplate" data-embedded="true"></div>
+    <veda-control data-type="file" rel="v-s:attachment" class="-view edit -search"></veda-control>
+    <br>
+    <span about="@" data-template="v-ui:StandardButtonsTemplate" data-embedded="true" data-buttons="save edit cancel delete"></span>
   </div>
-  <div>
-    <em about="rdfs:comment" property="rdfs:label">Дата</em>
-    <div property="rdfs:commenty" class="view -edit search" style="display: none;"></div>
-    <veda-control data-type="text" rel="rdfs:comment" class="-view edit search"></veda-control>
-  </div>
+</div>
 """
-  .
+.
+
+
+hack:ShortCommentTemplateEmbedded
+  rdf:type v-ui:ClassTemplate ;
+  rdfs:label "Template for hack:PersonalAccount class"@en ;
+  rdfs:label "Шаблон для класса hack:PersonalAccount"@ru ;
+  v-ui:template """
+<div class="row row-attribute">
+  <div class="col-sm-3 col-xs-5">
+    <label about="rdfs:comment" property="rdfs:label"></label>
+  </div>
+  <div class="col-sm-9 col-xs-7">
+    <div property="rdfs:label" class="view -edit search"></div>
+    <veda-control property="rdfs:label" data-type="text" class="-view edit search"></veda-control>
+  </div>
+</div>
+<div class="row row-attribute">
+  <div class="col-sm-3 col-xs-5">
+    <label about="v-s:attachment" property="rdfs:label"></label>
+  </div>
+  <div class="col-sm-9 col-xs-7">
+    <div property="v-s:attachment" class="view -edit search"></div>
+    <veda-control data-type="file" rel="v-s:attachment" class="-view edit -search"></veda-control>
+  </div>
+</div>
+"""
+.
+
+hack:DeliveryTemplateEmbedded
+  rdf:type v-ui:ClassTemplate ;
+  rdfs:label "Template for hack:PersonalAccount class"@en ;
+  rdfs:label "Шаблон для класса hack:PersonalAccount"@ru ;
+  v-ui:template """
+<div>
+  <em about="v-s:deliverBy" property="rdfs:label">Дата</em>
+  <div rel="v-s:deliverBy" data-template="v-ui:LabelTemplate" class="view -edit search" style="display: none;"></div>
+  <veda-control data-type="link" rel="v-s:deliverBy" class="-view edit search fulltext dropdown"></veda-control>
+</div>
+<div>
+  <em about="rdfs:comment" property="rdfs:label">Дата</em>
+  <div property="rdfs:comment" class="view -edit search" style="display: none;"></div>
+  <veda-control data-type="text" rel="rdfs:comment" class="-view edit search"></veda-control>
+</div>
+"""
+.
+
 hack:PersonalAccountTemplate
   rdf:type v-ui:ClassTemplate ;
   v-ui:forClass hack:PersonalAccount ;
