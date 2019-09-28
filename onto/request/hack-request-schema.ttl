@@ -36,16 +36,81 @@ hack:Request
 #v-s:registrationDate
 #v-s:content
 #v-s:hasStatus
-#hack:hasCategory
-#v-s:hasPriorityLevel
-#v-s:hasPersonalAccount
-#метод доставки (как получили + коммент email)
-#hack:isPlanned
-#hack:isFailure
-#hack:hasObject
-#v-s:hasDelivery (как получено)
-#v-s:hasComment (отчет об исполнении)
 
+hack:hasEquipmentCategory
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "Категория оборудования и сооружений"@ru ;
+  rdfs:label "Equipment category"@en ;
+  rdfs:range hack:EquipmentCategory ;
+  rdfs:domain hack:Request;
+.
+
+#v-s:hasPriorityLevel
+#hack:hasPersonalAccount
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "Лицевой счет"@ru ;
+  rdfs:label "Personal account"@en ;
+  rdfs:range hack:PersonalAccount ;
+  rdfs:domain hack:Request;
+.
+
+#v-s:hasDelivery метод доставки (в шаблоне как получили + коммент email)
+
+hack:isPlanned
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "План/не план"@ru ;
+  rdfs:label "Режим работы"@en ;
+  rdfs:range xsd:boolean ;
+  rdfs:domain hack:Request ;
+.
+hack:PS_isPlanned_Request
+  rdf:type v-ui:DatatypePropertySpecification ;
+  v-ui:forProperty hack:isPlanned ;
+  v-ui:forClass hack:Request ;
+  v-ui:maxCardinality 0 ;
+  v-ui:minCardinality 1 ;
+  v-ui:trueLabel "Плановые работы"@ru ;
+  v-ui:trueLabel "Planned works"@en ;
+  v-ui:falseLabel "Внеплановые работы"@ru ;
+  v-ui:falseLabel "Unplanned works"@en ;
+  rdfs:label "Спецификация к свойству isPlanned для класса Request"@ru ;
+  rdfs:label "Spec for property isPlanned for class Request"@en ;
+.
+
+
+hack:isFailure
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "Авария/текущие работы"@ru ;
+  rdfs:label "Failure/current work"@en ;
+  rdfs:range xsd:boolean ;
+  rdfs:domain hack:Request ;
+.
+hack:PS_isFailure_Request
+  rdf:type v-ui:DatatypePropertySpecification ;
+  v-ui:forProperty hack:isFailure ;
+  v-ui:forClass hack:Request ;
+  v-ui:maxCardinality 1 ;
+  v-ui:minCardinality 1 ;
+  v-ui:trueLabel "Авария"@ru ;
+  v-ui:trueLabel "Failure"@en ;
+  v-ui:falseLabel "Текущая эксплуатация"@ru ;
+  v-ui:falseLabel "Current operation"@en ;
+  rdfs:label "Спецификация к свойству isFailure для класса Request"@ru ;
+  rdfs:label "Spec for property isFailure for class Request"@en ;
+.
+
+hack:hasObject
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "Категория оборудования и сооружений"@ru ;
+  rdfs:label "Equipment category"@en ;
+  rdfs:range hack:Object ;
+  rdfs:domain hack:Request;
+.
+
+#v-s:hasComment (отчет об исполнении c шаблоном в новой верстке без связанных документов)
+
+
+#--------------------------------------------------------------------------
 #Лицевой счет/договор
 hack:PersonalAccount
 	rdf:type owl:Class ;
@@ -53,16 +118,16 @@ hack:PersonalAccount
 	rdfs:subClassOf v-s:Labeled ;
 	rdfs:label "Лицевой счет"@ru ;
 	rdfs:label "PersonalAccount"@en ;
-	v-s:labelPattern "{@.v-s:registrationNumber} {@.v-s:hasStatus.rdfs:label}" ;
+	v-s:labelPattern "{@.v-s:registrationNumber} {@.v-s:customer.rdfs:label}" ;
 	v-ui:hasTemplate hack:PersonalAccountTemplate ;
 .
 #rdfs:label
 #v-s:registrationNumber
-#v-s:customer
+#v-s:customer (пока только люди, назнаения)
 #hack:hasObject
-#v-s:hasCommunicationMean
+#v-s:hasCommunicationMean (средство связи с шаблоном)
 
-
+#-------------------------------
 #Категория обрудования и сооружений
 hack:EquipmentCategory
 	rdf:type owl:Class ;
@@ -73,3 +138,16 @@ hack:EquipmentCategory
 .
 #v-s:title
 #v-s:responsible
+
+#--------------------------------
+#Объект
+hack:Object
+	rdf:type owl:Class ;
+	rdfs:subClassOf v-s:UserThing ;
+	rdfs:label "Объект"@ru ;
+	rdfs:label "Object"@en ;
+	v-ui:hasTemplate hack:ObjectTemplate ;
+.
+
+#rfds:label
+#v-s:parentUnit
