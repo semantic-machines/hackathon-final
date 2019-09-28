@@ -68,7 +68,7 @@ hack:PS_hasStatus_Request
 	v-ui:forClass hack:Request ;
 	v-ui:forProperty v-s:hasStatus ;
 	v-ui:queryPrefix "('@'=='v-s:StatusDraft' || '@'=='v-s:StatusExecution' || '@'=='v-s:StatusExecuted' || '@'=='v-s:StatusRejected')"^^xsd:string ;
-	v-ui:minCardinality 1 ;
+	v-ui:minCardinality 0 ;
 	v-ui:maxCardinality 1 ;
 	v-ui:defaultValue v-s:StatusDraft ;
 	rdfs:label "Спецификация свойства hasStatus для класса hack:Request"@ru ;
@@ -164,7 +164,7 @@ hack:PS_hasObject_Request
     v-ui:treeSelectableFilter """
     return this.hasValue("rdf:type", "hack:Object") && this.hasValue("v-s:hasParentLink");
     """ ;
-	v-ui:minCardinality 1 ;
+	v-ui:minCardinality 0 ;
 	v-ui:maxCardinality 100 ;
 	rdfs:label "Спецификация свойства hack:hasObject для класса hack:Request"@ru ;
 	rdfs:label "hack:hasObject property specification for hack:Request class"@en ;
@@ -179,7 +179,7 @@ hack:PS_deliverBy_Request
 	v-ui:forClass v-s:Delivery ;
 	v-ui:forProperty v-s:deliverBy ;
 	v-ui:queryPrefix "('@'=='d:727' || '@'=='d:b9d2da6785ee42b2bcb054fd8295c539' || '@'=='d:683' || '@'=='d:700')"^^xsd:string ;
-	v-ui:minCardinality 1 ;
+	v-ui:minCardinality 0 ;
 	v-ui:maxCardinality 100 ;
 	rdfs:label "Спецификация свойства hasStatus для класса hack:Request"@ru ;
 	rdfs:label "hasStatus property specification for hack:Request class"@en ;
