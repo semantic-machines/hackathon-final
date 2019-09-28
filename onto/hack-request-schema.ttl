@@ -196,6 +196,27 @@ hack:TS_PersonalAccount
 #v-s:registrationNumber
 #v-s:customer (пока только люди, назнаения)
 #hack:hasObject
+hack:PS_hasObject_PersonalAccount
+	rdf:type v-ui:ObjectPropertySpecification ;
+	v-ui:forClass hack:PersonalAccount ;
+	v-ui:forProperty hack:hasObject ;
+	v-ui:treeRoot  d:city1 ;
+	v-ui:treeInProperty v-s:hasParentLink ;
+	v-ui:treeDisplayedProperty rdfs:label ;
+	v-ui:treeDisplayedProperty v-s:hasParentLink ;
+	v-ui:queryPrefix "('rdf:type'=='hack:Object')"^^xsd:string ;
+    v-ui:treeAllowedFilter """
+    return this.hasValue("rdf:type", "hack:Object");
+    """ ;
+    v-ui:treeSelectableFilter """
+    return this.hasValue("rdf:type", "hack:Object") && this.hasValue("v-s:hasParentLink");
+    """ ;
+	v-ui:minCardinality 1 ;
+	v-ui:maxCardinality 100 ;
+	rdfs:label "Спецификация свойства hack:hasObject для класса hack:PersonalAccount"@ru ;
+	rdfs:label "hack:hasObject property specification for hack:PersonalAccount class"@en ;
+.
+
 #v-s:hasCommunicationMean (средство связи с шаблоном)
 
 #-------------------------------Справочники-------------------

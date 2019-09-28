@@ -297,7 +297,7 @@ hack:PersonalAccountTemplate
         </div>
         <div class="col-sm-9 col-xs-7">
           <div property="hack:hasObject" data-template="v-ui:LabelTemplate" class="view -edit search"></div>
-          <veda-control rel="hack:hasObject"  data-type="link" class="-view edit search fulltext dropdown"></veda-control>
+          <veda-control rel="hack:hasObject"  data-type="link" class="-view edit search fulltext tree"></veda-control>
         </div>
       </div>
       <div class="row row-attribute">
