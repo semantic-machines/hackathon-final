@@ -18,17 +18,20 @@
   v-s:loadPriority 20 ;
 .
 
-hack:Classifier1
+# ---------- Классификатор категории оборудования
+
+hack:EquipmentCategory_Classifier
   rdf:type hack:BayesClassifier ;
-  rdfs:label "Тестовый классификатор 1"@ru ;
-  rdfs:label "Test classifier 1"@ru ;
-  hack:hasBayesCategory hack:Classifier1_Category1 ;
-  hack:hasBayesCategory hack:Classifier1_Category2 ;
+  rdfs:label "Классификатор категории обородования"@ru ;
+  rdfs:label "Equipment category classifier"@ru ;
+  hack:hasBayesCategory hack:EquipmentCategory1 ;
+  hack:hasBayesCategory hack:EquipmentCategory2 ;
+  hack:hasBayesCategory hack:EquipmentCategory3 ;
 .
 
-hack:Classifier1_Category1
+hack:EquipmentCategory1
   rdf:type hack:BayesCategory ;
-  v-s:parent hack:Classifier1 ;
+  v-s:parent hack:EquipmentCategory_Classifier ;
   rdf:value hack:coldWaterSupply ;
   hack:keyPhrases """
 труба
@@ -39,9 +42,9 @@ hack:Classifier1_Category1
   """ ;
 .
 
-hack:Classifier1_Category2
+hack:EquipmentCategory2
   rdf:type hack:BayesCategory ;
-  v-s:parent hack:Classifier1 ;
+  v-s:parent hack:EquipmentCategory_Classifier ;
   rdf:value hack:lifting ;
   hack:keyPhrases """
 лифт
@@ -52,9 +55,9 @@ hack:Classifier1_Category2
   """ ;
 .
 
-hack:Classifier1_Category3
+hack:EquipmentCategory3
   rdf:type hack:BayesCategory ;
-  v-s:parent hack:Classifier1 ;
+  v-s:parent hack:EquipmentCategory_Classifier ;
   rdf:value hack:gas ;
   hack:keyPhrases """
 прорыв газа
@@ -66,11 +69,63 @@ hack:Classifier1_Category3
   """ ;
 .
 
-hack:BayesSpecification1
+hack:BayesSpecification_EquipmentCategory
   rdf:type hack:BayesSpecification ;
+  hack:hasBayesClassifier hack:EquipmentCategory_Classifier ;
   hack:forClass hack:Request ;
   hack:sourceProperty v-s:content ;
   hack:targetProperty hack:hasEquipmentCategory ;
 .
 
-# --------------------
+# ---------- Классификатор аварийности
+
+hack:FailureRate_Classifier
+  rdf:type hack:BayesClassifier ;
+  rdfs:label "Классификатор аварийности"@ru ;
+  rdfs:label "Failure rate classifier"@ru ;
+  hack:hasBayesCategory hack:FailureRate1 ;
+  hack:hasBayesCategory hack:FailureRate2 ;
+.
+
+hack:FailureRate1
+  rdf:type hack:BayesCategory ;
+  v-s:parent hack:FailureRate_Classifier ;
+  rdf:value hack:failure ;
+  hack:keyPhrases """
+авария
+прорыв
+разрыв
+срыв
+взрыв
+авария
+возгорание
+воспламенение
+отключение
+обрушение
+залп
+хлещет
+заливает
+сгорел дом
+  """ ;
+.
+
+hack:FailureRate2
+  rdf:type hack:BayesCategory ;
+  v-s:parent hack:FailureRate_Classifier ;
+  rdf:value hack:ongoingService ;
+  hack:keyPhrases """
+не авария
+сгорела лампочка
+ура
+привет
+мама
+  """ ;
+.
+
+hack:BayesSpecification_FailureRate
+  rdf:type hack:BayesSpecification ;
+  hack:hasBayesClassifier hack:FailureRate_Classifier ;
+  hack:forClass hack:Request ;
+  hack:sourceProperty v-s:content ;
+  hack:targetProperty hack:hasFailureRate ;
+.
