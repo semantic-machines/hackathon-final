@@ -131,6 +131,17 @@ hack:hasFailureRate
   rdfs:domain hack:Request;
 .
 
+hack:PS_hasFailureRate_Request
+  rdf:type v-ui:DatatypePropertySpecification ;
+  v-ui:forProperty hack:hasFailureRate ;
+  v-ui:forClass hack:Request ;
+  v-ui:maxCardinality 1 ;
+  v-ui:minCardinality 0 ;
+  rdfs:label "Спецификация к свойству hasFailureRate для класса Request"@ru ;
+  rdfs:label "Spec for property hasFailureRate for class Request"@en ;
+  v-ui:queryPrefix "'v-s:hasParentLink'=='hack:FailureRate_root'" ;
+.
+
 hack:hasObject
   rdf:type owl:ObjectProperty ;
   rdfs:label "Объект"@ru ;

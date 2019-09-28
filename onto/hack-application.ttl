@@ -84,12 +84,20 @@ hack:SettingsTemplate
         <span about="@" rel="rdf:type" data-template="v-ui:LabelTemplate"></span>
       </h2>
     </div>
-    <hr class="margin-md">
+    <hr>
     <h4 style="color: #555;">Справочники</h4>
     <div about="hack:EquipmentCategory_tree"></div>
     <div about="hack:FailureRate_tree"></div>
-    <hr class="margin-md">
+    <hr>
     <h4 style="color: #555;">Автоматические классификаторы</h4>
+    <br>
+    <div about="hack:EquipmentCategory_Classifier">
+      <span about="@" data-template="v-ui:IconModalTemplate"></span> <span about="@" data-template="v-ui:LabelTemplate"></span>
+    </div>
+    <br>
+    <div about="hack:FailureRate_Classifier">
+      <span about="@" data-template="v-ui:IconModalTemplate"></span> <span about="@" data-template="v-ui:LabelTemplate"></span>
+    </div>
   </div>
   <!--div class="row" style="display: flex; flex-flow: row wrap;">
     <div class="blanks col-md-4 col-sm-6 col-xs-12" style="display: flex;">
