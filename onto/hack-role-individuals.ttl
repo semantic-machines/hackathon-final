@@ -98,3 +98,10 @@ d:SmokeRemovalRole
   rdfs:label "Специалист по дымоудалению"@ru ;
   rdfs:label "Smoke removal specialist"@en ;
 .
+d:ClientServiceRole
+  rdf:type v-s:Position ;
+  v-s:origin "Role"@ru ;
+  v-s:parentUnit d:managmentOrg_1 ;
+  rdfs:label "Специалист клиентской службы"@ru ;
+  rdfs:label "Client service specialist"@en ;
+.
