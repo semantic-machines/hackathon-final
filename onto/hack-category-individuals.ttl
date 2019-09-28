@@ -70,6 +70,18 @@ hack:sewerage
   rdfs:label "Sewerage"@en ;
   v-s:responsible d:SewerageRole ;
 .
+hack:ventilation
+  rdf:type hack:EquipmentCategory ;
+  rdfs:label "Вентиляция. Дымоотведение"@ru ;
+  rdfs:label "Ventilation"@en ;
+  v-s:responsible d:VentilationRole ;
+.
+hack:smokeRemoval
+  rdf:type hack:EquipmentCategory ;
+  rdfs:label "Дымоудаление"@ru ;
+  rdfs:label "Sewerage"@en ;
+  v-s:responsible d:SmokeRemovalRole ;
+.
 
 #--------------------АВАРИЙНОСТЬ
 hack:failure
