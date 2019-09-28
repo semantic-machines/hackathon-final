@@ -81,7 +81,34 @@ hack:RequestTemplate
         </div>
         <div class="col-sm-9 col-xs-7">
           <div rel="hack:hasObject" class="view -edit search" data-template="v-ui:LabelTemplate"></div>
-          <veda-control data-type="link" rel="hack:hasObject" class="-view edit search fulltext"></veda-control>
+          <veda-control data-type="link" rel="hack:hasObject" class="-view edit search fulltext dropdown"></veda-control>
+        </div>
+      </div>
+      <div class="row row-attribute">
+        <div class="col-sm-3 col-xs-5">
+          <label about="hack:hasEquipmentCategory" property="rdfs:label"></label>
+        </div>
+        <div class="col-sm-9 col-xs-7">
+          <div rel="hack:hasEquipmentCategory" class="view -edit search" data-template="v-ui:LabelTemplate"></div>
+          <veda-control data-type="link" rel="hack:hasEquipmentCategory" class="-view edit search fulltext dropdown"></veda-control>
+        </div>
+      </div>
+      <div class="row row-attribute">
+        <div class="col-sm-3 col-xs-5">
+          <label about="hack:hasPersonalAccount" property="rdfs:label"></label>
+        </div>
+        <div class="col-sm-9 col-xs-7">
+          <div rel="hack:hasPersonalAccount" class="view -edit search" data-template="v-ui:LabelTemplate"></div>
+          <veda-control data-type="link" rel="hack:hasPersonalAccount" class="-view edit search fulltext"></veda-control>
+        </div>
+      </div>
+      <div class="row row-attribute">
+        <div class="col-sm-3 col-xs-5">
+          <label about="v-s:hasPriorityLevel" property="rdfs:label"></label>
+        </div>
+        <div class="col-sm-9 col-xs-7">
+          <div rel="v-s:hasPriorityLevel" class="view -edit search" data-template="v-ui:LabelTemplate"></div>
+          <veda-control data-type="link" rel="v-s:hasPriorityLevel" class="-view edit search fulltext dropdown"></veda-control>
         </div>
       </div>
       <div class="row row-attribute">
@@ -104,7 +131,12 @@ hack:RequestTemplate
         </div>
         <div class="col-sm-9 col-xs-7">
           <div rel="v-s:hasDelivery" class="view edit search" data-template="v-s:DeliveryEmbeddedTemplate"></div>
-          <veda-control data-type="link" rel="v-s:hasDelivery" class="-view edit search"></veda-control>
+          <div id="add-hasDelivery">
+            <button type="button" class="action btn btn-success pull-right view -edit -search" id="add-Delivery" about="v-s:hasDelivery" property="rdfs:label"></button>
+            <br>
+            <br>
+          </div>
+          <veda-control data-type="link" rel="v-s:hasDelivery" class="-view edit search create create-modal margin-md"></veda-control>
         </div>
       </div>
     </section>
@@ -121,7 +153,33 @@ hack:RequestTemplate
   </div>
 </div>
 <script>
+  $("#add-Delivery", template).click(function () {
+    var modal = veda.Util.showModal();
+    template.one("remove", function () {
+      modal.modal("hide").remove();
+    });
 
+    var cntr = $(".modal-body", modal),
+        _class = new veda.IndividualModel("v-s:Delivery"),
+        Delivery = new veda.IndividualModel(),
+        tmpl = new veda.IndividualModel("v-s:DeliveryTemplate");
+    Delivery["rdf:type"] = [_class];
+    Delivery["v-s:backwardTarget"] = [individual];
+    Delivery["v-s:backwardProperty"] = [new veda.IndividualModel("v-s:hasDelivery")];
+    Delivery["v-s:canRead"] = [true];
+    var data=new Date();
+    Delivery["v-s:date"] = [data];
+    Delivery["v-s:deliverBy"] = individual["v-s:deliverBy"];
+
+    Delivery.present(cntr, tmpl, "edit");
+    Delivery.one("beforeReset", function () {
+      modal.modal("hide").remove();
+    });
+    Delivery.one("afterSave", function () {
+      modal.modal("hide").remove();
+    });
+  });
+  //# sourceURL=hack:RequestTemplate_post
 </script>
 """
 .

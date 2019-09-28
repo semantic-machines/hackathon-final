@@ -14,6 +14,8 @@
   v-s:loadPriority 10 ;
 .
 # ------------------------------------------------------------ ИНДИВИДЫ --
+
+#---------ПОДСИСТЕМЫ (КАТЕГОРИИ) 
 hack:electricity
   rdf:type hack:EquipmentCategory ;
   rdfs:label "Электроснабжение"@ru ;
@@ -67,4 +69,16 @@ hack:sewerage
   rdfs:label "Канализация"@ru ;
   rdfs:label "Sewerage"@en ;
   v-s:responsible d:SewerageRole ;
+.
+
+#--------------------АВАРИЙНОСТЬ
+hack:failure
+  rdf:type hack:FailureRate ;
+  rdfs:label "Авария"@ru ;
+  rdfs:label "Failure"@en ;
+.
+hack:ongoingService
+  rdf:type hack:FailureRate ;
+  rdfs:label "Текущая эксплуатация"@ru ;
+  rdfs:label "Оngoing service"@en ;
 .

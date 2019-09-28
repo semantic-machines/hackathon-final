@@ -83,32 +83,18 @@ hack:PS_isPlanned_Request
   rdfs:label "Spec for property isPlanned for class Request"@en ;
 .
 
-
-hack:isFailure
-  rdf:type owl:DatatypeProperty ;
-  rdfs:label "Авария/текущие работы"@ru ;
-  rdfs:label "Failure/current work"@en ;
-  rdfs:range xsd:boolean ;
-  rdfs:domain hack:Request ;
-.
-hack:PS_isFailure_Request
-  rdf:type v-ui:DatatypePropertySpecification ;
-  v-ui:forProperty hack:isFailure ;
-  v-ui:forClass hack:Request ;
-  v-ui:maxCardinality 1 ;
-  v-ui:minCardinality 1 ;
-  v-ui:trueLabel "Авария"@ru ;
-  v-ui:trueLabel "Failure"@en ;
-  v-ui:falseLabel "Текущая эксплуатация"@ru ;
-  v-ui:falseLabel "Current operation"@en ;
-  rdfs:label "Спецификация к свойству isFailure для класса Request"@ru ;
-  rdfs:label "Spec for property isFailure for class Request"@en ;
+hack:hasFailureRate
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "Аварийность"@ru ;
+  rdfs:label "FailureRate"@en ;
+  rdfs:range hack:FailureRate ;
+  rdfs:domain hack:Request;
 .
 
 hack:hasObject
   rdf:type owl:ObjectProperty ;
-  rdfs:label "Категория оборудования и сооружений"@ru ;
-  rdfs:label "Equipment category"@en ;
+  rdfs:label "Объект"@ru ;
+  rdfs:label "Object"@en ;
   rdfs:range hack:Object ;
   rdfs:domain hack:Request;
 .
@@ -139,7 +125,7 @@ hack:TS_PersonalAccount
 #hack:hasObject
 #v-s:hasCommunicationMean (средство связи с шаблоном)
 
-#-------------------------------
+#-------------------------------Справочники-------------------
 #Категория обрудования и сооружений
 hack:EquipmentCategory
 	rdf:type owl:Class ;
@@ -150,6 +136,15 @@ hack:EquipmentCategory
 .
 #v-s:title
 #v-s:responsible
+
+#--------------------------------
+#Аварийность
+hack:FailureRate
+	rdf:type owl:Class ;
+	rdfs:subClassOf v-s:UserThing ;
+	rdfs:label "Аварийность"@ru ;
+	rdfs:label "Accident rate"@en ;
+.
 
 #--------------------------------
 #Объект
