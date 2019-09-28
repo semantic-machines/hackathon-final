@@ -36,6 +36,12 @@ hack:RequestTemplate
   rdfs:label "Template for hack:Request class"@en ;
   rdfs:label "Шаблон для класса hack:Request"@ru ;
   v-ui:template """
+<script>
+  if (individual.isNew()) {
+    $("#RegistrationNumber", template).hide();
+    individual["v-s:registrationDate"] = [new Date()];  
+  }
+</script>
 <div>
   <div class="container sheet">
     <h2>
@@ -187,29 +193,21 @@ hack:RequestTemplate
       modal.modal("hide").remove();
     });
   });
-
-  function processHandler() {
-    individual.canUpdate().then(function (canUpdate) {
-      if (individual.hasValue("v-wf:isProcess")) {
-        $('#send.action', template).remove();
-        $('#delete.action', template).remove();
-      } else if (individual.isNew() || canUpdate) {
-        $('#send.action', template).off("click");
-        $('#send.action', template).on('click', function () {
-          veda.Util.send(individual, template, 's-wf:complexRouteTransform', undefined, 'hack:Request_ComplexRouteStartForm_Template');
-        });
-      } else {
-        $('#send.action', template).remove();
-        $('#delete.action', template).remove();
-      }
-    });
-  }
-  processHandler();
-
-  individual.on("afterReset", processHandler);
-  template.one("remove", function () {
-    individual.off("afterReset", processHandler);
-  });
+  
+  $("#send.action", template).click(function() {
+    var startForm = new veda.IndividualModel();
+    startForm["rdf:type"] = [new veda.IndividualModel("v-df:TaskRouteStartForm")];
+    startForm["v-wf:StartForm_canEdit"] = [true];
+    startForm["v-wf:StartForm_setStatus"] = [true];
+    startForm["v-wf:forNet"] = [new veda.IndividualModel("s-wf:WrapUniversalNet")];
+    startForm["v-wf:processedDocument"] = [individual];
+    startForm["v-wf:useTransformation"] = [new veda.IndividualModel("v-df:TaskRouteStartFormToNet")];
+    startForm["v-wf:hasStatusWorkflow"] = [new veda.IndividualModel("v-wf:ToBeSent")];
+    startForm["rdfs:comment"] = ["Проверить обращение"];
+    startForm["v-s:responsible"] = [new veda.IndividualModel("cfg:Administrator")];
+    //   "v-wf:fromShedulerScript" : veda.Util.newBool(true),
+    //   "v-s:creator" : veda.Util.newUri ('cfg:VedaSystemAppointment')
+  })
   //# sourceURL=hack:RequestTemplate_post
 </script>
 """

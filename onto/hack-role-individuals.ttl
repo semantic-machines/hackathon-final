@@ -17,91 +17,98 @@
 d:ElectricityRole
   rdf:type v-s:Position ;
   v-s:origin "Role"@ru ;
-  v-s:parentUnit d:managmentOrg_1 ;
+  v-s:parentUnit d:org_RU1100220011 ;
   rdfs:label "Специалист по электроснабжению"@ru ;
   rdfs:label "Electricity specialist"@en ;
 .
 d:GasSupplyRole
   rdf:type v-s:Position ;
   v-s:origin "Role"@ru ;
-  v-s:parentUnit d:managmentOrg_1 ;
+  v-s:parentUnit d:org_RU1100220011 ;
   rdfs:label "Специалист по газоснабжению"@ru ;
   rdfs:label "Gas supply specialist"@en ;
 .
 d:ColdWaterSupplyRole
   rdf:type v-s:Position ;
   v-s:origin "Role"@ru ;
-  v-s:parentUnit d:managmentOrg_1 ;
+  v-s:parentUnit d:org_RU1100220011 ;
   rdfs:label "Специалист по холодному водоснабжению"@ru ;
   rdfs:label "Cold water supply specialist"@en ;
 .
 d:HotWaterSupplyRole
   rdf:type v-s:Position ;
   v-s:origin "Role"@ru ;
-  v-s:parentUnit d:managmentOrg_1 ;
+  v-s:parentUnit d:org_RU1100220011 ;
   rdfs:label "Специалист по горячему водоснабжению"@ru ;
   rdfs:label "Hot water supply specialist"@en ;
 .
 d:HeatingRole
   rdf:type v-s:Position ;
   v-s:origin "Role"@ru ;
-  v-s:parentUnit d:managmentOrg_1 ;
+  v-s:parentUnit d:org_RU1100220011 ;
   rdfs:label "Специалист по отоплению"@ru ;
   rdfs:label "Heating specialist"@en ;
 .
 d:BuildingConstructionRole
   rdf:type v-s:Position ;
   v-s:origin "Role"@ru ;
-  v-s:parentUnit d:managmentOrg_1 ;
+  v-s:parentUnit d:org_RU1100220011 ;
   rdfs:label "Специалист по строительным конструкциям"@ru ;
   rdfs:label "Heating specialist"@en ;
 .
 d:InstrumentationRole
   rdf:type v-s:Position ;
   v-s:origin "Role"@ru ;
-  v-s:parentUnit d:managmentOrg_1 ;
+  v-s:parentUnit d:org_RU1100220011 ;
   rdfs:label "Специалист по КИПиА"@ru ;
   rdfs:label "Instrumentation specialist"@en ;
 .
 d:LiftingDeviceRole
   rdf:type v-s:Position ;
   v-s:origin "Role"@ru ;
-  v-s:parentUnit d:managmentOrg_1 ;
+  v-s:parentUnit d:org_RU1100220011 ;
   rdfs:label "Специалист по ГПМ"@ru ;
   rdfs:label "Lifting device specialist"@en ;
 .
 d:SewerageRole
   rdf:type v-s:Position ;
   v-s:origin "Role"@ru ;
-  v-s:parentUnit d:managmentOrg_1 ;
+  v-s:parentUnit d:org_RU1100220011 ;
   rdfs:label "Специалист по канализации"@ru ;
   rdfs:label "Sewerage specialist"@en ;
 .
 d:EmergencyServiceRole
   rdf:type v-s:Position ;
   v-s:origin "Role"@ru ;
-  v-s:parentUnit d:managmentOrg_1 ;
+  v-s:parentUnit d:org_RU1100220011 ;
   rdfs:label "Аварийная служба"@ru ;
   rdfs:label "Emergency service"@en ;
 .
 d:VentilationRole
   rdf:type v-s:Position ;
   v-s:origin "Role"@ru ;
-  v-s:parentUnit d:managmentOrg_1 ;
+  v-s:parentUnit d:org_RU1100220011 ;
   rdfs:label "Специалист по вентиляции"@ru ;
   rdfs:label "Ventilation specialist"@en ;
 .
 d:SmokeRemovalRole
   rdf:type v-s:Position ;
   v-s:origin "Role"@ru ;
-  v-s:parentUnit d:managmentOrg_1 ;
+  v-s:parentUnit d:org_RU1100220011 ;
   rdfs:label "Специалист по дымоудалению"@ru ;
   rdfs:label "Smoke removal specialist"@en ;
 .
 d:ClientServiceRole
   rdf:type v-s:Position ;
   v-s:origin "Role"@ru ;
-  v-s:parentUnit d:managmentOrg_1 ;
+  v-s:parentUnit d:org_RU1100220011 ;
   rdfs:label "Специалист клиентской службы"@ru ;
   rdfs:label "Client service specialist"@en ;
+.
+d:DispatcherRole
+  rdf:type v-s:Position ;
+  v-s:origin "Role"@ru ;
+  v-s:parentUnit d:org_RU1100220011 ;
+  rdfs:label "Диспетчер"@ru ;
+  rdfs:label "Dispatcher"@en ;
 .
