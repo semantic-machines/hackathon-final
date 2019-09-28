@@ -77,7 +77,7 @@ hack:BayesSpecification_EquipmentCategory
 hack:FailureRate_Classifier
   rdf:type hack:BayesClassifier ;
   rdfs:label "Классификатор аварийности"@ru ;
-  rdfs:label "Failure rate classifier"@ru ;
+  rdfs:label "Failure rate classifier"@en ;
   hack:hasBayesCategory hack:FailureRate1 ;
   hack:hasBayesCategory hack:FailureRate2 ;
   hack:forClass hack:FailureRate ;
