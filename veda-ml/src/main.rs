@@ -170,10 +170,8 @@ fn prepare_queue_element(
                 for itype in types {
                     if specs.contains_key(&itype) {
                         prepare_user_request(&mut new_state_indv, module, systicket, id2nb, specs, &itype, stemmer, stopwords);
-                    } else {
-                        if onto.is_some_entered(&itype, &["hack:BayesClassifie".to_owned()]) {
-                            learn(&mut new_state_indv, id2nb, stemmer, stopwords);
-                        }
+                    } else if itype == "hack:BayesClassifier".to_owned() {
+                        learn_one(&mut new_state_indv, module, id2nb, stemmer, stopwords);
                     }
                 }
             }
@@ -183,22 +181,30 @@ fn prepare_queue_element(
     Ok(())
 }
 
+fn learn_one(indv: &mut Individual, module: &mut Module, id2nb: &mut HashMap<String, NBC>, stemmer: &Stemmer, stopwords: &HashSet<String>) {
+    if let Ok(v) = indv.get_literals("hack:hasBayesCategory") {
+        for el in v {
+            let mut ic: Individual = Individual::default();
+            if module.storage.get_individual(&el, &mut ic) {
+                learn(&mut ic, id2nb, stemmer, stopwords);
+            } else {
+                error! ("learn: not found hack:hasBayesCategory={} in {}", &el, indv.obj.uri);
+            }
+        }
+    } else {
+        error! ("not found [hack:hasBayesCategory] in {}", indv.obj.uri);
+    }
+}
+
 fn full_learn(module: &mut Module, id2nb: &mut HashMap<String, NBC>, stemmer: &Stemmer, stopwords: &HashSet<String>) {
     let res = module.fts.query(FTQuery::new_with_user("cfg:VedaSystem", "'rdf:type' == 'hack:BayesClassifier'"));
     if res.result_code == 200 && res.count > 0 {
-        for el in &res.result {
+        for id in &res.result {
             let mut rindv: Individual = Individual::default();
-            if module.storage.get_individual(&el, &mut rindv) {
-                if let Ok(v) = rindv.get_literals("hack:hasBayesCategory") {
-                    for el in v {
-                        let mut ic: Individual = Individual::default();
-                        if module.storage.get_individual(&el, &mut ic) {
-                            learn(&mut ic, id2nb, stemmer, stopwords);
-                        }
-                    }
-                }
+            if module.storage.get_individual(&id, &mut rindv) {
+                learn_one(&mut rindv, module, id2nb, stemmer, stopwords);
             } else {
-                error!("fail read, uri={}", &el);
+                error!("fail read, uri={}", &id);
             }
         }
     } else {
