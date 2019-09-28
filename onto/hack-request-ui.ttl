@@ -182,20 +182,24 @@ hack:RequestTemplate
       modal.modal("hide").remove();
     });
   });
-  
+  $("#send.action", template).off("click");
   $("#send.action", template).click(function() {
-    var startForm = new veda.IndividualModel();
+    template.trigger("save");
+    var startForm = new veda.IndividualModel(),
+      tmpl = new veda.IndividualModel("v-df:TaskRouteStartFormTemplate");
     startForm["rdf:type"] = [new veda.IndividualModel("v-df:TaskRouteStartForm")];
-    startForm["v-wf:StartForm_canEdit"] = [true];
-    startForm["v-wf:StartForm_setStatus"] = [true];
-    startForm["v-wf:forNet"] = [new veda.IndividualModel("s-wf:WrapUniversalNet")];
     startForm["v-wf:processedDocument"] = [individual];
+    startForm["v-wf:forNet"] = [new veda.IndividualModel("s-wf:WrapUniversalNet")];
     startForm["v-wf:useTransformation"] = [new veda.IndividualModel("v-df:TaskRouteStartFormToNet")];
-    startForm["v-wf:hasStatusWorkflow"] = [new veda.IndividualModel("v-wf:ToBeSent")];
+    startForm["v-wf:StartForm_setStatus"] = [true];
     startForm["rdfs:comment"] = ["Проверить обращение"];
-    startForm["v-s:responsible"] = [new veda.IndividualModel("cfg:Administrator")];
-    //   "v-wf:fromShedulerScript" : veda.Util.newBool(true),
-    //   "v-s:creator" : veda.Util.newUri ('cfg:VedaSystemAppointment')
+    startForm["v-s:responsible"] = [new veda.IndividualModel("d:DispatcherRole")];
+    startForm["v-wf:hasStatusWorkflow"] = [new veda.IndividualModel("v-wf:ToBeSent")];
+    startForm["v-wf:StartForm_canEdit"] = [true];
+    startForm["v-s:creator"] = [veda.appointment];
+    startForm.save().then(function(saved) {
+      console.log(saved);
+    });
   })
   //# sourceURL=hack:RequestTemplate_post
 </script>
