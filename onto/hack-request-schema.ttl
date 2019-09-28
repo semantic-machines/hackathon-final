@@ -163,7 +163,16 @@ hack:PS_hasObject_Request
 #v-s:hasComment (отчет об исполнении c шаблоном в новой верстке без связанных документов)
 
 #delivery
-
+hack:PS_deliverBy_Request
+	rdf:type v-ui:ObjectPropertySpecification ;
+	v-ui:forClass v-s:Delivery ;
+	v-ui:forProperty v-s:deliverBy ;
+	v-ui:queryPrefix "('@'=='d:727' || '@'=='d:b9d2da6785ee42b2bcb054fd8295c539' || '@'=='d:683' || '@'=='d:700')"^^xsd:string ;
+	v-ui:minCardinality 1 ;
+	v-ui:maxCardinality 100 ;
+	rdfs:label "Спецификация свойства hasStatus для класса hack:Request"@ru ;
+	rdfs:label "hasStatus property specification for hack:Request class"@en ;
+.
 
 #--------------------------------------------------------------------------
 #Лицевой счет/договор
