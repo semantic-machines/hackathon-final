@@ -27,6 +27,7 @@ hack:EquipmentCategory_Classifier
   hack:hasBayesCategory hack:EquipmentCategory1 ;
   hack:hasBayesCategory hack:EquipmentCategory2 ;
   hack:hasBayesCategory hack:EquipmentCategory3 ;
+  hack:forClass hack:EquipmentCategory ;
 .
 
 hack:EquipmentCategory1
@@ -79,6 +80,7 @@ hack:FailureRate_Classifier
   rdfs:label "Failure rate classifier"@ru ;
   hack:hasBayesCategory hack:FailureRate1 ;
   hack:hasBayesCategory hack:FailureRate2 ;
+  hack:forClass hack:FailureRate ;
 .
 
 hack:FailureRate1
