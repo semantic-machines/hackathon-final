@@ -33,3 +33,17 @@ hack:RequestSearchBlank
   rdfs:label "Requests"@en ;
   v-fc:targetType hack:Request ;
 .
+
+hack:PersonalAccountBlank
+  a v-fc:Blank;
+  rdfs:label "Лицевой счет/договор"@ru ;
+  rdfs:label "PersonalAccount"@en ;
+  v-fc:targetType hack:PersonalAccount ;
+.
+
+hack:PersonalAccountSearchBlank
+  a v-fc:Blank;
+  rdfs:label "Лицевой счет/договор"@ru ;
+  rdfs:label "Requests"@en ;
+  v-fc:targetType hack:PersonalAccount ;
+.

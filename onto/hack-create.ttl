@@ -27,3 +27,11 @@ hack:RequestCreate
   v-fc:hasBlank hack:RequestBlank;
   rdfs:comment "запрос обращение"@ru ;
 .
+
+hack:PersonalAccountCreate
+  a v-fc:Create;
+  rdfs:label "Лицевой счет/договор"@ru ;
+  rdfs:label "PersonalAccount"@en ;
+  v-fc:hasBlank hack:PersonalAccountBlank;
+  rdfs:comment "Лицевой счет/договор"@ru ;
+.

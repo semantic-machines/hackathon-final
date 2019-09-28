@@ -33,7 +33,10 @@ hack:RequestsManagementApplication
   v-s:shortLabel "Requests"@en ;
 
   v-s:hasCreate hack:RequestCreate ;
+  v-s:hasCreate hack:PersonalAccountCreate ;
+
   v-s:hasRegistry hack:RequestSearch ;
+  v-s:hasRegistry hack:PersonalAccountSearch ;
 
   v-s:hasIcon hack:RequestsManagementIcon  ;
   v-ui:hasTemplate v-s:ApplicationTemplate ;
