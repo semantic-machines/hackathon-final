@@ -22,11 +22,11 @@
 #-----------------------------------
 hack:Request_ComplexRouteStartForm_Template
   rdf:type v-ui:ClassTemplate ;
-  rdfs:label "Шаблон стартовых данных комплексного маршрута Инноваций"@ru ;
+  rdfs:label "Шаблон стартовых данных комплексного маршрута Обращений"@ru ;
   rdfs:label "Request route start form template"@en ;
   v-ui:template """
 <script>
-  var stages = ['coordination1', 'coordination2', 'sign', 'review', 'examination', 'instruction'];
+  var stages = ['introduction','coordination1', 'review', 'examination', 'instruction'];
   var complex = "s-wf:ComplexRouteStartForm_";
   var simple = "s-wf:SimpleRouteStartForm_";
   if (mode!=="edit") return;
@@ -36,25 +36,36 @@ hack:Request_ComplexRouteStartForm_Template
 
   individual.addSimpleStartForm(stages, complex);
 
+  individual[complex+'introduction'][0][simple+'visible'] = [true];
+  individual[complex+'introduction'][0][simple+'editable'] = [true];
+  if (doc.hasValue("hack:hasFailureRate","hack:failure")) {
+	  individual[complex+'introduction'][0][simple+'participant'] = [new veda.IndividualModel("d:EmergencyServiceRole")]; //Аварийная служба
+  }
+
   individual[complex+'coordination1'][0][simple+'visible'] = [true];
   individual[complex+'coordination1'][0][simple+'editable'] = [true];
-  individual[complex+'coordination2'][0][simple+'visible'] = [true];
-  individual[complex+'coordination2'][0][simple+'editable'] = [true];
-
-  individual[complex+'sign'][0][simple+'visible'] = [true];
-  individual[complex+'sign'][0][simple+'editable'] = [true];
-  individual[complex+'sign'][0][simple+'deadlineDays'] = [5];
-  individual[complex+'sign']["v-wf:StartForm_canEdit"] = [true];
 
   individual[complex+'review'][0][simple+'visible'] = [true];
   individual[complex+'review'][0][simple+'editable'] = [true];
-  individual[complex+'review'][0][simple+'deadlineDays'] = [3];
 
   individual[complex+'examination'][0][simple+'visible'] = [true];
   individual[complex+'examination'][0][simple+'editable'] = [true];
 
   individual[complex+'instruction'][0][simple+'visible'] = [true];
   individual[complex+'instruction'][0][simple+'editable'] = [true];
+
+  var responsiblePromises=[];
+  if (doc.hasValue("hack:hasEquipmentCategory")) {
+    responsiblePromises = doc['hack:hasEquipmentCategory'].map(function(item){
+      return item["v-s:responsible"][0];
+    })
+  }
+  Promise.all(responsiblePromises).then(function(responsibleParticipants) {
+    individual[complex+'instruction'][0][simple+'participant'] = individual[complex+'instruction'][0][simple+'participant'].concat(responsibleParticipants);
+	individual[complex+'instruction'][0][simple+'controller'] = [new veda.IndividualModel("d:ClientServiceRole")]; //Клиентская служба
+	individual[complex+'instruction'][0]['v-wf:StartForm_setStatus'] = [true];
+	individual[complex+'instruction'][0][simple+'deadlineDays'] = [3];
+  });
 
 //# sourceURL=hack:Request_ComplexRouteStartForm_Template_pre
 </script>

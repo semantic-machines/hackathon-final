@@ -53,36 +53,36 @@ hack:PS_data_Request
 .
 #v-s:content
 hack:PS_content_Request
-  rdf:type v-ui:DatatypePropertySpecification ;
-  v-ui:forProperty v-s:content ;
-  v-ui:forClass hack:Request ;
-  v-ui:maxCardinality 1 ;
-  v-ui:minCardinality 1 ;
-  rdfs:label "Спецификация к свойству content для класса Request"@ru ;
-  rdfs:label "Spec for property content for class Request"@en ;
+	rdf:type v-ui:DatatypePropertySpecification ;
+	v-ui:forProperty v-s:content ;
+	v-ui:forClass hack:Request ;
+	v-ui:maxCardinality 1 ;
+	v-ui:minCardinality 1 ;
+	rdfs:label "Спецификация к свойству content для класса Request"@ru ;
+	rdfs:label "Spec for property content for class Request"@en ;
 .
 
 #v-s:hasStatus
 hack:PS_hasStatus_Request
 	rdf:type v-ui:ObjectPropertySpecification ;
 	v-ui:forClass hack:Request ;
-	v-ui:forProperty hack:hasObject ;
+	v-ui:forProperty v-s:hasStatus ;
 	v-ui:queryPrefix "('@'=='v-s:StatusDraft' || '@'=='v-s:StatusExecution' || '@'=='v-s:StatusExecuted' || '@'=='v-s:StatusRejected')"^^xsd:string ;
 	v-ui:minCardinality 1 ;
-	v-ui:maxCardinality 100 ;
+	v-ui:maxCardinality 1 ;
+	v-ui:defaultValue v-s:StatusDraft ;
 	rdfs:label "Спецификация свойства hasStatus для класса hack:Request"@ru ;
 	rdfs:label "hasStatus property specification for hack:Request class"@en ;
 .
 
 hack:hasEquipmentCategory
-  rdf:type owl:ObjectProperty ;
-  rdfs:label "Категория оборудования и сооружений"@ru ;
-  rdfs:label "Equipment category"@en ;
-  rdfs:range hack:EquipmentCategory ;
-  rdfs:domain hack:Request;
+	rdf:type owl:ObjectProperty ;
+	rdfs:label "Категория оборудования и сооружений"@ru ;
+	rdfs:label "Equipment category"@en ;
+	rdfs:range hack:EquipmentCategory ;
+	rdfs:domain hack:Request;
 .
 
-#v-s:hasPriorityLevel
 hack:hasPersonalAccount
   rdf:type owl:ObjectProperty ;
   rdfs:label "Лицевой счет"@ru ;
@@ -126,9 +126,20 @@ hack:PS_isPlanned_Request
 hack:hasFailureRate
   rdf:type owl:ObjectProperty ;
   rdfs:label "Аварийность"@ru ;
-  rdfs:label "FailureRate"@en ;
+  rdfs:label "Failure rate"@en ;
   rdfs:range hack:FailureRate ;
   rdfs:domain hack:Request;
+.
+
+hack:PS_hasFailureRate_Request
+  rdf:type v-ui:DatatypePropertySpecification ;
+  v-ui:forProperty hack:hasFailureRate ;
+  v-ui:forClass hack:Request ;
+  v-ui:maxCardinality 1 ;
+  v-ui:minCardinality 0 ;
+  rdfs:label "Спецификация к свойству hasFailureRate для класса Request"@ru ;
+  rdfs:label "Spec for property hasFailureRate for class Request"@en ;
+  v-ui:queryPrefix "'v-s:hasParentLink'=='hack:FailureRate_root'" ;
 .
 
 hack:hasObject
@@ -220,13 +231,15 @@ hack:PS_hasObject_PersonalAccount
 #v-s:hasCommunicationMean (средство связи с шаблоном)
 
 #-------------------------------Справочники-------------------
-#Категория обрудования и сооружений
+
+#Категория оборудования и сооружений
+
 hack:EquipmentCategory
 	rdf:type owl:Class ;
 	rdfs:subClassOf v-s:UserThing ;
-	rdfs:label "Категория оборудования и сооружений"@ru ;
+	rdfs:label "Категория оборудования"@ru ;
 	rdfs:label "Equipment category"@en ;
-	v-ui:hasTemplate hack:EquipmentCategoryTemplate ;
+#	v-ui:hasTemplate hack:EquipmentCategoryTemplate ;
 .
 #v-s:title
 #v-s:responsible

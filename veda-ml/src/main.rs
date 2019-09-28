@@ -27,7 +27,7 @@ fn main() -> std::io::Result<()> {
 
     let env_var = "RUST_LOG";
     match std::env::var_os(env_var) {
-        Some(val) => println!("use env var: {}: {:?}", env_var, val.to_str()),
+        Some(val) => info!("use env var: {}: {:?}", env_var, val.to_str()),
         None => std::env::set_var(env_var, "info"),
     }
 
@@ -56,7 +56,7 @@ fn main() -> std::io::Result<()> {
 
     //info!("onto: {}", onto);
 
-    let mut queue_consumer = Consumer::new("./data/queue", "extract", "individuals-flow").expect("!!!!!!!!! FAIL QUEUE");
+    let mut queue_consumer = Consumer::new("./data/queue", "ml", "individuals-flow").expect("!!!!!!!!! FAIL QUEUE");
     let mut total_prepared_count: u64 = 0;
 
     loop {
@@ -84,7 +84,7 @@ fn main() -> std::io::Result<()> {
         }
 
         if size_batch > 0 {
-            info!("queue: batch size={}", size_batch);
+            debug!("queue: batch size={}", size_batch);
         }
 
         for _it in 0..size_batch {
@@ -170,10 +170,8 @@ fn prepare_queue_element(
                 for itype in types {
                     if specs.contains_key(&itype) {
                         prepare_user_request(&mut new_state_indv, module, systicket, id2nb, specs, &itype, stemmer, stopwords);
-                    } else {
-                        if onto.is_some_entered(&itype, &["hack:BayesClassifie".to_owned()]) {
-                            learn(&mut new_state_indv, id2nb, stemmer, stopwords);
-                        }
+                    } else if itype == "hack:BayesClassifier".to_owned() {
+                        learn_one(&mut new_state_indv, module, id2nb, stemmer, stopwords);
                     }
                 }
             }
@@ -183,23 +181,33 @@ fn prepare_queue_element(
     Ok(())
 }
 
+fn learn_one(indv: &mut Individual, module: &mut Module, id2nb: &mut HashMap<String, NBC>, stemmer: &Stemmer, stopwords: &HashSet<String>) {
+    if let Ok(v) = indv.get_literals("hack:hasBayesCategory") {
+        for el in v {
+            let mut ic: Individual = Individual::default();
+            if module.storage.get_individual(&el, &mut ic) {
+                learn(&mut ic, id2nb, stemmer, stopwords);
+            } else {
+                error! ("learn: not found hack:hasBayesCategory={} in {}", &el, indv.obj.uri);
+            }
+        }
+    } else {
+        error! ("not found [hack:hasBayesCategory] in {}", indv.obj.uri);
+    }
+}
+
 fn full_learn(module: &mut Module, id2nb: &mut HashMap<String, NBC>, stemmer: &Stemmer, stopwords: &HashSet<String>) {
     let res = module.fts.query(FTQuery::new_with_user("cfg:VedaSystem", "'rdf:type' == 'hack:BayesClassifier'"));
     if res.result_code == 200 && res.count > 0 {
-        for el in &res.result {
+        for id in &res.result {
             let mut rindv: Individual = Individual::default();
-            if module.storage.get_individual(&el, &mut rindv) {
-                if let Ok(v) = rindv.get_literals("hack:hasBayesCategory") {
-                    for el in v {
-                        let mut ic: Individual = Individual::default();
-                        if module.storage.get_individual(&el, &mut ic) {
-                            learn(&mut ic, id2nb, stemmer, stopwords);
-                        }
-                    }
-                }
+            if module.storage.get_individual(&id, &mut rindv) {
+                learn_one(&mut rindv, module, id2nb, stemmer, stopwords);
             } else {
-                error!("fail read, uri={}", &el);
+                error!("fail read, uri={}", &id);
             }
         }
+    } else {
+        error!("not found bayes learn dataset, [hack:BayesClassifier]");
     }
 }

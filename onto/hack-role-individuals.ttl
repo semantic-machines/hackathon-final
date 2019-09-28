@@ -77,3 +77,31 @@ d:SewerageRole
   rdfs:label "Специалист по канализации"@ru ;
   rdfs:label "Sewerage specialist"@en ;
 .
+d:EmergencyServiceRole
+  rdf:type v-s:Position ;
+  v-s:origin "Role"@ru ;
+  v-s:parentUnit d:managmentOrg_1 ;
+  rdfs:label "Аварийная служба"@ru ;
+  rdfs:label "Emergency service"@en ;
+.
+d:VentilationRole
+  rdf:type v-s:Position ;
+  v-s:origin "Role"@ru ;
+  v-s:parentUnit d:managmentOrg_1 ;
+  rdfs:label "Специалист по вентиляции"@ru ;
+  rdfs:label "Ventilation specialist"@en ;
+.
+d:SmokeRemovalRole
+  rdf:type v-s:Position ;
+  v-s:origin "Role"@ru ;
+  v-s:parentUnit d:managmentOrg_1 ;
+  rdfs:label "Специалист по дымоудалению"@ru ;
+  rdfs:label "Smoke removal specialist"@en ;
+.
+d:ClientServiceRole
+  rdf:type v-s:Position ;
+  v-s:origin "Role"@ru ;
+  v-s:parentUnit d:managmentOrg_1 ;
+  rdfs:label "Специалист клиентской службы"@ru ;
+  rdfs:label "Client service specialist"@en ;
+.

@@ -16,59 +16,83 @@
 # ------------------------------------------------------------ ИНДИВИДЫ --
 
 #---------ПОДСИСТЕМЫ (КАТЕГОРИИ) 
+
+hack:EquipmentCategory_tree
+  rdf:type v-ui:Tree ;
+  v-ui:treeRoot hack:EquipmentCategory_root ;
+  v-ui:treeInProperty v-s:hasParentLink ;
+  v-ui:treeAllowedClass hack:EquipmentCategory ;
+  v-ui:treeDisplayedProperty rdfs:label ;
+.
+
+hack:EquipmentCategory_root
+  rdf:type hack:EquipmentCategory ;
+  rdfs:label "Категория оборудования"@ru ;
+  rdfs:label "Equipment category"@en ;
+.
+
 hack:electricity
   rdf:type hack:EquipmentCategory ;
   rdfs:label "Электроснабжение"@ru ;
   rdfs:label "Electricity"@en ;
   v-s:responsible d:ElectricityRole ;
+  v-s:hasParentLink hack:EquipmentCategory_root ;
 .
 hack:gas
   rdf:type hack:EquipmentCategory ;
   rdfs:label "Газоснабжение"@ru ;
   rdfs:label "Gas supply"@en ;
   v-s:responsible d:GasSupplyRole ;
+  v-s:hasParentLink hack:EquipmentCategory_root ;  
 .
 hack:coldWaterSupply
   rdf:type hack:EquipmentCategory ;
   rdfs:label "ХВС"@ru ;
   rdfs:label "Сold water supply"@en ;
   v-s:responsible d:ColdWaterSupplyRole ;
+  v-s:hasParentLink hack:EquipmentCategory_root ;  
 .
 hack:hotWaterSupply
   rdf:type hack:EquipmentCategory ;
   rdfs:label "ГВС"@ru ;
   rdfs:label "Hot water supply"@en ;
   v-s:responsible d:HotWaterSupplyRole ;
+  v-s:hasParentLink hack:EquipmentCategory_root ;
 .
 hack:heating
   rdf:type hack:EquipmentCategory ;
   rdfs:label "Отопление"@ru ;
   rdfs:label "Heating"@en ;
   v-s:responsible d:HeatingRole ;
+  v-s:hasParentLink hack:EquipmentCategory_root ;  
 .
 hack:construction
   rdf:type hack:EquipmentCategory ;
   rdfs:label "Строительные конструкции"@ru ;
   rdfs:label "Building construction"@en ;
   v-s:responsible d:BuildingConstructionRole ;
+  v-s:hasParentLink hack:EquipmentCategory_root ;
 .
 hack:instrumentation
   rdf:type hack:EquipmentCategory ;
   rdfs:label "КИПиА"@ru ;
   rdfs:label "Instrumentation"@en ;
   v-s:responsible d:InstrumentationRole ;
+  v-s:hasParentLink hack:EquipmentCategory_root ;
 .
 hack:lifting
   rdf:type hack:EquipmentCategory ;
   rdfs:label "ГПМ"@ru ;
   rdfs:label "Lifting device"@en ;
   v-s:responsible d:LiftingDeviceRole ;
+  v-s:hasParentLink hack:EquipmentCategory_root ;
 .
 hack:sewerage
   rdf:type hack:EquipmentCategory ;
   rdfs:label "Канализация"@ru ;
   rdfs:label "Sewerage"@en ;
   v-s:responsible d:SewerageRole ;
+  v-s:hasParentLink hack:EquipmentCategory_root ;
 .
 hack:ventilation
   rdf:type hack:EquipmentCategory ;
@@ -84,13 +108,30 @@ hack:smokeRemoval
 .
 
 #--------------------АВАРИЙНОСТЬ
+
+hack:FailureRate_tree
+  rdf:type v-ui:Tree ;
+  v-ui:treeRoot hack:FailureRate_root ;
+  v-ui:treeInProperty v-s:hasParentLink ;
+  v-ui:treeAllowedClass hack:FailureRate ;
+  v-ui:treeDisplayedProperty rdfs:label ;
+.
+
+hack:FailureRate_root
+  rdf:type hack:FailureRate ;
+  rdfs:label "Степень аварийности"@ru ;
+  rdfs:label "Failure rate"@en ;
+.
+
 hack:failure
   rdf:type hack:FailureRate ;
   rdfs:label "Авария"@ru ;
   rdfs:label "Failure"@en ;
+  v-s:hasParentLink hack:FailureRate_root ;
 .
 hack:ongoingService
   rdf:type hack:FailureRate ;
   rdfs:label "Текущая эксплуатация"@ru ;
   rdfs:label "Оngoing service"@en ;
+  v-s:hasParentLink hack:FailureRate_root ;
 .
