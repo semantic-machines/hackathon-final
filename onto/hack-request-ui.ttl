@@ -44,23 +44,12 @@ hack:RequestTemplate
     </h2>
     <hr>
     <section id="MainProperties">
-      <h4 class="section-header" about="v-s:MainProperties" property="rdfs:label"></h4>
-      <div class="row row-attribute">
+      <div class="row row-attribute -view -edit search">
         <div class="col-sm-3 col-xs-5">
           <label about="v-s:registrationNumber" property="rdfs:label"></label>
         </div>
         <div class="col-sm-3 col-xs-3">
-          <div property="v-s:registrationNumber" class="view edit search"></div>
-          <veda-control property="v-s:registrationNumber" data-type="string" class="-view -edit search"></veda-control>
-        </div>
-      </div>
-      <div class="row row-attribute">
-        <div class="col-sm-3 col-xs-5">
-          <label about="v-s:registrationDate" property="rdfs:label"></label>
-        </div>
-        <div class="col-sm-3 col-xs-3">
-          <div property="v-s:registrationDate" class="view -edit search"></div>
-          <veda-control property="v-s:registrationDate" data-type="date" class="-view edit search"></veda-control>
+          <veda-control property="v-s:registrationNumber" data-type="string"></veda-control>
         </div>
       </div>
       <div class="row row-attribute">
@@ -68,8 +57,8 @@ hack:RequestTemplate
           <label about="v-s:content" property="rdfs:label"></label>
         </div>
         <div class="col-sm-9 col-xs-7">
-          <div property="v-s:content" class="view -edit search"></div>
-          <veda-control property="v-s:content" data-type="text" class="-view edit search"></veda-control>
+          <div property="v-s:content" class="view -edit -search"></div>
+          <veda-control property="v-s:content" data-type="text" data-rows="5" class="-view edit search"></veda-control>
         </div>
       </div>
     </section>
