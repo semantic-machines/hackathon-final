@@ -1,0 +1,70 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix v-s: <http://semantic-machines.com/veda/veda-schema/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix v-ui: <http://semantic-machines.com/veda/veda-ui/> .
+@prefix d: <http://semantic-machines.com/veda/veda-data/> .
+@prefix hack: <http://semantic-machines.com/veda/hack-schema/> .
+
+<http://semantic-machines.com/veda/hack-individual-EquipmentCategory>
+  rdf:type owl:Ontology ;
+  rdfs:label "Онтология. Записи справочника Подсистемы"@ru ;
+  rdfs:label "Ontology. individual - Category"@en ;
+  v-s:loadPriority 10 ;
+.
+# ------------------------------------------------------------ ИНДИВИДЫ --
+hack:electricity
+  rdf:type hack:EquipmentCategory ;
+  rdfs:label "Электроснабжение"@ru ;
+  rdfs:label "Electricity"@en ;
+  v-s:responsible d:ElectricityRole ;
+.
+hack:gas
+  rdf:type hack:EquipmentCategory ;
+  rdfs:label "Газоснабжение"@ru ;
+  rdfs:label "Gas supply"@en ;
+  v-s:responsible d:GasSupplyRole ;
+.
+hack:coldWaterSupply
+  rdf:type hack:EquipmentCategory ;
+  rdfs:label "ХВС"@ru ;
+  rdfs:label "Сold water supply"@en ;
+  v-s:responsible d:ColdWaterSupplyRole ;
+.
+hack:hotWaterSupply
+  rdf:type hack:EquipmentCategory ;
+  rdfs:label "ГВС"@ru ;
+  rdfs:label "Hot water supply"@en ;
+  v-s:responsible d:HotWaterSupplyRole ;
+.
+hack:heating
+  rdf:type hack:EquipmentCategory ;
+  rdfs:label "Отопление"@ru ;
+  rdfs:label "Heating"@en ;
+  v-s:responsible d:HeatingRole ;
+.
+hack:construction
+  rdf:type hack:EquipmentCategory ;
+  rdfs:label "Строительные конструкции"@ru ;
+  rdfs:label "Building construction"@en ;
+  v-s:responsible d:BuildingConstructionRole ;
+.
+hack:instrumentation
+  rdf:type hack:EquipmentCategory ;
+  rdfs:label "КИПиА"@ru ;
+  rdfs:label "Instrumentation"@en ;
+  v-s:responsible d:InstrumentationRole ;
+.
+hack:lifting
+  rdf:type hack:EquipmentCategory ;
+  rdfs:label "ГПМ"@ru ;
+  rdfs:label "Lifting device"@en ;
+  v-s:responsible d:LiftingDeviceRole ;
+.
+hack:sewerage
+  rdf:type hack:EquipmentCategory ;
+  rdfs:label "Канализация"@ru ;
+  rdfs:label "Sewerage"@en ;
+  v-s:responsible d:SewerageRole ;
+.
