@@ -28,7 +28,13 @@ hack:Request
 	rdfs:label "Обращение"@ru ;
 	rdfs:label "Request"@en ;
 	v-s:labelPattern "{@.v-s:registrationNumber} {@.v-s:hasStatus.rdfs:label}" ;
-	v-ui:hasTemplate hack:RequestTemplate ;
+.
+
+hack:TS_Request
+  rdf:type v-ui:TemplateSpecification ;
+  v-ui:forClass hack:Request ;
+  v-ui:defaultTemplate hack:RequestTemplate ;
+  v-s:loadPriority 10 ;
 .
 
 #rdfs:label
@@ -46,7 +52,7 @@ hack:hasEquipmentCategory
 .
 
 #v-s:hasPriorityLevel
-#hack:hasPersonalAccount
+hack:hasPersonalAccount
   rdf:type owl:ObjectProperty ;
   rdfs:label "Лицевой счет"@ru ;
   rdfs:label "Personal account"@en ;
@@ -109,7 +115,6 @@ hack:hasObject
 
 #v-s:hasComment (отчет об исполнении c шаблоном в новой верстке без связанных документов)
 
-
 #--------------------------------------------------------------------------
 #Лицевой счет/договор
 hack:PersonalAccount
@@ -119,8 +124,15 @@ hack:PersonalAccount
 	rdfs:label "Лицевой счет"@ru ;
 	rdfs:label "PersonalAccount"@en ;
 	v-s:labelPattern "{@.v-s:registrationNumber} {@.v-s:customer.rdfs:label}" ;
-	v-ui:hasTemplate hack:PersonalAccountTemplate ;
 .
+
+hack:TS_PersonalAccount
+  rdf:type v-ui:TemplateSpecification ;
+  v-ui:forClass hack:PersonalAccount ;
+  v-ui:defaultTemplate hack:PersonalAccountTemplate ;
+  v-s:loadPriority 10 ;
+.
+
 #rdfs:label
 #v-s:registrationNumber
 #v-s:customer (пока только люди, назнаения)

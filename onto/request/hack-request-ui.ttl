@@ -24,12 +24,6 @@ hack:ReportBundle
 .
 
 #---------------------------------------------------------
-hack:RequestBlank
-  a v-fc:Blank ;
-  rdfs:label "Обращение"@ru ;
-  rdfs:label "Request"@en ;
-  v-fc:targetType hack:Request ;
-.
 
 hack:RequestTemplate
   rdf:type v-ui:ClassTemplate ;
@@ -120,6 +114,78 @@ hack:RequestTemplate
       <div rel="v-s:hasComment" data-template="hack:CommentTemplate" data-embedded="true"></div>      
     </section>  
   </div>
+</div>
+<script>
+
+</script>
+"""
+.
+
+hack:PersonalAccountTemplate
+  rdf:type v-ui:ClassTemplate ;
+  v-ui:forClass hack:PersonalAccount ;
+  rdfs:label "Template for hack:PersonalAccount class"@en ;
+  rdfs:label "Шаблон для класса hack:PersonalAccount"@ru ;
+  v-ui:template """
+<div>
+  <div class="container sheet">
+    asdasd
+    <section id="MainProperties">
+      <div class="row row-attribute">
+        <div class="col-sm-3 col-xs-5">
+          <label about="rdfs:label" property="rdfs:label"></label>
+        </div>
+        <div class="col-sm-3 col-xs-3">
+          <div property="rdfs:label" class="view -edit search"></div>
+          <veda-control property="rdfs:label" data-type="string" class="-view edit search"></veda-control>
+        </div>
+      </div>
+      <div class="row row-attribute">
+        <div class="col-sm-3 col-xs-5">
+          <label about="v-s:registrationNumber" property="rdfs:label"></label>
+        </div>
+        <div class="col-sm-3 col-xs-3">
+          <div property="v-s:registrationNumber" class="view -edit search"></div>
+          <veda-control property="v-s:registrationNumber" data-type="string" class="-view edit search"></veda-control>
+        </div>
+      </div>
+      <div class="row row-attribute">
+        <div class="col-sm-3 col-xs-5">
+          <label about="v-s:customer" property="rdfs:label"></label>
+        </div>
+        <div class="col-sm-3 col-xs-3">
+          <div property="v-s:customer" data-template="v-ui:LabelTemplate" class="view -edit search"></div>
+          <veda-control rel="v-s:customer"  data-type="link" class="-view edit search"></veda-control>
+        </div>
+      </div>
+      <div class="row row-attribute">
+        <div class="col-sm-3 col-xs-5">
+          <label about="hack:hasObject" property="rdfs:label"></label>
+        </div>
+        <div class="col-sm-3 col-xs-3">
+          <div property="hack:hasObject" data-template="v-ui:LabelTemplate" class="view -edit search"></div>
+          <veda-control rel="hack:hasObject"  data-type="link" class="-view edit search"></veda-control>
+        </div>
+      </div>
+      <div class="row row-attribute">
+        <div class="col-sm-3 col-xs-5">
+          <label about="v-s:hasCommunicationMean" property="rdfs:label"></label>
+        </div>
+        <div class="col-sm-3 col-xs-3">
+          <div property="v-s:hasCommunicationMean" data-template="v-ui:LabelTemplate" class="view -edit search"></div>
+          <veda-control rel="v-s:hasCommunicationMean"  data-type="link" class="-view edit search"></veda-control>
+        </div>
+      </div>
+    </section>
+    <div about="@" data-template="v-ui:SystemPropertiesNewTemplate" data-embedded="true"></div>
+    <br>
+    <!-- BUTTONS -->
+    <div class="actions view edit -search">
+      <span about="@" data-template="v-ui:StandardButtonsTemplate" data-embedded="true" data-buttons="send edit save cancel delete journal task"></span>
+   </div>
+  </div>
+  <div about="@" class="container sheet view edit -search" data-template="v-s:LinksTemplate" data-embedded="true"></div>
+  <div about="@" class="container sheet view -edit -search" data-template="v-s:CommentsTemplate"></div>
 </div>
 <script>
 
