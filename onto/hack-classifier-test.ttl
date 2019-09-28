@@ -129,3 +129,22 @@ hack:BayesSpecification_FailureRate
   hack:sourceProperty v-s:content ;
   hack:targetProperty hack:hasFailureRate ;
 .
+
+# ---------------------- Тестовая заявка
+
+d:Request1
+  rdf:type hack:Request ;
+  v-s:content """
+У меня не работает лифт в подъезде.
+  """ ;
+.
+
+d:Request1_classified
+  rdf:type hack:Request ;
+  v-s:content """
+У меня не работает лифт в подъезде.
+  """ ;
+  hack:hasEquipmentCategory hack:lifting ;
+  hack:hasFailureRate hack:ongoingService ;
+  hack:isClassified true ;
+.
