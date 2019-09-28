@@ -22,8 +22,8 @@
 
 hack:EquipmentCategory_Classifier
   rdf:type hack:BayesClassifier ;
-  rdfs:label "Классификатор категории обородования"@ru ;
-  rdfs:label "Equipment category classifier"@ru ;
+  rdfs:label "Категория оборудования"@ru ;
+  rdfs:label "Equipment category"@en ;
   hack:hasBayesCategory hack:EquipmentCategory1 ;
   hack:hasBayesCategory hack:EquipmentCategory2 ;
   hack:hasBayesCategory hack:EquipmentCategory3 ;
@@ -33,40 +33,34 @@ hack:EquipmentCategory1
   rdf:type hack:BayesCategory ;
   v-s:parent hack:EquipmentCategory_Classifier ;
   rdf:value hack:coldWaterSupply ;
-  hack:keyPhrases """
-труба
+  hack:keyPhrases """труба
 кран
 течь в подвале
 холодная вода
-течь смесителя в ванной
-  """ ;
+течь смесителя в ванной""" ;
 .
 
 hack:EquipmentCategory2
   rdf:type hack:BayesCategory ;
   v-s:parent hack:EquipmentCategory_Classifier ;
   rdf:value hack:lifting ;
-  hack:keyPhrases """
-лифт
+  hack:keyPhrases """лифт
 вибрация кабины
 не совпадает пол кабины и этажа
 освещение в лифте
-сожжены кнопки в лифте
-  """ ;
+сожжены кнопки в лифте""" ;
 .
 
 hack:EquipmentCategory3
   rdf:type hack:BayesCategory ;
   v-s:parent hack:EquipmentCategory_Classifier ;
   rdf:value hack:gas ;
-  hack:keyPhrases """
-прорыв газа
+  hack:keyPhrases """прорыв газа
 прекращена подача газа,
 запах газа в подъезде
 запах газа в квартире
 газовая труба
-газопровод
-  """ ;
+газопровод""" ;
 .
 
 hack:BayesSpecification_EquipmentCategory
@@ -91,8 +85,7 @@ hack:FailureRate1
   rdf:type hack:BayesCategory ;
   v-s:parent hack:FailureRate_Classifier ;
   rdf:value hack:failure ;
-  hack:keyPhrases """
-авария
+  hack:keyPhrases """авария
 прорыв
 разрыв
 срыв
@@ -105,21 +98,18 @@ hack:FailureRate1
 залп
 хлещет
 заливает
-сгорел дом
-  """ ;
+сгорел дом""" ;
 .
 
 hack:FailureRate2
   rdf:type hack:BayesCategory ;
   v-s:parent hack:FailureRate_Classifier ;
   rdf:value hack:ongoingService ;
-  hack:keyPhrases """
-не авария
+  hack:keyPhrases """не авария
 сгорела лампочка
 ура
 привет
-мама
-  """ ;
+мама""" ;
 .
 
 hack:BayesSpecification_FailureRate
@@ -134,16 +124,12 @@ hack:BayesSpecification_FailureRate
 
 d:Request1
   rdf:type hack:Request ;
-  v-s:content """
-У меня не работает лифт в подъезде.
-  """ ;
+  v-s:content "У меня не работает лифт в подъезде." ;
 .
 
 d:Request1_classified
   rdf:type hack:Request ;
-  v-s:content """
-У меня не работает лифт в подъезде.
-  """ ;
+  v-s:content "У меня не работает лифт в подъезде." ;
   hack:hasEquipmentCategory hack:lifting ;
   hack:hasFailureRate hack:ongoingService ;
   hack:isClassified true ;

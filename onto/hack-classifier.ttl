@@ -36,9 +36,9 @@ hack:isClassified
 
 hack:BayesClassifier
   rdf:type owl:Class ;
-  rdfs:subClassOf rdfs:Resource ;
-  rdfs:label "Наивный Байесовский классификатор"@ru ;
-  rdfs:label "Naive Bayes classifier"@en ;
+  rdfs:label "Классификатор"@ru ;
+  rdfs:label "Classifier"@en ;
+  v-ui:hasTemplate hack:BayesClassifierTemplate ;
 .
 
 hack:hasBayesCategory
@@ -51,8 +51,10 @@ hack:hasBayesCategory
 
 hack:BayesCategory
   rdf:type owl:Class ;
+  rdfs:subClassOf v-s:Embedded ;
   rdfs:label "Категория НБК"@ru ;
   rdfs:label "NBC category"@en ;
+  v-ui:hasTemplate hack:BayesCategoryTemplate ;
 .
 
 # rdf:value - ссылка на произвольное справочное значение 
