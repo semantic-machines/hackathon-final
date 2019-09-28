@@ -25,6 +25,11 @@ hack:Request_Persons_permission1
   rdfs:label "C. Физ лица. Обращения" ;
 .
 
+hack:org_RU1100220011_superuser_membership
+  rdf:type v-s:Membership ;
+  v-s:memberOf cfg:SuperUser ;
+  v-s:resource d:org_RU1100220011 ;
+.
 
 #-----------назначения ролей
 d:admin_dispatcher
@@ -32,8 +37,6 @@ d:admin_dispatcher
   v-s:origin "admin"^^xsd:string;
   v-s:employee cfg:Administrator;
   v-s:occupation d:DispatcherRole;
-  v-s:parentOrganization d:org_RU1100220011;
-  v-s:parentUnit d:org_RU1100220011;
 .
 
 d:admin_emergency
@@ -41,14 +44,28 @@ d:admin_emergency
   v-s:origin "admin"^^xsd:string;
   v-s:employee cfg:Administrator;
   v-s:occupation d:EmergencyServiceRole;
-  v-s:parentOrganization d:org_RU1100220011;
-  v-s:parentUnit d:org_RU1100220011;
 .
 
 d:admin_electricity
   a v-s:Appointment;
   v-s:origin "admin"^^xsd:string;
   v-s:employee cfg:Administrator;
+  v-s:occupation d:ElectricityRole;
+.
+
+d:krasavina_dispatcher
+  a v-s:Appointment;
+  v-s:origin "admin"^^xsd:string;
+  v-s:employee d:org_RU1100220011_employee_3;
+  v-s:occupation d:DispatcherRole;
+  v-s:parentOrganization d:org_RU1100220011;
+  v-s:parentUnit d:org_RU1100220011;
+.
+
+d:krasavina_electricity
+  a v-s:Appointment;
+  v-s:origin "admin"^^xsd:string;
+  v-s:employee d:org_RU1100220011_employee_3;
   v-s:occupation d:ElectricityRole;
   v-s:parentOrganization d:org_RU1100220011;
   v-s:parentUnit d:org_RU1100220011;
