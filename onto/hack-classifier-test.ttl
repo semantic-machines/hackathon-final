@@ -29,21 +29,50 @@ hack:Classifier1
 hack:Classifier1_Category1
   rdf:type hack:BayesCategory ;
   v-s:parent hack:Classifier1 ;
-  rdf:value "" ;
-  hack:keywords "" ;
+  rdf:value hack:coldWaterSupply ;
+  hack:keywords """
+труба
+кран
+течь в подвале
+холодная вода
+течь смесителя в ванной
+  """ ;
 .
 
 hack:Classifier1_Category2
   rdf:type hack:BayesCategory ;
   v-s:parent hack:Classifier1 ;
-  rdf:value "" ;
-  hack:keywords "" ;
+  rdf:value hack:lifting ;
+  hack:keywords """
+лифт
+вибрация кабины
+не совпадает пол кабины и этажа
+освещение в лифте
+сожжены кнопки в лифте
+  """ ;
+.
+
+hack:Classifier1_Category3
+  rdf:type hack:BayesCategory ;
+  v-s:parent hack:Classifier1 ;
+  rdf:value hack:gas ;
+  hack:keywords """
+прорыв газа
+прекращена подача газа,
+запах газа в подъезде
+запах газа в квартире
+газовая труба
+газопровод
+  """ ;
 .
 
 hack:BayesSpecification1
   rdf:type hack:BayesSpecification ;
   hack:forClass hack:Request ;
   hack:sourceProperty v-s:content ;
-  hack:targetProperty v-s:content ;
+  hack:targetProperty hack:hasEquipmentCategory ;
 .
+
+# --------------------
+
 
