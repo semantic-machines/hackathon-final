@@ -319,11 +319,14 @@ hack:MainMenu
   rdf:type v-s:Menu ;
   rdfs:label "Главное меню"@ru ;
   rdfs:label "Main menu"@en ;
-  v-s:menuItem v-s:Inbox ;
-  v-s:menuItem v-s:Outbox ;
-  v-s:menuItem v-s:Completed ;
-  v-s:menuItem v-s:Divider ;
-  v-s:menuItem v-s:Administration ;
+  v-s:menuItem hack:Settings ;
   v-s:menuItem v-s:Divider ;
   v-s:menuItem v-s:Exit ;
+.
+
+hack:Settings 
+  rdf:type v-s:Menu ;
+  rdfs:label "Настройки"@ru ;
+  rdfs:label "Settings"@en ;
+  v-s:objectLink hack:RequestsManagementApplicationSettings ;
 .
