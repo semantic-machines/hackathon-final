@@ -25,6 +25,8 @@ hack:Request
 	rdfs:subClassOf v-s:UserThing ;
 	rdfs:subClassOf v-s:Request ;
 	rdfs:subClassOf v-s:Labeled ;
+	rdfs:subClassOf v-s:Enumerated ;
+	v-s:hasNumeration v-s:RegistrationNumberYearNumeration2_6 ;
 	rdfs:label "Обращение"@ru ;
 	rdfs:label "Request"@en ;
 	v-s:labelPattern "{@.v-s:registrationNumber} {@.v-s:hasStatus.rdfs:label}" ;
@@ -40,8 +42,37 @@ hack:TS_Request
 #rdfs:label
 #v-s:registrationNumber
 #v-s:registrationDate
+hack:PS_data_Request
+  rdf:type v-ui:DatatypePropertySpecification ;
+  v-ui:forProperty v-s:data ;
+  v-ui:forClass hack:Request ;
+  v-ui:maxCardinality 1 ;
+  v-ui:minCardinality 1 ;
+  rdfs:label "Спецификация к свойству data для класса Request"@ru ;
+  rdfs:label "Spec for property data for class Request"@en ;
+.
 #v-s:content
+hack:PS_content_Request
+  rdf:type v-ui:DatatypePropertySpecification ;
+  v-ui:forProperty v-s:content ;
+  v-ui:forClass hack:Request ;
+  v-ui:maxCardinality 1 ;
+  v-ui:minCardinality 1 ;
+  rdfs:label "Спецификация к свойству content для класса Request"@ru ;
+  rdfs:label "Spec for property content for class Request"@en ;
+.
+
 #v-s:hasStatus
+hack:PS_hasStatus_Request
+	rdf:type v-ui:ObjectPropertySpecification ;
+	v-ui:forClass hack:Request ;
+	v-ui:forProperty hack:hasObject ;
+	v-ui:queryPrefix "('@'=='v-s:StatusDraft' || '@'=='v-s:StatusExecution' || '@'=='v-s:StatusExecuted' || '@'=='v-s:StatusRejected')"^^xsd:string ;
+	v-ui:minCardinality 1 ;
+	v-ui:maxCardinality 100 ;
+	rdfs:label "Спецификация свойства hasStatus для класса hack:Request"@ru ;
+	rdfs:label "hasStatus property specification for hack:Request class"@en ;
+.
 
 hack:hasEquipmentCategory
   rdf:type owl:ObjectProperty ;
@@ -107,8 +138,32 @@ hack:hasObject
   rdfs:range hack:Object ;
   rdfs:domain hack:Request;
 .
+hack:PS_hasObject_Request
+	rdf:type v-ui:ObjectPropertySpecification ;
+	v-ui:forClass hack:Request ;
+	v-ui:forProperty hack:hasObject ;
+	v-ui:treeRoot  d:city1 ;
+	v-ui:treeInProperty v-s:hasParentLink ;
+	v-ui:treeDisplayedProperty rdfs:label ;
+	v-ui:treeDisplayedProperty v-s:hasParentLink ;
+	v-ui:queryPrefix "('rdf:type'=='hack:Object')"^^xsd:string ;
+    v-ui:treeAllowedFilter """
+    return this.hasValue("rdf:type", "hack:Object");
+    """ ;
+    v-ui:treeSelectableFilter """
+    return this.hasValue("rdf:type", "hack:Object") && this.hasValue("v-s:hasParentLink");
+    """ ;
+	v-ui:minCardinality 1 ;
+	v-ui:maxCardinality 100 ;
+	rdfs:label "Спецификация свойства hack:hasObject для класса hack:Request"@ru ;
+	rdfs:label "hack:hasObject property specification for hack:Request class"@en ;
+.
+
 
 #v-s:hasComment (отчет об исполнении c шаблоном в новой верстке без связанных документов)
+
+#delivery
+
 
 #--------------------------------------------------------------------------
 #Лицевой счет/договор
