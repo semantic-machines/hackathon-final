@@ -24,7 +24,6 @@ pub struct NBC {
 
 pub struct NBSpecification {
     nb_id: String,
-    class: String,
     src_prop: String,
     target_prop: String,
 }
@@ -87,6 +86,32 @@ pub fn learn(indv: &mut Individual, id2nb: &mut HashMap<String, NBC>, stemmer: &
                 nb.dict.insert(el);
             }
         }
+    } else {
+        error!("learn: invalid hack:BayesClassifier, {}", indv.obj.uri);
+    }
+}
+
+pub fn load_specificstion(module: &mut Module, id: &str, s: &mut HashMap<String, Vec<NBSpecification>>) {
+    let mut indv: Individual = Individual::default();
+    if module.storage.get_individual(id, &mut indv) {
+        let watch_class = indv.get_first_literal("hack:forClass");
+        let src_prop = indv.get_first_literal("hack:sourceProperty");
+        let target_prop = indv.get_first_literal("hack:targetProperty");
+        let nb_id = indv.get_first_literal("hack:hasBayesClassifier");
+
+        if watch_class.is_ok() && src_prop.is_ok() && target_prop.is_ok() && nb_id.is_ok() {
+            let watch_class = watch_class.unwrap();
+            let specs = s.entry(watch_class.to_string()).or_insert(Vec::new());
+            specs.push(NBSpecification {
+                nb_id: nb_id.unwrap(),
+                src_prop: src_prop.unwrap(),
+                target_prop: target_prop.unwrap(),
+            });
+        } else {
+            error!("invalid specification {}", indv.obj.uri);
+        }
+    } else {
+        error!("fail read specification {}", id);
     }
 }
 
@@ -95,28 +120,7 @@ pub fn load_specificstions(module: &mut Module) -> HashMap<String, Vec<NBSpecifi
     let res = module.fts.query(FTQuery::new_with_user("cfg:VedaSystem", "'rdf:type' == 'hack:BayesSpecification'"));
     if res.result_code == 200 && res.count > 0 {
         for el in &res.result {
-            let mut indv: Individual = Individual::default();
-            if module.storage.get_individual(&el, &mut indv) {
-                let watch_class = indv.get_first_literal("hack:forClass");
-                let src_prop = indv.get_first_literal("hack:sourceProperty");
-                let target_prop = indv.get_first_literal("hack:targetProperty");
-                let nb_id = indv.get_first_literal("hack:hasBayesClassifier");
-
-                if watch_class.is_ok() && src_prop.is_ok() && target_prop.is_ok() && nb_id.is_ok() {
-                    let watch_class = watch_class.unwrap();
-                    let specs = s.entry(watch_class.to_string()).or_insert(Vec::new());
-                    specs.push(NBSpecification {
-                        nb_id: nb_id.unwrap(),
-                        class: watch_class,
-                        src_prop: src_prop.unwrap(),
-                        target_prop: target_prop.unwrap(),
-                    });
-                } else {
-                    error! ("invalid specification {}", indv.obj.uri);
-                }
-            } else {
-                error! ("fail read specification {}", &el);
-            }
+            load_specificstion(module, el, &mut s);
         }
     } else {
         error!("not found specifications [hack:BayesSpecification]");
