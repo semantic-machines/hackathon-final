@@ -61,7 +61,7 @@ hack:BayesCategoryTemplate
 <div class="well">
   <div class="row">
     <div class="col-sm-3 col-xs-5">
-      <div about="@" rel="rdf:value" class="view -edit -search"><span about="@" property="rdfs:label"></span></div>
+      <div about="@" rel="rdf:value" class="view -edit -search"><strong about="@" property="rdfs:label"></strong></div>
       <veda-control data-type="link" rel="rdf:value" class="-view edit search fulltext dropdown"></veda-control>
     </div>
     <div class="col-sm-9 col-xs-7">

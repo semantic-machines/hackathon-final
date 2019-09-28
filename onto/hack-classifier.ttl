@@ -82,7 +82,7 @@ hack:PS_value_BayesCategory
 	v-ui:tooltip "Add new category"@en ;
 	rdfs:label "Спецификация hack:sourceProperty для hack:BayesSpecification"@ru ;
 	rdfs:label "hack:sourceProperty property specification for hack:BayesSpecification"@en ;
-  v-ui:queryPrefix "" ;
+  v-ui:queryPrefix """'rdf:type'=='{individual[\"v-s:parent\"][0][\"hack:forClass\"][0].id}'""" ;
 .
 
 hack:keyPhrases
