@@ -51,7 +51,7 @@ pub fn load_stopwords() -> HashSet<String> {
         let file = BufReader::new(&f);
         for line in file.lines() {
             let l = line.unwrap();
-            println!("{}", &l);
+            info!("{}", &l);
             dict.insert(l);
         }
     }
@@ -80,7 +80,7 @@ pub fn learn(indv: &mut Individual, id2nb: &mut HashMap<String, NBC>, stemmer: &
             }
             let nel = normailze_str(&stemmer, &stopwords, &el);
 
-            println!("train {} {:?}: {:?}", nb.id, &tag, &nel);
+            info!("train {} {:?}: {:?}", nb.id, &tag, &nel);
             nb.nb.train(&nel, &tag);
 
             for el in nel {
@@ -111,10 +111,17 @@ pub fn load_specificstions(module: &mut Module) -> HashMap<String, Vec<NBSpecifi
                         src_prop: src_prop.unwrap(),
                         target_prop: target_prop.unwrap(),
                     });
+                } else {
+                    error! ("invalid specification {}", indv.obj.uri);
                 }
+            } else {
+                error! ("fail read specification {}", &el);
             }
         }
+    } else {
+        error!("not found specifications [hack:BayesSpecification]");
     }
+    info!("loading {} specifications", s.len());
     s
 }
 

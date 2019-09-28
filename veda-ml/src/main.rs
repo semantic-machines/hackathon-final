@@ -27,7 +27,7 @@ fn main() -> std::io::Result<()> {
 
     let env_var = "RUST_LOG";
     match std::env::var_os(env_var) {
-        Some(val) => println!("use env var: {}: {:?}", env_var, val.to_str()),
+        Some(val) => info!("use env var: {}: {:?}", env_var, val.to_str()),
         None => std::env::set_var(env_var, "info"),
     }
 
@@ -56,7 +56,7 @@ fn main() -> std::io::Result<()> {
 
     //info!("onto: {}", onto);
 
-    let mut queue_consumer = Consumer::new("./data/queue", "extract", "individuals-flow").expect("!!!!!!!!! FAIL QUEUE");
+    let mut queue_consumer = Consumer::new("./data/queue", "ml", "individuals-flow").expect("!!!!!!!!! FAIL QUEUE");
     let mut total_prepared_count: u64 = 0;
 
     loop {
@@ -84,7 +84,7 @@ fn main() -> std::io::Result<()> {
         }
 
         if size_batch > 0 {
-            info!("queue: batch size={}", size_batch);
+            debug!("queue: batch size={}", size_batch);
         }
 
         for _it in 0..size_batch {
@@ -201,5 +201,7 @@ fn full_learn(module: &mut Module, id2nb: &mut HashMap<String, NBC>, stemmer: &S
                 error!("fail read, uri={}", &el);
             }
         }
+    } else {
+        error!("not found bayes learn dataset, [hack:BayesClassifier]");
     }
 }
