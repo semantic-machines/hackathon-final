@@ -1,0 +1,91 @@
+@prefix d: <http://semantic-machines.com/veda/veda-data/> .
+@prefix hack: <http://semantic-machines.com/veda/hack-schema/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix v-s: <http://semantic-machines.com/veda/veda-schema/> .
+@prefix v-ui: <http://semantic-machines.com/veda/veda-ui/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix v-wf: <http://semantic-machines.com/veda/veda-workflow/> .
+@prefix cfg: <http://semantic-machines.com/veda/config/> .
+@prefix v-fc: <http://semantic-machines.com/veda/veda-function-create/> .
+
+<http://semantic-machines.com/veda/hack-object-ui>
+  rdf:type owl:Ontology ;
+  rdfs:label "Онтология. Здания и сооружения. UI"@ru ;
+  rdfs:label "Ontology. Building. UI"@en ;
+  v-s:loadPriority 20 ;
+.
+# ------------------------------------------------------------ СТРОКИ --
+
+# ------------------------------------------------------------ ШАБЛОНЫ --
+hack:ObjectTemplate
+  rdf:type v-ui:ClassTemplate ;
+  v-ui:forClass hack:Object ;
+  rdfs:label "Template for hack:Object class"@en ;
+  rdfs:label "Шаблон для класса hack:Object"@ru ;
+  v-ui:template """
+<div>
+  <div class="container sheet">
+    <h3 class="margin-sm">
+      <span about="@" property="rdf:type"></span>
+      <small about="@" property="rdfs:label" class="view edit -search"></small>
+    </h3>
+    <section id="MainProperties">
+      <h4 class="section-header" about="v-s:MainProperties" property="rdfs:label"></h4>
+      <div class="row row-attribute">
+        <div class="col-sm-3 col-xs-5">
+          <label about="hack:hasObjectKind" property="rdfs:label"></label>
+        </div>
+        <div class="col-sm-9 col-xs-7">
+          <div rel="hack:hasObjectKind" class="view -edit search" data-template="v-ui:LabelTemplate"></div>
+          <veda-control data-type="link" rel="hack:hasObjectKind" class="-view edit search fulltext dropdown"></veda-control>
+        </div>
+      </div>
+      <div class="row row-attribute">
+        <div class="col-sm-3 col-xs-5">
+          <label about="rdfs:label" property="rdfs:label"></label>
+        </div>
+        <div class="col-sm-9 col-xs-7">
+          <div property="rdfs:label" class="view -edit search"></div>
+          <veda-control property="rdfs:label" data-type="text" class="-view edit search"></veda-control>
+        </div>
+      </div>
+      <div class="row row-attribute">
+        <div class="col-sm-3 col-xs-5">
+          <label about="v-s:shortLabel" property="rdfs:label"></label>
+        </div>
+        <div class="col-sm-9 col-xs-7">
+          <div property="v-s:shortLabel" class="view -edit search"></div>
+          <veda-control property="v-s:shortLabel" data-type="text" class="-view edit search"></veda-control>
+        </div>
+      </div>
+      <div class="row row-attribute">
+        <div class="col-sm-3 col-xs-5">
+          <label about="v-s:parentUnit" property="rdfs:label"></label>
+        </div>
+        <div class="col-sm-9 col-xs-7">
+          <div rel="v-s:hasParentLink" class="view -edit search" data-template="v-ui:LabelTemplate"></div>
+          <veda-control data-type="link" rel="v-s:hasParentLink" class="-view edit search fulltext tree"></veda-control>
+        </div>
+      </div>
+      <div class="row row-attribute">
+        <div class="col-sm-3 col-xs-5">
+          <label about="rdfs:comment" property="rdfs:label"></label>
+        </div>
+        <div class="col-sm-9 col-xs-7">
+          <div property="rdfs:comment" class="view -edit -search"></div>
+          <veda-control data-type="text" property="rdfs:comment" class="-view edit search"></veda-control>
+        </div>
+      </div>
+    </section>
+    <div about="@" data-template="v-ui:SystemPropertiesNewTemplate" data-embedded="true"></div>
+    <hr>
+    <!-- BUTTONS -->
+    <div class="actions view edit -search">
+      <span about="@" data-template="v-ui:StandardButtonsTemplate" data-embedded="true" data-buttons="edit save cancel delete"></span>
+    </div>
+  </div>
+</div>
+"""
+.

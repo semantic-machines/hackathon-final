@@ -1,0 +1,250 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix v-s: <http://semantic-machines.com/veda/veda-schema/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix v-ui: <http://semantic-machines.com/veda/veda-ui/> .
+@prefix d: <http://semantic-machines.com/veda/veda-data/> .
+@prefix hack: <http://semantic-machines.com/veda/hack-schema/> .
+
+<http://semantic-machines.com/veda/hack-individual-dictionaries>
+  rdf:type owl:Ontology ;
+  rdfs:label "Онтология. Записи справочника"@ru ;
+  rdfs:label "Ontology. Individuals"@en ;
+  v-s:loadPriority 10 ;
+.
+# ------------------------------------------------------------ ИНДИВИДЫ --
+
+#Тестовые объекты
+#город
+d:city1
+  rdf:type hack:Object ;
+  rdfs:label "Сыктывкар"@ru ;
+  rdfs:label "Сыктывкар"@en ;
+.
+
+#улицы
+d:street1
+  rdf:type hack:Object ;
+  rdfs:label "ул. Карла Маркса"@ru ;
+  rdfs:label "ул. Карла Маркса"@en ;
+  v-s:hasParentLink d:city1 ;
+.
+d:street2
+  rdf:type hack:Object ;
+  rdfs:label "ул. Ленина"@ru ;
+  rdfs:label "ул. Ленина"@en ;
+  v-s:hasParentLink d:city1 ;
+.
+
+#дома
+d:building1
+  rdf:type hack:Object ;
+  rdfs:label "д. 100"@ru ;
+  rdfs:label "д. 100"@en ;
+  hack:hasObjectKind d:a04234lrb448fer62qohhlw9jew ;
+  v-s:hasParentLink d:street1 ;
+.
+d:building2
+  rdf:type hack:Object ;
+  rdfs:label "д. 101"@ru ;
+  rdfs:label "д. 101"@en ;
+  hack:hasObjectKind d:a04234lrb448fer62qohhlw9jew ;
+  v-s:hasParentLink d:street1 ;
+.
+d:building3
+  rdf:type hack:Object ;
+  rdfs:label "д. 102"@ru ;
+  rdfs:label "д. 102"@en ;
+  hack:hasObjectKind d:a04234lrb448fer62qohhlw9jew ;
+  v-s:hasParentLink d:street1 ;
+.
+d:building4
+  rdf:type hack:Object ;
+  rdfs:label "д. 103"@ru ;
+  rdfs:label "д. 103"@en ;
+  hack:hasObjectKind d:a04234lrb448fer62qohhlw9jew ;
+  v-s:hasParentLink d:street1 ;
+.
+d:building5
+  rdf:type hack:Object ;
+  rdfs:label "д. 104"@ru ;
+  rdfs:label "д. 104"@en ;
+  hack:hasObjectKind d:a04234lrb448fer62qohhlw9jew ;
+  v-s:hasParentLink d:street1 ;
+.
+d:building6
+  rdf:type hack:Object ;
+  rdfs:label "д. 105"@ru ;
+  rdfs:label "д. 105"@en ;
+  hack:hasObjectKind d:a04234lrb448fer62qohhlw9jew ;
+  v-s:hasParentLink d:street1 ;
+.
+d:building7
+  rdf:type hack:Object ;
+  rdfs:label "д. 106"@ru ;
+  rdfs:label "д. 106"@en ;
+  hack:hasObjectKind d:a04234lrb448fer62qohhlw9jew ;
+  v-s:hasParentLink d:street1 ;
+.
+d:building8
+  rdf:type hack:Object ;
+  rdfs:label "д. 107"@ru ;
+  rdfs:label "д. 107"@en ;
+  hack:hasObjectKind d:a04234lrb448fer62qohhlw9jew ;
+  v-s:hasParentLink d:street1 ;
+.
+d:building9
+  rdf:type hack:Object ;
+  rdfs:label "д. 108"@ru ;
+  rdfs:label "д. 108"@en ;
+  hack:hasObjectKind d:a04234lrb448fer62qohhlw9jew ;
+  v-s:hasParentLink d:street1 ;
+.
+
+d:building10
+  rdf:type hack:Object ;
+  rdfs:label "д. 10"@ru ;
+  rdfs:label "д. 10"@en ;
+  hack:hasObjectKind d:a04234lrb448fer62qohhlw9jew ;
+  v-s:hasParentLink d:street2 ;
+.
+d:building11
+  rdf:type hack:Object ;
+  rdfs:label "д. 11"@ru ;
+  rdfs:label "д. 11"@en ;
+  hack:hasObjectKind d:a04234lrb448fer62qohhlw9jew ;
+  v-s:hasParentLink d:street2 ;
+.
+d:building12
+  rdf:type hack:Object ;
+  rdfs:label "д. 12"@ru ;
+  rdfs:label "д. 12"@en ;
+  hack:hasObjectKind d:a04234lrb448fer62qohhlw9jew ;
+  v-s:hasParentLink d:street2 ;
+.
+d:building13
+  rdf:type hack:Object ;
+  rdfs:label "д. 13"@ru ;
+  rdfs:label "д. 13"@en ;
+  hack:hasObjectKind d:a04234lrb448fer62qohhlw9jew ;
+  v-s:hasParentLink d:street2 ;
+.
+d:building14
+  rdf:type hack:Object ;
+  rdfs:label "д. 14"@ru ;
+  rdfs:label "д. 14"@en ;
+  hack:hasObjectKind d:a04234lrb448fer62qohhlw9jew ;
+  v-s:hasParentLink d:street2 ;
+.
+d:building15
+  rdf:type hack:Object ;
+  rdfs:label "д. 15"@ru ;
+  rdfs:label "д. 15"@en ;
+  hack:hasObjectKind d:a04234lrb448fer62qohhlw9jew ;
+  v-s:hasParentLink d:street2 ;
+.
+
+
+#квартиры
+d:apartment1
+  rdf:type hack:Object ;
+  rdfs:label "кв. 61"@ru ;
+  rdfs:label "кв. 61"@en ;
+  hack:hasObjectKind d:a26fuipp55372qbyuyzdv96h3dk ;
+  v-s:hasParentLink d:building9 ;
+.
+d:apartment2
+  rdf:type hack:Object ;
+  rdfs:label "кв. 62"@ru ;
+  rdfs:label "кв. 62"@en ;
+  hack:hasObjectKind d:a26fuipp55372qbyuyzdv96h3dk ;
+  v-s:hasParentLink d:building9 ;
+.
+d:apartment3
+  rdf:type hack:Object ;
+  rdfs:label "кв. 63"@ru ;
+  rdfs:label "кв. 63"@en ;
+  hack:hasObjectKind d:a26fuipp55372qbyuyzdv96h3dk ;
+  v-s:hasParentLink d:building9 ;
+.
+d:apartment4
+  rdf:type hack:Object ;
+  rdfs:label "кв. 64"@ru ;
+  rdfs:label "кв. 64"@en ;
+  hack:hasObjectKind d:a26fuipp55372qbyuyzdv96h3dk ;
+  v-s:hasParentLink d:building9 ;
+.
+d:apartment5
+  rdf:type hack:Object ;
+  rdfs:label "кв. 65"@ru ;
+  rdfs:label "кв. 65"@en ;
+  hack:hasObjectKind d:a26fuipp55372qbyuyzdv96h3dk ;
+  v-s:hasParentLink d:building9 ;
+.
+d:apartment6
+  rdf:type hack:Object ;
+  rdfs:label "кв. 66"@ru ;
+  rdfs:label "кв. 66"@en ;
+  hack:hasObjectKind d:a26fuipp55372qbyuyzdv96h3dk ;
+  v-s:hasParentLink d:building9 ;
+.
+d:apartment7
+  rdf:type hack:Object ;
+  rdfs:label "кв. 67"@ru ;
+  rdfs:label "кв. 67"@en ;
+  hack:hasObjectKind d:a26fuipp55372qbyuyzdv96h3dk ;
+  v-s:hasParentLink d:building9 ;
+.
+
+d:apartment10
+  rdf:type hack:Object ;
+  rdfs:label "кв. 10"@ru ;
+  rdfs:label "кв. 10"@en ;
+  hack:hasObjectKind d:a26fuipp55372qbyuyzdv96h3dk ;
+  v-s:hasParentLink d:building10 ;
+.
+d:apartment11
+  rdf:type hack:Object ;
+  rdfs:label "кв. 11"@ru ;
+  rdfs:label "кв. 11"@en ;
+  hack:hasObjectKind d:a26fuipp55372qbyuyzdv96h3dk ;
+  v-s:hasParentLink d:building10 ;
+.
+d:apartment12
+  rdf:type hack:Object ;
+  rdfs:label "кв. 12"@ru ;
+  rdfs:label "кв. 12"@en ;
+  hack:hasObjectKind d:a26fuipp55372qbyuyzdv96h3dk ;
+  v-s:hasParentLink d:building10 ;
+.
+d:apartment13
+  rdf:type hack:Object ;
+  rdfs:label "кв. 13"@ru ;
+  rdfs:label "кв. 13"@en ;
+  hack:hasObjectKind d:a26fuipp55372qbyuyzdv96h3dk ;
+  v-s:hasParentLink d:building10 ;
+.
+d:apartment14
+  rdf:type hack:Object ;
+  rdfs:label "кв. 14"@ru ;
+  rdfs:label "кв. 14"@en ;
+  hack:hasObjectKind d:a26fuipp55372qbyuyzdv96h3dk ;
+  v-s:hasParentLink d:building10 ;
+.
+
+#прилегающая территория
+d:territory1
+  rdf:type hack:Object ;
+  rdfs:label "Прилегающая территория д.108"@ru ;
+  rdfs:label "Прилегающая территория д.108"@en ;
+  hack:hasObjectKind d:a26fuipp55372qbyuyzdv96h3dk ;
+  v-s:hasParentLink d:building9 ;
+.
+d:territory2
+  rdf:type hack:Object ;
+  rdfs:label "Прилегающая территория д.10"@ru ;
+  rdfs:label "Прилегающая территория д.10"@en ;
+  hack:hasObjectKind d:a26fuipp55372qbyuyzdv96h3dk ;
+  v-s:hasParentLink d:building10 ;
+.

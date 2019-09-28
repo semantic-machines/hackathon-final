@@ -16,6 +16,14 @@
 # ------------------------------------------------------------ ИНДИВИДЫ --
 
 #Виды объектов
+hack:ObjectKind
+	rdf:type owl:Class ;
+	rdfs:subClassOf v-s:UserThing ;
+	rdfs:label "Вид объекта"@ru ;
+	rdfs:label "Object kind"@en ;
+	v-ui:hasTemplate hack:ObjectTemplate ;
+.
+
 d:a9hth4r4dphbhwnkon7bru2gqsu
   rdf:type hack:ObjectKind ;
   rdfs:label "Территория"@ru ;
@@ -45,4 +53,14 @@ d:a3nyqc2yjnthclux6kppar8n000
   rdf:type hack:ObjectKind ;
   rdfs:label "Сооружение"@ru ;
   rdfs:label "Construction"@en ;
+.
+d:a26fuipp55372qbyuyzdv96h3dk
+  rdf:type hack:ObjectKind ;
+  rdfs:label "Подъезд"@ru ;
+  rdfs:label "Doorway"@en ;
+.
+d:ephwrvw1v4jwzyti8lu1sl8kru
+  rdf:type hack:ObjectKind ;
+  rdfs:label "Квартира"@ru ;
+  rdfs:label "Apartment"@en ;
 .
