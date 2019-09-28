@@ -1,0 +1,79 @@
+@prefix d: <http://semantic-machines.com/veda/veda-data/> .
+@prefix td: <http://semantic-machines.com/veda/test-data/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix v-s: <http://semantic-machines.com/veda/veda-schema/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix hack: <http://semantic-machines.com/veda/hack-schema/> .
+
+<http://semantic-machines.com/veda/hack-individual-RolePosition>
+  rdf:type owl:Ontology ;
+  rdfs:label "Онтология индивидов. Долности, соответствующие ролям"@ru ;
+  rdfs:label "Individuals. Role Position"@en ;
+# owl:versionInfo "1.3" ;
+.
+# ------------------------------------------------------------
+d:ElectricityRole
+  rdf:type v-s:Position ;
+  v-s:origin "Role"@ru ;
+  v-s:parentUnit d:managmentOrg_1 ;
+  rdfs:label "Специалист по электроснабжению"@ru ;
+  rdfs:label "Electricity specialist"@en ;
+.
+d:GasSupplyRole
+  rdf:type v-s:Position ;
+  v-s:origin "Role"@ru ;
+  v-s:parentUnit d:managmentOrg_1 ;
+  rdfs:label "Специалист по газоснабжению"@ru ;
+  rdfs:label "Gas supply specialist"@en ;
+.
+d:ColdWaterSupplyRole
+  rdf:type v-s:Position ;
+  v-s:origin "Role"@ru ;
+  v-s:parentUnit d:managmentOrg_1 ;
+  rdfs:label "Специалист по холодному водоснабжению"@ru ;
+  rdfs:label "Cold water supply specialist"@en ;
+.
+d:HotWaterSupplyRole
+  rdf:type v-s:Position ;
+  v-s:origin "Role"@ru ;
+  v-s:parentUnit d:managmentOrg_1 ;
+  rdfs:label "Специалист по горячему водоснабжению"@ru ;
+  rdfs:label "Hot water supply specialist"@en ;
+.
+d:HeatingRole
+  rdf:type v-s:Position ;
+  v-s:origin "Role"@ru ;
+  v-s:parentUnit d:managmentOrg_1 ;
+  rdfs:label "Специалист по отоплению"@ru ;
+  rdfs:label "Heating specialist"@en ;
+.
+d:BuildingConstructionRole
+  rdf:type v-s:Position ;
+  v-s:origin "Role"@ru ;
+  v-s:parentUnit d:managmentOrg_1 ;
+  rdfs:label "Специалист по строительным конструкциям"@ru ;
+  rdfs:label "Heating specialist"@en ;
+.
+d:InstrumentationRole
+  rdf:type v-s:Position ;
+  v-s:origin "Role"@ru ;
+  v-s:parentUnit d:managmentOrg_1 ;
+  rdfs:label "Специалист по КИПиА"@ru ;
+  rdfs:label "Instrumentation specialist"@en ;
+.
+d:LiftingDeviceRole
+  rdf:type v-s:Position ;
+  v-s:origin "Role"@ru ;
+  v-s:parentUnit d:managmentOrg_1 ;
+  rdfs:label "Специалист по ГПМ"@ru ;
+  rdfs:label "Lifting device specialist"@en ;
+.
+d:SewerageRole
+  rdf:type v-s:Position ;
+  v-s:origin "Role"@ru ;
+  v-s:parentUnit d:managmentOrg_1 ;
+  rdfs:label "Специалист по канализации"@ru ;
+  rdfs:label "Sewerage specialist"@en ;
+.
