@@ -37,8 +37,10 @@ fn main() -> std::io::Result<()> {
         .init();
 
     let mut module = Module::default();
-    let mut onto = Onto::default();
 
+    full_learn(&mut module, &mut id2nb, &stemmer, &stopwords);
+
+    let mut onto = Onto::default();
     info!("load onto start");
     load_onto(&mut module.fts, &mut module.storage, &mut onto);
     info!("load onto end");
@@ -155,8 +157,8 @@ fn prepare_queue_element(
 
             if let Ok(types) = new_state_indv.get_literals("rdf:type") {
                 for itype in types {
-                    if onto.is_some_entered(&itype, &["v-s:TrainData".to_owned()]) {
-                        learn(&mut new_state_indv, id2nb, stemmer, &stopwords);
+                    if onto.is_some_entered(&itype, &["hack:BayesClassifie".to_owned()]) {
+                        learn(&mut new_state_indv, id2nb, stemmer, stopwords);
                     }
                 }
             }
@@ -166,13 +168,20 @@ fn prepare_queue_element(
     Ok(())
 }
 
-fn full_learn(module: &mut Module) {
-    let res = module.fts.query(FTQuery::new_with_user("cfg:VedaSystem", "*"));
+fn full_learn(module: &mut Module, id2nb: &mut HashMap<String, NBC>, stemmer: &Stemmer, stopwords: &HashSet<String>) {
+    let res = module.fts.query(FTQuery::new_with_user("cfg:VedaSystem", "'rdf:type' == 'hack:BayesClassifier'"));
     if res.result_code == 200 && res.count > 0 {
         for el in &res.result {
             let mut rindv: Individual = Individual::default();
             if module.storage.get_individual(&el, &mut rindv) {
-                rindv.parse_all();
+                if let Ok(v) = rindv.get_literals("hack:hasBayesCategory") {
+                    for el in v {
+                        let mut ic: Individual = Individual::default();
+                        if module.storage.get_individual(&el, &mut ic) {
+                            learn(&mut ic, id2nb, stemmer, stopwords);
+                        }
+                    }
+                }
             } else {
                 error!("fail read, uri={}", &el);
             }
