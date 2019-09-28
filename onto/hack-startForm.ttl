@@ -59,8 +59,8 @@ hack:Request_ComplexRouteStartForm_Template
     responsiblePromises = doc['hack:hasEquipmentCategory'].map(function(item){
       return item["v-s:responsible"][0];
     })
-  }
-  Promise.all(responsiblePromises).then(function(responsibleParticipants) {
+  };
+  return Promise.all(responsiblePromises).then(function(responsibleParticipants) {
     individual[complex+'instruction'][0][simple+'participant'] = individual[complex+'instruction'][0][simple+'participant'].concat(responsibleParticipants);
 	individual[complex+'instruction'][0][simple+'controller'] = [new veda.IndividualModel("d:ClientServiceRole")]; //Клиентская служба
 	individual[complex+'instruction'][0]['v-wf:StartForm_setStatus'] = [true];
