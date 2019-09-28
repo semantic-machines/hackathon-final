@@ -6,6 +6,7 @@
 @prefix v-s: <http://semantic-machines.com/veda/veda-schema/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix hack: <http://semantic-machines.com/veda/hack-schema/> .
+@prefix cfg: <http://semantic-machines.com/veda/config/> .
 
 <http://semantic-machines.com/veda/hack-Rights>
   rdf:type owl:Ontology ;
@@ -22,4 +23,33 @@ hack:Request_Persons_permission1
   v-s:permissionSubject d:org_RU000000000000 ;
   v-s:canCreate "true"^^xsd:boolean ;
   rdfs:label "C. Физ лица. Обращения" ;
+.
+
+
+#-----------назначения ролей
+d:admin_dispatcher
+  a v-s:Appointment;
+  v-s:origin "admin"^^xsd:string;
+  v-s:employee cfg:Administrator;
+  v-s:occupation d:DispatcherRole;
+  v-s:parentOrganization d:org_RU1100220011;
+  v-s:parentUnit d:org_RU1100220011;
+.
+
+d:admin_emergency
+  a v-s:Appointment;
+  v-s:origin "admin"^^xsd:string;
+  v-s:employee cfg:Administrator;
+  v-s:occupation d:EmergencyServiceRole;
+  v-s:parentOrganization d:org_RU1100220011;
+  v-s:parentUnit d:org_RU1100220011;
+.
+
+d:admin_electricity
+  a v-s:Appointment;
+  v-s:origin "admin"^^xsd:string;
+  v-s:employee cfg:Administrator;
+  v-s:occupation d:ElectricityRole;
+  v-s:parentOrganization d:org_RU1100220011;
+  v-s:parentUnit d:org_RU1100220011;
 .
