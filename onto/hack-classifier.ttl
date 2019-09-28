@@ -89,6 +89,7 @@ hack:forClass
 .
 
 hack:sourceProperty
+  rdf:type owl:ObjectProperty ;
   rdfs:label "Свойство-источник"@ru ;
   rdfs:label "Source property"@en ;
   rdfs:domain hack:BayesSpecification ;
@@ -108,6 +109,7 @@ hack:PS_sourceProperty_BayesSpecification
 .
 
 hack:targetProperty
+  rdf:type owl:ObjectProperty ;
   rdfs:label "Целевое свойство"@ru ;
   rdfs:label "Target property"@en ;
   rdfs:domain hack:BayesSpecification ;
