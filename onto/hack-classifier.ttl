@@ -58,10 +58,10 @@ hack:BayesCategory
 # rdf:value - ссылка на произвольное справочное значение 
 # v-s:parent - ссылка на НБК
 
-hack:keywords
+hack:keyPhrases
   rdf:type owl:ObjectProperty ;
-  rdfs:label "Ключевые слова"@ru ;
-  rdfs:label "Keywords"@en ;
+  rdfs:label "Ключевые фразы"@ru ;
+  rdfs:label "Key phrases"@en ;
   rdfs:domain hack:BayesCategory ;
   rdfs:range xsd:string ;
 .

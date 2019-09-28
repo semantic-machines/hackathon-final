@@ -30,7 +30,7 @@ hack:Classifier1_Category1
   rdf:type hack:BayesCategory ;
   v-s:parent hack:Classifier1 ;
   rdf:value hack:coldWaterSupply ;
-  hack:keywords """
+  hack:keyPhrases """
 труба
 кран
 течь в подвале
@@ -43,7 +43,7 @@ hack:Classifier1_Category2
   rdf:type hack:BayesCategory ;
   v-s:parent hack:Classifier1 ;
   rdf:value hack:lifting ;
-  hack:keywords """
+  hack:keyPhrases """
 лифт
 вибрация кабины
 не совпадает пол кабины и этажа
@@ -56,7 +56,7 @@ hack:Classifier1_Category3
   rdf:type hack:BayesCategory ;
   v-s:parent hack:Classifier1 ;
   rdf:value hack:gas ;
-  hack:keywords """
+  hack:keyPhrases """
 прорыв газа
 прекращена подача газа,
 запах газа в подъезде
@@ -74,5 +74,3 @@ hack:BayesSpecification1
 .
 
 # --------------------
-
-
