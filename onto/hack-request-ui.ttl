@@ -114,7 +114,7 @@ hack:RequestTemplate
           <veda-control data-type="radio" rel="hack:hasFailureRate"></veda-control>
         </div>
       </div>
-      <div class="row row-attribute">
+      <!--div class="row row-attribute">
         <div class="col-sm-3 col-xs-5">
           <label about="rdfs:comment" property="rdfs:label"></label>
         </div>
@@ -122,44 +122,32 @@ hack:RequestTemplate
           <div property="rdfs:comment" class="view -edit -search"></div>
           <veda-control data-type="text" property="rdfs:comment" class="-view edit search"></veda-control>
         </div>
-      </div>
-      <section id="Delivery">
-        <h4 class="section-header" about="v-s:hasDelivery" property="rdfs:label"></h4>
-        <div about="@" rel="v-s:hasDelivery" data-embedded="true">
-          <div class="row row-attribute">
-            <div class="col-sm-3 col-xs-5">
-              <label about="v-s:deliverBy" property="rdfs:label"></label>
-            </div>
-            <div class="col-sm-9 col-xs-7">
-              <div property="v-s:deliverBy" class="view -edit search" style="display: none;"></div>
-              <veda-control data-type="link" rel="v-s:deliverBy" class="-view edit search fulltext dropdown"></veda-control>
-            </div>
+      </div-->
+      <div about="@" rel="v-s:hasDelivery" data-embedded="true">
+        <div class="row row-attribute">
+          <div class="col-sm-3 col-xs-5">
+            <label about="v-s:deliverBy" property="rdfs:label"></label>
           </div>
-          <div class="row row-attribute">
-            <div class="col-sm-3 col-xs-5">
-              <label about="rdfs:comment" property="rdfs:label"></label>
-            </div>
-            <div class="col-sm-9 col-xs-7">
-              <div property="rdfs:comment" class="view -edit search" style="display: none;"></div>
-              <veda-control data-type="text" rel="rdfs:comment" class="-view edit search"></veda-control>
-            </div>
+          <div class="col-sm-9 col-xs-7">
+            <div property="v-s:deliverBy" class="view -edit -search"></div>
+            <veda-control data-type="link" rel="v-s:deliverBy" class="-view edit search fulltext dropdown"></veda-control>
           </div>
         </div>
-      </section>
-      <section id="Report">
-        <h4 class="section-header clearfix">
-          <span about="hack:ReportBundle" property="rdfs:label"></span>
-          <button class="btn btn-xs btn-success pull-right view -edit -search" id="add-Report">
-            <span class="glyphicon glyphicon-search"></span>
-            <span about="hack:ReportBundle" property="rdfs:label"></span>
-          </button>
-        </h4>
-        <div rel="v-s:hasComment" data-template="hack:ShortCommentTemplateEmbedded" data-embedded="true"></div>
-      </section>
+      </div>
     </section>
     <div class="actions view edit -search">
       <span about="@" data-template="v-ui:StandardButtonsTemplate" data-embedded="true" data-buttons="send edit save cancel delete journal"></span>
-   </div>
+    </div>
+  </div>
+  <div class="container sheet">
+    <h4 class="clearfix">
+      <span about="hack:ReportBundle" property="rdfs:label"></span>
+      <button class="btn btn-xs btn-success pull-right view -edit -search" id="add-Report">
+        <span class="glyphicon glyphicon-search"></span>
+        <span about="hack:ReportBundle" property="rdfs:label"></span>
+      </button>
+    </h4>
+    <div rel="v-s:hasComment" data-template="hack:ShortCommentTemplateEmbedded" data-embedded="true"></div>
   </div>
 </div>
 <script>
