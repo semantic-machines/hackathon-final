@@ -126,7 +126,7 @@ hack:PS_isPlanned_Request
 hack:hasFailureRate
   rdf:type owl:ObjectProperty ;
   rdfs:label "Аварийность"@ru ;
-  rdfs:label "FailureRate"@en ;
+  rdfs:label "Failure rate"@en ;
   rdfs:range hack:FailureRate ;
   rdfs:domain hack:Request;
 .
@@ -220,13 +220,15 @@ hack:PS_hasObject_PersonalAccount
 #v-s:hasCommunicationMean (средство связи с шаблоном)
 
 #-------------------------------Справочники-------------------
-#Категория обрудования и сооружений
+
+#Категория оборудования и сооружений
+
 hack:EquipmentCategory
 	rdf:type owl:Class ;
 	rdfs:subClassOf v-s:UserThing ;
-	rdfs:label "Категория оборудования и сооружений"@ru ;
+	rdfs:label "Категория оборудования"@ru ;
 	rdfs:label "Equipment category"@en ;
-	v-ui:hasTemplate hack:EquipmentCategoryTemplate ;
+#	v-ui:hasTemplate hack:EquipmentCategoryTemplate ;
 .
 #v-s:title
 #v-s:responsible

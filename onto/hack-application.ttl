@@ -86,6 +86,8 @@ hack:SettingsTemplate
     </div>
     <hr class="margin-md">
     <h4 style="color: #555;">Справочники</h4>
+    <div about="hack:EquipmentCategory_tree"></div>
+    <div about="hack:FailureRate_tree"></div>
     <hr class="margin-md">
     <h4 style="color: #555;">Автоматические классификаторы</h4>
   </div>
