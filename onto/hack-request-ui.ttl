@@ -136,7 +136,7 @@ hack:RequestTemplate
             <br>
             <br>
           </div>
-          <veda-control data-type="link" rel="v-s:hasDelivery" class="-view edit search create margin-md"></veda-control>
+          <veda-control data-type="link" rel="v-s:hasDelivery" class="-view edit search create create-modal margin-md"></veda-control>
         </div>
       </div>
     </section>
@@ -154,7 +154,6 @@ hack:RequestTemplate
 </div>
 <script>
   $("#add-Delivery", template).click(function () {
-
     var modal = veda.Util.showModal();
     template.one("remove", function () {
       modal.modal("hide").remove();
@@ -180,6 +179,7 @@ hack:RequestTemplate
       modal.modal("hide").remove();
     });
   });
+  //# sourceURL=hack:RequestTemplate_post
 </script>
 """
 .
