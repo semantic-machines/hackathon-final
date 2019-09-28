@@ -77,7 +77,7 @@ hack:PS_hasStatus_Request
 
 hack:hasEquipmentCategory
 	rdf:type owl:ObjectProperty ;
-	rdfs:label "Категория оборудования и сооружений"@ru ;
+	rdfs:label "Категория оборудования"@ru ;
 	rdfs:label "Equipment category"@en ;
 	rdfs:range hack:EquipmentCategory ;
 	rdfs:domain hack:Request;
@@ -254,46 +254,6 @@ hack:FailureRate
 	rdfs:label "Accident rate"@en ;
   v-ui:hasTemplate hack:CategoryTemplate ;
 .
-
-hack:CategoryTemplate
-  rdf:type v-ui:ClassTemplate ;
-  rdfs:label "Шаблон для класса hack:FailureRate"@ru ;
-  rdfs:label "Template for hack:FailureRate class"@en ;
-  v-ui:template """
-<div class="container sheet">
-  <h3>
-    <span about="@" property="rdfs:label"></span>
-  </h3>
-  <hr>
-  <section id="MainProperties">
-    <div class="row row-attribute">
-      <div class="col-sm-3 col-xs-5">
-        <label about="rdfs:label" property="rdfs:label"></label>
-      </div>
-      <div class="col-sm-9 col-xs-7">
-        <div property="rdfs:label" class="view -edit -search"></div>
-        <veda-control property="rdfs:label" data-type="string" class="-view edit search"></veda-control>
-      </div>
-    </div>
-    <div class="row row-attribute">
-      <div class="col-sm-3 col-xs-5">
-        <label about="hack:keyPhrases" property="rdfs:label"></label>
-      </div>
-      <div class="col-sm-9 col-xs-7">
-        <div property="hack:keyPhrases" class="view -edit -search"></div>
-        <veda-control property="hack:keyPhrases" data-type="text" class="-view edit search"></veda-control>
-      </div>
-    </div>
-  </section>
-  <hr>
-  <!-- BUTTONS -->
-  <div class="actions view edit -search">
-    <span about="@" data-template="v-ui:StandardButtonsTemplate" data-embedded="true" data-buttons="edit save cancel delete"></span>
-  </div>
-</div>
-  """ ;
-.
-
 
 #--------------------------------
 #Объект
