@@ -81,7 +81,7 @@ pub fn learn(indv: &mut Individual, id2nb: &mut HashMap<String, NBC>, stemmer: &
             let nel = normailze_str(&stemmer, &stopwords, &el);
 
             println!("train {} {:?}: {:?}", nb.id, &tag, &nel);
-            nb.nb.train(&nel, &tag.to_lowercase());
+            nb.nb.train(&nel, &tag);
 
             for el in nel {
                 nb.dict.insert(el);
@@ -128,19 +128,20 @@ pub fn prepare_user_request(
     stemmer: &Stemmer,
     stopwords: &HashSet<String>,
 ) {
-    if let Ok (b) = indv.get_first_bool("hack:isClassified") {
+    if let Ok(b) = indv.get_first_bool("hack:isClassified") {
         if b == true {
             return;
         }
     }
     let mut trace_log = String::new();
 
-    if let Ok(content) = indv.get_first_literal("v-s:content") {
-        let req_n = &normailze_str(&stemmer, &stopwords, &content);
-        trace_log.push_str(&format!("req_n: {:?}", req_n));
-        if let Some(specs) = all_specs.get(itype) {
-            for spec in specs {
-                if let Some(mut nb) = id2nb.get_mut(&spec.nb_id) {
+    if let Some(specs) = all_specs.get(itype) {
+        for spec in specs {
+            if let Some(nb) = id2nb.get_mut(&spec.nb_id) {
+                if let Ok(content) = indv.get_first_literal(&spec.src_prop) {
+                    let req_n = &normailze_str(&stemmer, &stopwords, &content);
+                    trace_log.push_str(&format!("request: {:?}\n", req_n));
+
                     let mut count_word = 0;
                     for el in req_n {
                         if nb.dict.contains(el) {
@@ -148,7 +149,7 @@ pub fn prepare_user_request(
                         }
                     }
                     if count_word == 0 {
-                        trace_log.push_str(&format!("{} ничего не найдено", nb.id));
+                        trace_log.push_str(&format!("{} ничего не найдено\n", nb.id));
                     } else {
                         let classification = nb.nb.classify(&req_n);
 
@@ -173,7 +174,7 @@ pub fn prepare_user_request(
                         }
 
                         for el in res {
-                            trace_log.push_str(&format!("{:?}", el));
+                            trace_log.push_str(&format!("{:?}\n", el));
                         }
                     }
                 }

@@ -117,7 +117,7 @@ fn main() -> std::io::Result<()> {
             }
         }
 
-        thread::sleep(time::Duration::from_millis(100));
+        thread::sleep(time::Duration::from_millis(10));
     }
 }
 
@@ -142,7 +142,7 @@ fn prepare_queue_element(
         let cmd = IndvOp::from_i64(wcmd.unwrap_or_default());
 
         let prev_state = msg.get_first_binobj("prev_state");
-        let mut prev_state_indv = if prev_state.is_ok() {
+        let mut _prev_state_indv = if prev_state.is_ok() {
             let mut indv = Individual::new_raw(RawObj::new(prev_state.unwrap_or_default()));
             if let Ok(uri) = parse_raw(&mut indv) {
                 indv.obj.uri = uri.clone();
