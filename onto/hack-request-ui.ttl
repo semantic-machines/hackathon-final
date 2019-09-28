@@ -23,6 +23,11 @@ hack:ReportBundle
   rdfs:label "Report"@en ;
 .
 
+hack:AdditionalProperties
+  rdf:type v-s:Bundle ;
+  rdfs:label "Расширенные свойства"@ru ;
+  rdfs:label "Additional properties"@en ;
+.
 #---------------------------------------------------------
 
 hack:RequestTemplate
@@ -67,94 +72,102 @@ hack:RequestTemplate
           <veda-control property="v-s:content" data-type="text" class="-view edit search"></veda-control>
         </div>
       </div>
-      <div class="row row-attribute">
-        <div class="col-sm-3 col-xs-5">
-          <label about="v-s:hasStatus" property="rdfs:label"></label>
-        </div>
-        <div class="col-sm-9 col-xs-7">
-          <div rel="v-s:hasStatus" class="view edit search" data-template="v-ui:LabelTemplate"></div>
-          <veda-control data-type="link" rel="v-s:hasStatus" class="-view edit search fulltext dropdown"></veda-control>
-        </div>
-      </div>
-      <div class="row row-attribute">
-        <div class="col-sm-3 col-xs-5">
-          <label about="hack:hasObject" property="rdfs:label"></label>
-        </div>
-        <div class="col-sm-9 col-xs-7">
-          <div rel="hack:hasObject" class="view -edit search" data-template="v-ui:LabelTemplate"></div>
-          <veda-control data-type="link" rel="hack:hasObject" class="-view edit search fulltext tree"></veda-control>
-        </div>
-      </div>
-      <div class="row row-attribute">
-        <div class="col-sm-3 col-xs-5">
-          <label about="hack:hasEquipmentCategory" property="rdfs:label"></label>
-        </div>
-        <div class="col-sm-9 col-xs-7">
-          <div rel="hack:hasEquipmentCategory" class="view -edit search" data-template="v-ui:LabelTemplate"></div>
-          <veda-control data-type="link" rel="hack:hasEquipmentCategory" class="-view edit search fulltext dropdown"></veda-control>
-        </div>
-      </div>
-      <div class="row row-attribute">
-        <div class="col-sm-3 col-xs-5">
-          <label about="hack:hasPersonalAccount" property="rdfs:label"></label>
-        </div>
-        <div class="col-sm-9 col-xs-7">
-          <div rel="hack:hasPersonalAccount" class="view -edit search" data-template="v-ui:LabelTemplate"></div>
-          <veda-control data-type="link" rel="hack:hasPersonalAccount" class="-view edit search fulltext"></veda-control>
-        </div>
-      </div>
-      <div class="row row-attribute">
-        <div class="col-sm-3 col-xs-5"/>
-        <div class="col-sm-3 col-xs-3">
-          <veda-control property="hack:isPlanned" data-type="booleanRadio"></veda-control>
-        </div>
-        <div class="col-sm-3 col-xs-3">
-          <veda-control data-type="radio" rel="hack:hasFailureRate"></veda-control>
-        </div>
-      </div>
-      <hr>
-      <div class="row row-attribute">
-        <div class="col-sm-3 col-xs-5">
-          <label about="rdfs:comment" property="rdfs:label"></label>
-        </div>
-        <div class="col-sm-9 col-xs-7">
-          <div property="rdfs:comment" class="view -edit -search"></div>
-          <veda-control data-type="text" property="rdfs:comment" class="-view edit search"></veda-control>
-        </div>
-      </div>
     </section>
-    <section id="Delivery">
-      <h4 class="section-header" about="v-s:hasDelivery" property="rdfs:label"></h4>
-      <div about="@" rel="v-s:hasDelivery" data-embedded="true">
+    <section id="AdditionalProperties">
+      <h4 class="section-header">
+        <a href='#' class='expand glyphicon glyphicon-chevron-right'/>
+        <span about="hack:AdditionalProperties" property="rdfs:label"></span>
+      </h4>
+      <div style="display:none">
         <div class="row row-attribute">
           <div class="col-sm-3 col-xs-5">
-            <label about="v-s:deliverBy" property="rdfs:label"></label>
+            <label about="v-s:hasStatus" property="rdfs:label"></label>
           </div>
           <div class="col-sm-9 col-xs-7">
-            <div property="v-s:deliverBy" class="view -edit search" style="display: none;"></div>
-            <veda-control data-type="link" rel="v-s:deliverBy" class="-view edit search fulltext dropdown"></veda-control>
+            <div rel="v-s:hasStatus" class="view edit search" data-template="v-ui:LabelTemplate"></div>
+            <veda-control data-type="link" rel="v-s:hasStatus" class="-view edit search fulltext dropdown"></veda-control>
           </div>
         </div>
+        <div class="row row-attribute">
+          <div class="col-sm-3 col-xs-5">
+            <label about="hack:hasObject" property="rdfs:label"></label>
+          </div>
+          <div class="col-sm-9 col-xs-7">
+            <div rel="hack:hasObject" class="view edit search" data-template="v-ui:LabelTemplate"></div>
+            <veda-control data-type="link" rel="hack:hasObject" class="-view edit search fulltext tree"></veda-control>
+          </div>
+        </div>
+        <div class="row row-attribute">
+          <div class="col-sm-3 col-xs-5">
+            <label about="hack:hasEquipmentCategory" property="rdfs:label"></label>
+          </div>
+          <div class="col-sm-9 col-xs-7">
+            <div rel="hack:hasEquipmentCategory" class="view -edit search" data-template="v-ui:LabelTemplate"></div>
+            <veda-control data-type="link" rel="hack:hasEquipmentCategory" class="-view edit search fulltext dropdown"></veda-control>
+          </div>
+        </div>
+        <div class="row row-attribute">
+          <div class="col-sm-3 col-xs-5">
+            <label about="hack:hasPersonalAccount" property="rdfs:label"></label>
+          </div>
+          <div class="col-sm-9 col-xs-7">
+            <div rel="hack:hasPersonalAccount" class="view -edit search" data-template="v-ui:LabelTemplate"></div>
+            <veda-control data-type="link" rel="hack:hasPersonalAccount" class="-view edit search fulltext"></veda-control>
+          </div>
+        </div>
+        <div class="row row-attribute">
+          <div class="col-sm-3 col-xs-5"/>
+          <div class="col-sm-3 col-xs-3">
+            <veda-control property="hack:isPlanned" data-type="booleanRadio"></veda-control>
+          </div>
+          <div class="col-sm-3 col-xs-3">
+            <veda-control data-type="radio" rel="hack:hasFailureRate"></veda-control>
+          </div>
+        </div>
+        <hr>
         <div class="row row-attribute">
           <div class="col-sm-3 col-xs-5">
             <label about="rdfs:comment" property="rdfs:label"></label>
           </div>
           <div class="col-sm-9 col-xs-7">
-            <div property="rdfs:comment" class="view -edit search" style="display: none;"></div>
-            <veda-control data-type="text" rel="rdfs:comment" class="-view edit search"></veda-control>
+            <div property="rdfs:comment" class="view -edit -search"></div>
+            <veda-control data-type="text" property="rdfs:comment" class="-view edit search"></veda-control>
           </div>
         </div>
+        <section id="Delivery">
+          <h4 class="section-header" about="v-s:hasDelivery" property="rdfs:label"></h4>
+          <div about="@" rel="v-s:hasDelivery" data-embedded="true">
+            <div class="row row-attribute">
+              <div class="col-sm-3 col-xs-5">
+                <label about="v-s:deliverBy" property="rdfs:label"></label>
+              </div>
+              <div class="col-sm-9 col-xs-7">
+                <div property="v-s:deliverBy" class="view -edit search" style="display: none;"></div>
+                <veda-control data-type="link" rel="v-s:deliverBy" class="-view edit search fulltext dropdown"></veda-control>
+              </div>
+            </div>
+            <div class="row row-attribute">
+              <div class="col-sm-3 col-xs-5">
+                <label about="rdfs:comment" property="rdfs:label"></label>
+              </div>
+              <div class="col-sm-9 col-xs-7">
+                <div property="rdfs:comment" class="view -edit search" style="display: none;"></div>
+                <veda-control data-type="text" rel="rdfs:comment" class="-view edit search"></veda-control>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="Report">
+          <h4 class="section-header clearfix">
+            <span about="hack:ReportBundle" property="rdfs:label"></span>
+            <button class="btn btn-xs btn-success pull-right view -edit -search" id="add-Report">
+              <span class="glyphicon glyphicon-search"></span>
+              <span about="hack:ReportBundle" property="rdfs:label"></span>
+            </button>
+          </h4>
+          <div rel="v-s:hasComment" data-template="hack:ShortCommentTemplateEmbedded" data-embedded="true"></div>
+        </section>
       </div>
-    </section>
-    <section id="Report">
-      <h4 class="section-header clearfix">
-        <span about="hack:ReportBundle" property="rdfs:label"></span>
-        <button class="btn btn-xs btn-success pull-right view -edit -search" id="add-Report">
-          <span class="glyphicon glyphicon-search"></span>
-          <span about="hack:ReportBundle" property="rdfs:label"></span>
-        </button>
-      </h4>
-      <div rel="v-s:hasComment" data-template="hack:ShortCommentTemplateEmbedded" data-embedded="true"></div>
     </section>
     <div class="actions view edit -search">
       <span about="@" data-template="v-ui:StandardButtonsTemplate" data-embedded="true" data-buttons="send edit save cancel delete journal"></span>
@@ -162,6 +175,12 @@ hack:RequestTemplate
   </div>
 </div>
 <script>
+  $("#AdditionalProperties .expand.glyphicon-chevron-right", template).click(function(e) {
+    e.preventDefault();
+    $(this).parent().siblings().slideToggle();
+    $(this).toggleClass("expanded glyphicon-chevron-right glyphicon-chevron-down");
+
+  });
   $("#add-Report", template).click(function () {
     var _class = new veda.IndividualModel("v-s:Comment"),
         comment = new veda.IndividualModel(),
