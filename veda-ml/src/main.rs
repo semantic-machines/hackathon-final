@@ -1,7 +1,7 @@
 #[macro_use]
 extern crate log;
 
-use crate::ml_naive_bayes::{learn, load_stopwords, NBC};
+use crate::ml_naive_bayes::{learn, load_specificstions, load_stopwords, prepare_user_request, NBSpecification, NBC};
 use chrono::Local;
 use env_logger::Builder;
 use log::LevelFilter;
@@ -37,6 +37,15 @@ fn main() -> std::io::Result<()> {
         .init();
 
     let mut module = Module::default();
+
+    let systicket;
+    if let Ok(t) = module.get_sys_ticket_id() {
+        systicket = t;
+    } else {
+        error!("fail get systicket");
+        return Ok(());
+    }
+    let specs = load_specificstions(&mut module);
 
     full_learn(&mut module, &mut id2nb, &stemmer, &stopwords);
 
@@ -96,7 +105,7 @@ fn main() -> std::io::Result<()> {
                 }
             }
 
-            if let Err(e) = prepare_queue_element(&mut module, &mut onto, &mut Individual::new_raw(raw), &mut id2nb, &stemmer, &stopwords) {
+            if let Err(e) = prepare_queue_element(&mut module, &mut onto, &systicket, &mut Individual::new_raw(raw), &mut id2nb, &stemmer, &stopwords, &specs) {
                 error!("fail prepare queue element, err={}", e);
             }
 
@@ -108,17 +117,19 @@ fn main() -> std::io::Result<()> {
             }
         }
 
-        thread::sleep(time::Duration::from_millis(1000));
+        thread::sleep(time::Duration::from_millis(100));
     }
 }
 
 fn prepare_queue_element(
     module: &mut Module,
     onto: &mut Onto,
+    systicket: &str,
     msg: &mut Individual,
     id2nb: &mut HashMap<String, NBC>,
     stemmer: &Stemmer,
     stopwords: &HashSet<String>,
+    specs: &HashMap<String, Vec<NBSpecification>>,
 ) -> Result<(), i32> {
     if let Ok(uri) = parse_raw(msg) {
         msg.obj.uri = uri;
@@ -157,8 +168,12 @@ fn prepare_queue_element(
 
             if let Ok(types) = new_state_indv.get_literals("rdf:type") {
                 for itype in types {
-                    if onto.is_some_entered(&itype, &["hack:BayesClassifie".to_owned()]) {
-                        learn(&mut new_state_indv, id2nb, stemmer, stopwords);
+                    if specs.contains_key(&itype) {
+                        prepare_user_request(&mut new_state_indv, module, systicket, id2nb, specs, &itype, stemmer, stopwords);
+                    } else {
+                        if onto.is_some_entered(&itype, &["hack:BayesClassifie".to_owned()]) {
+                            learn(&mut new_state_indv, id2nb, stemmer, stopwords);
+                        }
                     }
                 }
             }

@@ -4,7 +4,11 @@ use scanlex::Scanner;
 use std::collections::{HashMap, HashSet};
 use std::fs::File;
 use std::io::{BufRead, BufReader};
+use v_api::{IndvOp, ResultCode};
+use v_module::module::Module;
+use v_onto::datatype::Lang;
 use v_onto::individual::Individual;
+use v_search::FTQuery;
 
 #[derive(PartialEq, Debug, Clone)]
 struct ResultNBC {
@@ -18,16 +22,13 @@ pub struct NBC {
     dict: HashSet<String>,
 }
 
-/*
-fn to_vec(line: &str) -> Vec<String> {
-    let tokens = line.split(" ");
-    let mut v: Vec<String> = Vec::new();
-    for token in tokens {
-        v.push(token.to_string());
-    }
-    return v;
+pub struct NBSpecification {
+    nb_id: String,
+    class: String,
+    src_prop: String,
+    target_prop: String,
 }
-*/
+
 fn normailze_str(stemmer: &Stemmer, stopwords: &HashSet<String>, text: &str) -> Vec<String> {
     let mut v: Vec<String> = Vec::new();
     let scan = Scanner::new(&text);
@@ -89,80 +90,105 @@ pub fn learn(indv: &mut Individual, id2nb: &mut HashMap<String, NBC>, stemmer: &
     }
 }
 
-/*
-fn main() {
+pub fn load_specificstions(module: &mut Module) -> HashMap<String, Vec<NBSpecification>> {
+    let mut s: HashMap<String, Vec<NBSpecification>> = HashMap::new();
+    let res = module.fts.query(FTQuery::new_with_user("cfg:VedaSystem", "'rdf:type' == 'hack:BayesSpecification'"));
+    if res.result_code == 200 && res.count > 0 {
+        for el in &res.result {
+            let mut indv: Individual = Individual::default();
+            if module.storage.get_individual(&el, &mut indv) {
+                let watch_class = indv.get_first_literal("hack:forClass");
+                let src_prop = indv.get_first_literal("hack:sourceProperty");
+                let target_prop = indv.get_first_literal("hack:targetProperty");
+                let nb_id = indv.get_first_literal("hack:hasBayesClassifier");
 
-    if let Ok(csv) = quick_csv::Csv::from_file("Категории Оборудования.csv") {
-        for r in csv.into_iter() {
-            match r {
-                Err(e) => {
-                    println!("{}", e);
+                if watch_class.is_ok() && src_prop.is_ok() && target_prop.is_ok() && nb_id.is_ok() {
+                    let watch_class = watch_class.unwrap();
+                    let specs = s.entry(watch_class.to_string()).or_insert(Vec::new());
+                    specs.push(NBSpecification {
+                        nb_id: nb_id.unwrap(),
+                        class: watch_class,
+                        src_prop: src_prop.unwrap(),
+                        target_prop: target_prop.unwrap(),
+                    });
                 }
+            }
+        }
+    }
+    s
+}
 
-                Ok(row) => {
-                    if let Ok(mut cs) = row.columns() {
-                        if let Some(key) = cs.next() {
-                            loop {
-                                if let Some(el) = cs.next() {
-                                    if !el.is_empty() {
-                                        let nel = normailze_str(&stemmer, &stopwords, el.to_lowercase().as_ref());
+pub fn prepare_user_request(
+    indv: &mut Individual,
+    module: &mut Module,
+    systicket: &str,
+    id2nb: &mut HashMap<String, NBC>,
+    all_specs: &HashMap<String, Vec<NBSpecification>>,
+    itype: &str,
+    stemmer: &Stemmer,
+    stopwords: &HashSet<String>,
+) {
+    if let Ok (b) = indv.get_first_bool("hack:isClassified") {
+        if b == true {
+            return;
+        }
+    }
+    let mut trace_log = String::new();
 
-                                        println!("train {:?}: {:?}", &key.to_lowercase(), &nel);
-                                        nb.train(&nel, &key.to_lowercase());
+    if let Ok(content) = indv.get_first_literal("v-s:content") {
+        let req_n = &normailze_str(&stemmer, &stopwords, &content);
+        trace_log.push_str(&format!("req_n: {:?}", req_n));
+        if let Some(specs) = all_specs.get(itype) {
+            for spec in specs {
+                if let Some(mut nb) = id2nb.get_mut(&spec.nb_id) {
+                    let mut count_word = 0;
+                    for el in req_n {
+                        if nb.dict.contains(el) {
+                            count_word += 1;
+                        }
+                    }
+                    if count_word == 0 {
+                        trace_log.push_str(&format!("{} ничего не найдено", nb.id));
+                    } else {
+                        let classification = nb.nb.classify(&req_n);
 
-                                        for el in nel {
-                                            dict.insert(el);
-                                        }
-                                        //nel.into_iter().map(|el|dict.insert(el.to_string()));
-                                    }
-                                } else {
-                                    break;
-                                }
+                        let mut res: Vec<ResultNBC> = Vec::new();
+
+                        for (tag, v) in classification.iter() {
+                            res.push(ResultNBC {
+                                tag: tag.to_string(),
+                                val: v.to_owned(),
+                            });
+                        }
+
+                        res.sort_by(|a, b| {
+                            if let Some(r) = b.val.partial_cmp(&a.val) {
+                                return r;
                             }
+                            std::cmp::Ordering::Less
+                        });
+
+                        if let Some(s) = res.get(0) {
+                            indv.obj.set_uri(&spec.target_prop, &s.tag);
+                        }
+
+                        for el in res {
+                            trace_log.push_str(&format!("{:?}", el));
                         }
                     }
                 }
             }
-        }
-    }
 
-    //    let req: String = "вторую неделю вода из трубы, когда исправите".into();
-    let req: String = "дуб в лесу зеленый горит".into();
-    let req_n = &normailze_str(&stemmer, &stopwords, &req);
-    println!("req: {}", req);
-    println!("req_n: {:?}", req_n);
+            indv.obj.set_bool("hack:isClassified", true);
+            indv.obj.set_string("rdfs:comment", &trace_log, Lang::RU);
 
-    let mut count_word = 0;
-    for el in req_n {
-        if dict.contains(el) {
-            count_word += 1;
-        }
-    }
+            let res = module.api.update(systicket, IndvOp::Put, indv);
 
-    if count_word == 0 {
-        println!("ничего не понятно");
-    } else {
-        let classification = nb.classify(&req_n);
-
-        let mut res: Vec<ResultNBC> = Vec::new();
-
-        for (tag, v) in classification.iter() {
-            res.push(ResultNBC {
-                tag: tag.to_string(),
-                val: v.to_owned(),
-            });
-        }
-
-        res.sort_by(|a, b| {
-            if let Some(r) = b.val.partial_cmp(&a.val) {
-                return r;
+            if res.result != ResultCode::Ok {
+                error!("fail update, uri={}, result_code={:?}", indv.obj.uri, res.result);
+            } else {
+                info!("success update, uri={}", indv.obj.uri);
             }
-            std::cmp::Ordering::Less
-        });
-
-        for el in res {
-            println!("{:?}", el);
         }
     }
 }
-*/
