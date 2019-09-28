@@ -48,7 +48,14 @@ hack:RequestTemplate
       <span about="hack:Request" property="rdfs:label"></span>
       <small about="@" property="rdfs:label"></small>
     </h2>
-    <section id="MainProperties">
+    <div property="v-s:content" class="view -edit -search"></div>
+    <veda-control property="v-s:content" data-type="text" rows="5" class="-view edit search"></veda-control>
+
+    <div class="margin-md">
+      <small class="additional-properties-toggle text-muted" about="hack:AdditionalProperties" property="rdfs:label" style="border-bottom:1px dashed #707070; cursor:pointer;"></small>
+    </div>
+
+    <section class="additional-properties hidden">
       <div class="row row-attribute -view -edit search">
         <div class="col-sm-3 col-xs-5">
           <label about="v-s:registrationNumber" property="rdfs:label"></label>
@@ -57,15 +64,6 @@ hack:RequestTemplate
           <veda-control property="v-s:registrationNumber" data-type="string"></veda-control>
         </div>
       </div>
-      <div property="v-s:content" class="view -edit -search"></div>
-      <veda-control property="v-s:content" data-type="text" rows="5" class="-view edit search"></veda-control>
-    </section>
-
-    <div class="margin-md">
-      <small class="additional-properties-toggle text-muted" about="hack:AdditionalProperties" property="rdfs:label" style="border-bottom:1px dashed #707070; cursor:pointer;"></small>
-    </div>
-
-    <section class="additional-properties hidden">
       <div class="row row-attribute">
         <div class="col-sm-3 col-xs-5">
           <label about="v-s:hasStatus" property="rdfs:label"></label>
@@ -105,13 +103,14 @@ hack:RequestTemplate
       <div class="row row-attribute">
         <div class="col-sm-3 col-xs-5"></div>
         <div class="col-sm-3 col-xs-3">
-          <veda-control property="hack:isPlanned" data-type="booleanRadio"></veda-control>
+          <veda-control property="hack:isPlanned" data-type="booleanRadio" class="view edit -search"></veda-control>
         </div>
       </div>
       <div class="row row-attribute">
         <div class="col-sm-3 col-xs-5"></div>
         <div class="col-sm-3 col-xs-3">
-          <veda-control data-type="radio" rel="hack:hasFailureRate"></veda-control>
+          <veda-control data-type="radio" rel="hack:hasFailureRate" class="view edit -search"></veda-control>
+          <veda-control data-type="checkbox" rel="hack:hasFailureRate" class="-view -edit search"></veda-control>
         </div>
       </div>
       <!--div class="row row-attribute">
@@ -135,21 +134,12 @@ hack:RequestTemplate
         </div>
       </div>
     </section>
-    <br>
     <div class="actions view edit -search">
+      <br>
       <span about="@" data-template="v-ui:StandardButtonsTemplate" data-embedded="true" data-buttons="send edit save cancel delete journal"></span>
     </div>
   </div>
-  <div class="container sheet">
-    <h4 class="clearfix">
-      <span about="hack:ReportBundle" property="rdfs:label"></span>
-      <button class="btn btn-xs btn-success pull-right view -edit -search" id="add-Report">
-        <span class="glyphicon glyphicon-search"></span>
-        <span about="hack:ReportBundle" property="rdfs:label"></span>
-      </button>
-    </h4>
-    <div rel="v-s:hasComment" data-template="hack:ShortCommentTemplateEmbedded" data-embedded="true"></div>
-  </div>
+  <div about="@" class="container sheet view -edit -search" data-template="v-s:CommentsTemplate"></div>
 </div>
 <script>
   if (individual.advanced) {
