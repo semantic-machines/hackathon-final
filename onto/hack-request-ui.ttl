@@ -33,6 +33,11 @@ hack:RequestTemplate
   v-ui:template """
 <div>
   <div class="container sheet">
+    <h2>
+      <span about="hack:Request" property="rdfs:label"></span>
+      <small about="@" property="rdfs:label"></small>
+    </h2>
+    <hr>
     <section id="MainProperties">
       <div class="row row-attribute">
         <div class="col-sm-3 col-xs-5">
@@ -82,15 +87,15 @@ hack:RequestTemplate
       <div class="row row-attribute">
         <div class="col-sm-3 col-xs-5"/>
         <div class="col-sm-9 col-xs-7">
-          <strong about="v-s:isPlanned" property="rdfs:label"></strong>
-          <veda-control property="v-s:isPlanned" data-type="booleanRadio"></veda-control>
+          <strong about="hack:isPlanned" property="rdfs:label"></strong>
+          <veda-control property="hack:isPlanned" data-type="booleanRadio"></veda-control>
         </div>
       </div>
       <div class="row row-attribute">
         <div class="col-sm-3 col-xs-5"/>
         <div class="col-sm-9 col-xs-7">
-          <strong about="v-s:isFailure" property="rdfs:label"></strong>
-          <veda-control property="v-s:isFailure" data-type="booleanRadio"></veda-control>
+          <strong about="hack:isFailure" property="rdfs:label"></strong>
+          <veda-control property="hack:isFailure" data-type="booleanRadio"></veda-control>
         </div>
       </div>
       <div class="row row-attribute">
@@ -129,13 +134,17 @@ hack:PersonalAccountTemplate
   v-ui:template """
 <div>
   <div class="container sheet">
-    asdasd
+    <h2>
+      <span about="hack:PersonalAccount" property="rdfs:label"></span>
+      <small about="@" property="rdfs:label"></small>
+    </h2>
+    <hr>
     <section id="MainProperties">
       <div class="row row-attribute">
         <div class="col-sm-3 col-xs-5">
           <label about="rdfs:label" property="rdfs:label"></label>
         </div>
-        <div class="col-sm-3 col-xs-3">
+        <div class="col-sm-9 col-xs-7">
           <div property="rdfs:label" class="view -edit search"></div>
           <veda-control property="rdfs:label" data-type="string" class="-view edit search"></veda-control>
         </div>
@@ -144,7 +153,7 @@ hack:PersonalAccountTemplate
         <div class="col-sm-3 col-xs-5">
           <label about="v-s:registrationNumber" property="rdfs:label"></label>
         </div>
-        <div class="col-sm-3 col-xs-3">
+        <div class="col-sm-9 col-xs-7">
           <div property="v-s:registrationNumber" class="view -edit search"></div>
           <veda-control property="v-s:registrationNumber" data-type="string" class="-view edit search"></veda-control>
         </div>
@@ -153,27 +162,27 @@ hack:PersonalAccountTemplate
         <div class="col-sm-3 col-xs-5">
           <label about="v-s:customer" property="rdfs:label"></label>
         </div>
-        <div class="col-sm-3 col-xs-3">
+        <div class="col-sm-9 col-xs-7">
           <div property="v-s:customer" data-template="v-ui:LabelTemplate" class="view -edit search"></div>
-          <veda-control rel="v-s:customer"  data-type="link" class="-view edit search"></veda-control>
+          <veda-control rel="v-s:customer"  data-type="link" class="-view edit search fulltext"></veda-control>
         </div>
       </div>
       <div class="row row-attribute">
         <div class="col-sm-3 col-xs-5">
           <label about="hack:hasObject" property="rdfs:label"></label>
         </div>
-        <div class="col-sm-3 col-xs-3">
+        <div class="col-sm-9 col-xs-7">
           <div property="hack:hasObject" data-template="v-ui:LabelTemplate" class="view -edit search"></div>
-          <veda-control rel="hack:hasObject"  data-type="link" class="-view edit search"></veda-control>
+          <veda-control rel="hack:hasObject"  data-type="link" class="-view edit search fulltext dropdown"></veda-control>
         </div>
       </div>
       <div class="row row-attribute">
         <div class="col-sm-3 col-xs-5">
           <label about="v-s:hasCommunicationMean" property="rdfs:label"></label>
         </div>
-        <div class="col-sm-3 col-xs-3">
-          <div property="v-s:hasCommunicationMean" data-template="v-ui:LabelTemplate" class="view -edit search"></div>
-          <veda-control rel="v-s:hasCommunicationMean"  data-type="link" class="-view edit search"></veda-control>
+        <div class="col-sm-9 col-xs-9">
+          <div rel="v-s:hasCommunicationMean" data-template="v-s:CommunicationMeanTemplateEmbedded" data-embedded="true"></div>
+          <veda-control data-type="link" rel="v-s:hasCommunicationMean" class="-view edit search create create-modal"></veda-control>
         </div>
       </div>
     </section>
@@ -188,7 +197,7 @@ hack:PersonalAccountTemplate
   <div about="@" class="container sheet view -edit -search" data-template="v-s:CommentsTemplate"></div>
 </div>
 <script>
-
+  
 </script>
 """
 .
