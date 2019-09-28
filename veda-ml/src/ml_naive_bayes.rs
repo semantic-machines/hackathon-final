@@ -59,11 +59,10 @@ pub fn load_stopwords() -> HashSet<String> {
 
 pub fn learn(indv: &mut Individual, id2nb: &mut HashMap<String, NBC>, stemmer: &Stemmer, stopwords: &HashSet<String>) {
     let wphrase = indv.get_first_literal("hack:keyPhrases");
-    let wgroup_id = indv.get_first_literal("v-s:parent");
-    let wtag_id = indv.get_first_literal("rdf:value");
+    let wgroup_id = indv.get_first_literal("rdf:type");
 
-    if wphrase.is_ok() && wgroup_id.is_ok() && wtag_id.is_ok() {
-        let tag = wtag_id.unwrap();
+    if wphrase.is_ok() && wgroup_id.is_ok() {
+        let tag = indv.obj.uri.to_owned();
         let phrase = wphrase.unwrap();
         let nb_id = wgroup_id.unwrap();
 
@@ -91,13 +90,13 @@ pub fn learn(indv: &mut Individual, id2nb: &mut HashMap<String, NBC>, stemmer: &
     }
 }
 
-pub fn load_specificstion(module: &mut Module, id: &str, s: &mut HashMap<String, Vec<NBSpecification>>) {
+pub fn load_classifier(module: &mut Module, id: &str, s: &mut HashMap<String, Vec<NBSpecification>>) {
     let mut indv: Individual = Individual::default();
     if module.storage.get_individual(id, &mut indv) {
         let watch_class = indv.get_first_literal("hack:forClass");
         let src_prop = indv.get_first_literal("hack:sourceProperty");
         let target_prop = indv.get_first_literal("hack:targetProperty");
-        let nb_id = indv.get_first_literal("hack:hasBayesClassifier");
+        let nb_id = indv.get_first_literal("hack:targetCategory");
 
         if watch_class.is_ok() && src_prop.is_ok() && target_prop.is_ok() && nb_id.is_ok() {
             let watch_class = watch_class.unwrap();
@@ -115,17 +114,17 @@ pub fn load_specificstion(module: &mut Module, id: &str, s: &mut HashMap<String,
     }
 }
 
-pub fn load_specificstions(module: &mut Module) -> HashMap<String, Vec<NBSpecification>> {
+pub fn load_classifiers(module: &mut Module) -> HashMap<String, Vec<NBSpecification>> {
     let mut s: HashMap<String, Vec<NBSpecification>> = HashMap::new();
-    let res = module.fts.query(FTQuery::new_with_user("cfg:VedaSystem", "'rdf:type' == 'hack:BayesSpecification'"));
+    let res = module.fts.query(FTQuery::new_with_user("cfg:VedaSystem", "'rdf:type' == 'hack:BayesClassifier'"));
     if res.result_code == 200 && res.count > 0 {
         for el in &res.result {
-            load_specificstion(module, el, &mut s);
+            load_classifier(module, el, &mut s);
         }
     } else {
-        error!("not found specifications [hack:BayesSpecification]");
+        error!("not found specifications [hack:BayesClassifier]");
     }
-    info!("loading {} specifications", s.len());
+    info!("loading {} classifier", s.len());
     s
 }
 
