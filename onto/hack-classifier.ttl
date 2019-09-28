@@ -34,55 +34,10 @@ hack:isClassified
   rdfs:range xsd:boolean ;
 .
 
-hack:BayesClassifier
-  rdf:type owl:Class ;
-  rdfs:label "Классификатор"@ru ;
-  rdfs:label "Classifier"@en ;
-  v-ui:hasTemplate hack:BayesClassifierTemplate ;
-.
-
-hack:hasBayesCategory
-  rdf:type owl:ObjectProperty ;
-  rdfs:label "Категория"@ru ;
-  rdfs:label "Category"@en ;
-  rdfs:domain hack:BayesClassifier ;
-  rdfs:range hack:BayesCategory ;
-.
-
-hack:PS_hasBayesCategory_BayesSpecification
-	rdf:type v-ui:ObjectPropertySpecification ;
-	v-ui:forClass hack:BayesClassifier ;
-	v-ui:forProperty hack:hasBayesCategory ;
-	v-ui:maxCardinality 100 ;
-	v-ui:minCardinality 0 ;
-	v-ui:tooltip "Добавьте новую категорию"@ru ;
-	v-ui:tooltip "Add new category"@en ;
-	rdfs:label "Спецификация hack:sourceProperty для hack:BayesSpecification"@ru ;
-	rdfs:label "hack:sourceProperty property specification for hack:BayesSpecification"@en ;
-.
-
 hack:BayesCategory
   rdf:type owl:Class ;
-  rdfs:subClassOf v-s:Embedded ;
-  rdfs:label "Категория НБК"@ru ;
-  rdfs:label "NBC category"@en ;
-  v-ui:hasTemplate hack:BayesCategoryTemplate ;
-.
-
-# rdf:value - ссылка на произвольное справочное значение 
-# v-s:parent - ссылка на НБК
-
-hack:PS_value_BayesCategory
-	rdf:type v-ui:ObjectPropertySpecification ;
-	v-ui:forClass hack:BayesCategory ;
-	v-ui:forProperty rdf:value ;
-	v-ui:maxCardinality 1 ;
-	v-ui:minCardinality 1 ;
-	v-ui:tooltip "Добавьте новую категорию"@ru ;
-	v-ui:tooltip "Add new category"@en ;
-	rdfs:label "Спецификация hack:sourceProperty для hack:BayesSpecification"@ru ;
-	rdfs:label "hack:sourceProperty property specification for hack:BayesSpecification"@en ;
-  v-ui:queryPrefix """'rdf:type'=='{individual[\"v-s:parent\"][0][\"hack:forClass\"][0].id}'""" ;
+  rdfs:label "Категория байесовского классификатора"@ru ;
+  rdfs:label "Naive bayes classifier category"@en ;
 .
 
 hack:keyPhrases
@@ -93,25 +48,16 @@ hack:keyPhrases
   rdfs:range xsd:string ;
 .
 
-hack:BayesSpecification
+hack:BayesClassifier
   rdf:type owl:Class ;
-  rdfs:label "Спецификация НБК"@ru ;
-  rdfs:label "NBC specification"@en ;
-.
-
-hack:hasBayesClassifier
-  rdf:type owl:ObjectProperty ;
-  rdfs:label "Классификатор"@ru ;
-  rdfs:label "Classifier"@en ;
-  rdfs:domain hack:BayesSpecification ;
-  rdfs:range hack:BayesClassifier ;
+  rdfs:label "Наивный байесовский классификатор"@ru ;
+  rdfs:label "Naive bayes classifier"@en ;
 .
 
 hack:forClass
   rdf:type owl:ObjectProperty ;
   rdfs:label "Класс"@ru ;
   rdfs:label "Class"@en ;
-  rdfs:domain hack:BayesSpecification ;
   rdfs:domain hack:BayesClassifier ;
   rdfs:range rdfs:Class ;
 .
@@ -120,38 +66,46 @@ hack:sourceProperty
   rdf:type owl:ObjectProperty ;
   rdfs:label "Свойство-источник"@ru ;
   rdfs:label "Source property"@en ;
-  rdfs:domain hack:BayesSpecification ;
+  rdfs:domain hack:BayesClassifier ;
   rdfs:range rdf:Property ;
-.
-
-hack:PS_sourceProperty_BayesSpecification
-	rdf:type v-ui:ObjectPropertySpecification ;
-	v-ui:forClass hack:BayesSpecification ;
-	v-ui:forProperty hack:sourceProperty ;
-	v-ui:maxCardinality 1 ;
-	v-ui:minCardinality 1 ;
-	v-ui:tooltip "Выберите свойство-источник"@ru ;
-	v-ui:tooltip "Select source property"@en ;
-	rdfs:label "Спецификация hack:sourceProperty для hack:BayesSpecification"@ru ;
-	rdfs:label "hack:sourceProperty property specification for hack:BayesSpecification"@en ;
 .
 
 hack:targetProperty
   rdf:type owl:ObjectProperty ;
   rdfs:label "Целевое свойство"@ru ;
   rdfs:label "Target property"@en ;
-  rdfs:domain hack:BayesSpecification ;
+  rdfs:domain hack:BayesClassifier ;
   rdfs:range rdf:Property ;
 .
 
-hack:PS_targetProperty_BayesSpecification
-	rdf:type v-ui:ObjectPropertySpecification ;
-	v-ui:forClass hack:BayesSpecification ;
-	v-ui:forProperty hack:targetProperty ;
-	v-ui:maxCardinality 1 ;
-	v-ui:minCardinality 1 ;
-	v-ui:tooltip "Выберите целевое свойство"@ru ;
-	v-ui:tooltip "Select target property"@en ;
-	rdfs:label "Спецификация hack:targetProperty для hack:BayesSpecification"@ru ;
-	rdfs:label "hack:targetProperty property specification for hack:BayesSpecification"@en ;
+hack:targetCategory
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "Категория"@ru ;
+  rdfs:label "Category"@en ;
+  rdfs:domain hack:BayesClassifier ;
+  rdfs:range rdfs:Class ;
+.
+
+# ---------- Классификатор категории оборудования
+
+hack:EquipmentCategory_Classifier
+  rdf:type hack:BayesClassifier ;
+  rdfs:label "Классификатор категории оборудования"@ru ;
+  rdfs:label "Equipment category classifier"@en ;
+  hack:forClass hack:Request ;
+  hack:sourceProperty v-s:content ;
+  hack:targetProperty hack:hasEquipmentCategory ;
+  hack:targetCategory hack:EquipmentCategory ;
+.
+
+# ---------- Классификатор аварийности
+
+hack:FailureRate_Classifier
+  rdf:type hack:BayesClassifier ;
+  rdfs:label "Классификатор аварийности"@ru ;
+  rdfs:label "Failure rate classifier"@en ;
+  hack:forClass hack:Request ;
+  hack:sourceProperty v-s:content ;
+  hack:targetProperty hack:hasFailureRate ;
+  hack:targetCategory hack:FailureRate ;
 .

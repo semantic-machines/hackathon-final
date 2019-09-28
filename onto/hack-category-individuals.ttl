@@ -37,74 +37,219 @@ hack:electricity
   rdfs:label "Electricity"@en ;
   v-s:responsible d:ElectricityRole ;
   v-s:hasParentLink hack:EquipmentCategory_root ;
+  hack:keyPhrases """запах горелой проводки
+горит проводка
+электрическая проводка
+электро
+электроприбор
+не горит свет
+не горит лампочка
+нет освещения
+отсутствую освещение
+искрение в щитке
+искрение в розетке
+искрит розетка
+искрит автомат
+выбивает автомат
+электроплита
+нагреваются провода""" ;  
 .
+
 hack:gas
   rdf:type hack:EquipmentCategory ;
   rdfs:label "Газоснабжение"@ru ;
   rdfs:label "Gas supply"@en ;
   v-s:responsible d:GasSupplyRole ;
   v-s:hasParentLink hack:EquipmentCategory_root ;  
+  hack:keyPhrases """прорыв газа
+подача газа,
+запах газа в подъезде
+запах газа в квартире
+газовая труба
+газопровод
+напор воды на газовую колонку
+крепление газопровода
+требуется ремонт газовой плиты
+требуется замена газовой плиты
+газовая духовка
+газовый духовой шкаф
+газовая панель
+газовый водонагреватель
+счетчик газа
+не горит конфорка
+установкой заглушки на газопровод
+сопло горелки плиты
+горелка духового шкафа
+газовый котел
+газовое оборудование
+ВКГО""" ;  
 .
+
 hack:coldWaterSupply
   rdf:type hack:EquipmentCategory ;
   rdfs:label "ХВС"@ru ;
   rdfs:label "Сold water supply"@en ;
   v-s:responsible d:ColdWaterSupplyRole ;
-  v-s:hasParentLink hack:EquipmentCategory_root ;  
-.
+  v-s:hasParentLink hack:EquipmentCategory_root ;
+  hack:keyPhrases """прорыв трубы хвс
+прорыв холодной трубы
+разрыв холодной трубы
+течь вводного крана хвс
+течь вводного крана холодной воды
+холодная вода
+течь смесителя на холодной воде
+срыв гибкой подводки на холодной воде
+плохое качество холодной воды
+нет напора воды на газовую колонку
+слабый напор воды на газовую колонку
+течь бачка унитаза
+капает с бачка унитаза
+ХВС
+напор воды в кране ХВС
+напор воды в кране холодной воды
+подмес горячей воды в холодную
+смешивание горячей и холодной воды""" ;
+.  
+
 hack:hotWaterSupply
   rdf:type hack:EquipmentCategory ;
   rdfs:label "ГВС"@ru ;
   rdfs:label "Hot water supply"@en ;
   v-s:responsible d:HotWaterSupplyRole ;
   v-s:hasParentLink hack:EquipmentCategory_root ;
+  hack:keyPhrases """прорыв трубы гвс
+прорыв горячей трубы
+разрыв горячей трубы
+течь вводного крана гвс
+течь вводного крана горячей воды
+нет горячей воды
+отсутствует горячая вода
+горячая вода
+течь смесителя на горячей воде
+срыв гибкой подводки на горячей воде
+плохое качество горячей воды
+ГВС
+нет напора воды в кране ГВС
+слабый напор воды в кране ГВС
+нет напора воды в кране горячей воды
+слабый напор воды в кране горячей воды
+подмес горячей воды в холодную
+холодный полотенцесушитель
+смешивание горячей и холодной воды""" ;
 .
+
 hack:heating
   rdf:type hack:EquipmentCategory ;
   rdfs:label "Отопление"@ru ;
   rdfs:label "Heating"@en ;
   v-s:responsible d:HeatingRole ;
   v-s:hasParentLink hack:EquipmentCategory_root ;  
+  hack:keyPhrases """прорыв трубы отопления
+течь вводного крана в тепловом узле
+течь отопительного прибора
+нет отопления
+холодные батареи
+холодные радиаторы
+гул шум в трубах отопления радиаторе батареях""" ;
 .
+
 hack:construction
   rdf:type hack:EquipmentCategory ;
   rdfs:label "Строительные конструкции"@ru ;
   rdfs:label "Building construction"@en ;
   v-s:responsible d:BuildingConstructionRole ;
   v-s:hasParentLink hack:EquipmentCategory_root ;
+  hack:keyPhrases """входная дверь
+неисправность входной двери
+неисправность дверей лоджий лестниц  
+доводчик двери
+отсутствует остекление
+разбито стекло
+неисправный мусоропровод
+замки на входных дверях подвал мусорокамеру
+подъемная платформа для инвалидов
+замена домофона
+магнит запирающего устройства
+переговорное устройство
+осыпается потолок
+осыпается побелка
+осыпается краска
+почтовый ящик
+подъезд
+перила поручни
+козырек""" ;  
 .
+
 hack:instrumentation
   rdf:type hack:EquipmentCategory ;
   rdfs:label "КИПиА"@ru ;
   rdfs:label "Instrumentation"@en ;
   v-s:responsible d:InstrumentationRole ;
   v-s:hasParentLink hack:EquipmentCategory_root ;
+  hack:keyPhrases """прибора учета
+узел учета
+счетчик
+водосчетчик
+поверка
+межповерочный интервал
+маномерт
+термометр
+датчик давления
+датчик температуры
+тепловычислитель
+контроллер
+КИП
+КАПиА
+сигнализатор""" ;
 .
+
 hack:lifting
   rdf:type hack:EquipmentCategory ;
   rdfs:label "ГПМ"@ru ;
   rdfs:label "Lifting device"@en ;
   v-s:responsible d:LiftingDeviceRole ;
   v-s:hasParentLink hack:EquipmentCategory_root ;
+  hack:keyPhrases """лифт
+не совпадает пол кабины лифта и этажа
+Переподъем или переспуск кабины лифта
+освещение в лифте
+кнопки в лифте
+кабина лифта
+двери лифта
+застрял пассажир
+застревание пассажира
+шахта лифта
+связь в лифте""" ;  
 .
+
 hack:sewerage
   rdf:type hack:EquipmentCategory ;
   rdfs:label "Канализация"@ru ;
   rdfs:label "Sewerage"@en ;
   v-s:responsible d:SewerageRole ;
   v-s:hasParentLink hack:EquipmentCategory_root ;
+  hack:keyPhrases """канализация
+засор канализационного
+фановый
+фекальный""" ;
 .
+
 hack:ventilation
   rdf:type hack:EquipmentCategory ;
   rdfs:label "Вентиляция. Дымоотведение"@ru ;
   rdfs:label "Ventilation"@en ;
   v-s:responsible d:VentilationRole ;
+  hack:keyPhrases """вентиляция
+дымоход""" ;
 .
+
 hack:smokeRemoval
   rdf:type hack:EquipmentCategory ;
   rdfs:label "Дымоудаление"@ru ;
   rdfs:label "Sewerage"@en ;
   v-s:responsible d:SmokeRemovalRole ;
+  hack:keyPhrases """дымоудаление
+пожарная""" ;
 .
 
 #--------------------АВАРИЙНОСТЬ
@@ -128,10 +273,30 @@ hack:failure
   rdfs:label "Авария"@ru ;
   rdfs:label "Failure"@en ;
   v-s:hasParentLink hack:FailureRate_root ;
+  hack:keyPhrases """авария
+прорыв
+разрыв
+срыв
+взрыв
+авария
+возгорание
+воспламенение
+отключение
+обрушение
+залп
+хлещет
+заливает
+сгорел""" ;  
 .
+
 hack:ongoingService
   rdf:type hack:FailureRate ;
   rdfs:label "Текущая эксплуатация"@ru ;
   rdfs:label "Оngoing service"@en ;
   v-s:hasParentLink hack:FailureRate_root ;
+  hack:keyPhrases """не авария
+сгорела лампочка
+ура
+привет
+мама""" ;
 .

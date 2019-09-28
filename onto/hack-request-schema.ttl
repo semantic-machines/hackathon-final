@@ -237,6 +237,7 @@ hack:PS_hasObject_PersonalAccount
 hack:EquipmentCategory
 	rdf:type owl:Class ;
 	rdfs:subClassOf v-s:UserThing ;
+	rdfs:subClassOf hack:BayesCategory ;
 	rdfs:label "Категория оборудования"@ru ;
 	rdfs:label "Equipment category"@en ;
 #	v-ui:hasTemplate hack:EquipmentCategoryTemplate ;
@@ -249,6 +250,7 @@ hack:EquipmentCategory
 hack:FailureRate
 	rdf:type owl:Class ;
 	rdfs:subClassOf v-s:UserThing ;
+	rdfs:subClassOf hack:BayesCategory ;
 	rdfs:label "Аварийность"@ru ;
 	rdfs:label "Accident rate"@en ;
   v-ui:hasTemplate hack:FailureRateTemplate ;
