@@ -1,0 +1,77 @@
+@prefix d: <http://semantic-machines.com/veda/veda-data/> .
+@prefix hack: <http://semantic-machines.com/veda/hack-schema/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix v-s: <http://semantic-machines.com/veda/veda-schema/> .
+@prefix v-ui: <http://semantic-machines.com/veda/veda-ui/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix v-wf: <http://semantic-machines.com/veda/veda-workflow/> .
+@prefix cfg: <http://semantic-machines.com/veda/config/> .
+@prefix v-fc: <http://semantic-machines.com/veda/veda-function-create/> .
+@prefix v-df: <http://semantic-machines.com/veda/veda-docflow/> .
+
+<http://semantic-machines.com/veda/hack-classifier-ui>
+  rdf:type owl:Ontology ;
+  rdfs:label "Онтология. Обращения. Классификатор. UI"@ru ;
+  rdfs:label "Ontology. Request. Сlassifier. UI"@en ;
+  v-s:loadPriority 20 ;
+.
+# ------------------------------------------------------------ КЛАССЫ --
+
+hack:BayesClassifierTemplate
+  rdf:type v-ui:ClassTemplate ;
+  rdfs:label "Шаблон для наивного Байесовского классификатора"@ru ;
+  rdfs:label "Naive Bayes classifier template"@en ;
+  v-ui:template """
+<div class="container sheet">
+  <h2>
+    <span about="@" rel="rdf:type" data-template="v-ui:LabelTemplate"></span>
+    <small about="@" property="rdfs:label"></small>
+  </h2>
+  <hr>
+  <div class="row row-attribute -view edit search">
+    <div class="col-sm-3 col-xs-5">
+      <label about="rdfs:label" property="rdfs:label"></label>
+    </div>
+    <div class="col-sm-9 col-xs-7">
+      <div property="rdfs:label" class="view -edit -search"></div>
+      <veda-control data-type="text" property="rdfs:label" class="-view edit search"></veda-control>
+    </div>
+  </div>
+  <hr class="-view edit search">
+  <div rel="hack:hasBayesCategory" class="view edit -search" data-template="hack:BayesCategoryTemplate" data-embedded="true"></div>
+  <veda-control data-type="link" rel="hack:hasBayesCategory" class="-view edit -search create"></veda-control>
+  <hr>
+  <div class="actions view edit -search">
+    <span about="@" data-template="v-ui:StandardButtonsTemplate" data-embedded="true" data-buttons="edit save cancel delete"></span>
+  </div>
+</div>
+<script>
+
+  //# sourceURL=hack:BayesClassifierTemplate_post
+</script>  """ ;
+.
+
+hack:BayesCategoryTemplate
+  rdf:type v-ui:ClassTemplate ;
+  rdfs:label "Шаблон категории классификатора"@ru ;
+  rdfs:label "Category template"@en ;
+  v-ui:template """
+<div class="well">
+  <div class="row">
+    <div class="col-sm-3 col-xs-5">
+      <div about="@" rel="rdf:value" class="view -edit -search"><span about="@" property="rdfs:label"></span></div>
+      <veda-control data-type="link" rel="rdf:value" class="-view edit search fulltext dropdown"></veda-control>
+    </div>
+    <div class="col-sm-9 col-xs-7">
+      <div property="hack:keyPhrases" class="view -edit -search"></div>
+      <veda-control data-type="text" data-rows="2" property="hack:keyPhrases" class="-view edit search"></veda-control>
+    </div>
+  </div>
+</div>
+<script>
+
+  //# sourceURL=hack:BayesCategoryTemplate_post
+</script>  """ ;
+.
