@@ -145,8 +145,8 @@ hack:RequestTemplate
           <label about="rdfs:comment" property="rdfs:label"></label>
         </div>
         <div class="col-sm-9 col-xs-7">
-          <div property="rdfs:comment" class="view -edit search" style="display: none;"></div>
-          <veda-control data-type="text" rel="rdfs:comment" class="-view edit search"></veda-control>
+          <div property="rdfs:comment" class="view -edit -search"></div>
+          <veda-control data-type="text" property="rdfs:comment" class="-view edit search"></veda-control>
         </div>
       </div>
     </section>
