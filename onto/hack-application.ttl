@@ -38,6 +38,8 @@ hack:RequestsManagementApplication
   v-s:hasRegistry hack:RequestSearch ;
   v-s:hasRegistry hack:PersonalAccountSearch ;
 
+  v-s:hasReport hack:OutdatedRequest ;
+
   v-s:hasIcon hack:RequestsManagementIcon  ;
   v-ui:hasTemplate v-s:ApplicationTemplate ;
 

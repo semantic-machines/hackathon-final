@@ -50,6 +50,8 @@ hack:RequestTemplate
     </h2>
     <div property="v-s:content" class="view -edit -search"></div>
     <veda-control property="v-s:content" data-type="text" rows="5" class="-view edit search"></veda-control>
+    <div rel="v-s:attachment" data-template="v-ui:FileTemplate" data-embedded="true"></div>
+    <veda-control data-type="file" rel="v-s:attachment" class="-view edit -search margin-lg"></veda-control>
 
     <div class="margin-md">
       <small class="additional-properties-toggle text-muted" about="hack:AdditionalProperties" property="rdfs:label" style="border-bottom:1px dashed #707070; cursor:pointer;"></small>
@@ -136,7 +138,7 @@ hack:RequestTemplate
     </section>
     <div class="actions view edit -search">
       <br>
-      <span about="@" data-template="v-ui:StandardButtonsTemplate" data-embedded="true" data-buttons="send edit save cancel delete journal"></span>
+      <span about="@" data-template="v-ui:StandardButtonsTemplate" data-embedded="true" data-buttons="send edit save cancel delete journal task"></span>
     </div>
   </div>
   <div about="@" class="container sheet view -edit -search" data-template="v-s:CommentsTemplate"></div>
