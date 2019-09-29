@@ -52,7 +52,7 @@ hack:OutdatedRequestResultTemplate
 <table class="table table-bordered">
   <thead class="result-header">
     <tr>
-      <th colspan="7" about="hack:Request" property="rdfs:label"></th>
+      <th colspan="8" about="hack:Request" property="rdfs:label"></th>
     </tr>
     <tr class="active">
       <th width="1%"><span class="glyphicon glyphicon-search"></span></th>
@@ -62,6 +62,7 @@ hack:OutdatedRequestResultTemplate
       <th><span about="v-s:content" property="rdfs:label"></span></th>
       <th><span about="v-s:attachment" property="rdfs:label"></span></th>
       <th><span about="v-s:author" property="rdfs:label"></span></th>
+      <th><span about="v-wf:dateGiven" property="rdfs:label"></span></th>
     </tr>
   </thead>
   <tbody class="result-container">
@@ -73,6 +74,7 @@ hack:OutdatedRequestResultTemplate
       <td about="@" rel="v-wf:onDocument"><span property="v-s:content"></span></td>
       <td about="@" rel="v-wf:onDocument"><span rel="v-s:attachment" data-template="v-ui:FileMinTemplate"></span></td>
       <td about="@" rel="v-wf:onDocument"><span rel="v-s:author" data-template="v-ui:LabelTemplate"></span></td>
+      <td about="@" property="v-wf:dateGiven"></td>
     </tr>
   </tbody>
 </table>
