@@ -2,7 +2,7 @@
 username="admin"
 password="a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&1569718747374"
 
-contentText="Прошу обратить внимание на неподобающее поведение сантехника"
+contentText="Прошу обратить внимание на протекающие неделю краны хвс"
 
 partRandom=$RANDOM
 echo "partRandom = $partRandom"
