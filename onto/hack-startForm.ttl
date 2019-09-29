@@ -50,6 +50,8 @@ hack:Request_ComplexRouteStartForm_Template
 
   individual[complex+'examination'][0][simple+'visible'] = [true];
   individual[complex+'examination'][0][simple+'editable'] = [true];
+  individual[complex+'examination'][0][simple+'participant'] = doc['v-s:creator'];
+  individual[complex+'examination'][0][simple+'comment'] = ['Заявка выполнена'];
 
   individual[complex+'instruction'][0][simple+'visible'] = [true];
   individual[complex+'instruction'][0][simple+'editable'] = [true];
