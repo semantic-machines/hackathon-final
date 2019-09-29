@@ -176,7 +176,7 @@ hack:RequestTemplate
   });
 
   $('#send.action', template).off("click");
-  if (veda.appointment.id === "d:org_RU1100220011" || veda.appointment.id === "cfg:AdministratorAppointment") {
+  if (veda.appointment.hasValue("v-s:parentOrganization", "d:org_RU1100220011") || veda.appointment.id === "cfg:AdministratorAppointment") {
     $('#send.action', template).on('click', function () {
       veda.Util.send(individual, template, "s-wf:complexRouteTransform", undefined, "hack:Request_ComplexRouteStartForm_Template");
     });
@@ -207,7 +207,7 @@ hack:RequestTemplate
 
     var emailNotification = new veda.IndividualModel();
     emailNotification["rdf:type"] = [new veda.IndividualModel("v-s:Email")]; 
-    emailNotification["v-wf:to"] = [veda.appointment];
+    emailNotification["v-wf:to"] = individual["v-s:creator"];
     emailNotification["v-wf:from"] = [new veda.IndividualModel("cfg:AdministratorAppointment")];
     emailNotification["v-s:subject"] = ["Регистрация заявки"];
     emailNotification["v-s:messageBody"] = ["Ваша заявка зарегистрирована под номером"+individual["v-s:registrationNumber"][0]];
