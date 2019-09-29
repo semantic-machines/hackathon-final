@@ -10,7 +10,7 @@ echo "partRandom = $partRandom"
 individual='{"@":"hack:incomingRequest'$partRandom'","rdf:type":[{"type":"Uri","data":"hack:Request"}], "v-s:content":[{"type":"String", "data":"'$contentText'"}]}'
 echo "individual = $individual"
 
-auth_request="curl -s -X GET http://localhost:80/authenticate?login=$username&password=$password"
+auth_request="curl -s -X GET https://hack.semantic-machines.com/authenticate?login=$username&password=$password"
 #echo "auth_request = $auth_request"
 
 auth_result=$($auth_request)
@@ -22,7 +22,7 @@ echo "ticket = $ticket"
 payload='{"ticket":"'$ticket'","individual":'$individual',"prepare_events":true,"event_id":"","transaction_id":""}'
 echo "payload = $payload"
 
-put_request="curl -s -X PUT -H 'Content-Type: application/json' http://localhost:$port/put_individual -d '$payload'"
+put_request="curl -s -X PUT -H 'Content-Type: application/json' https://hack.semantic-machines.com/put_individual -d '$payload'"
 #echo "put_request = $put_request"
 
 put_result=$(eval $put_request)
