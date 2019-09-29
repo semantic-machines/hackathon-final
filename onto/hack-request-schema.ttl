@@ -29,7 +29,7 @@ hack:Request
 	v-s:hasNumeration v-s:RegistrationNumberYearNumeration2_6 ;
 	rdfs:label "Обращение"@ru ;
 	rdfs:label "Request"@en ;
-	v-s:labelPattern "{@.v-s:registrationNumber} {@.v-s:hasStatus.rdfs:label}" ;
+	v-s:labelPattern "{@.v-s:registrationNumber} {@.hack:hasEquipmentCategory.rdfs:label} - {@.v-s:hasStatus.rdfs:label}" ;
 .
 
 hack:TS_Request
@@ -67,10 +67,10 @@ hack:PS_hasStatus_Request
 	rdf:type v-ui:ObjectPropertySpecification ;
 	v-ui:forClass hack:Request ;
 	v-ui:forProperty v-s:hasStatus ;
-	v-ui:queryPrefix "('@'=='v-s:StatusDraft' || '@'=='v-s:StatusExecution' || '@'=='v-s:StatusExecuted' || '@'=='v-s:StatusRejected')"^^xsd:string ;
+	v-ui:queryPrefix "('@'=='hack:StatusRegistered' || '@'=='v-s:StatusExecution' || '@'=='v-s:StatusExecuted' || '@'=='v-s:StatusRejected')"^^xsd:string ;
 	v-ui:minCardinality 0 ;
 	v-ui:maxCardinality 1 ;
-	v-ui:defaultValue v-s:StatusDraft ;
+	v-ui:defaultValue hack:StatusRegistered ;
 	rdfs:label "Спецификация свойства hasStatus для класса hack:Request"@ru ;
 	rdfs:label "hasStatus property specification for hack:Request class"@en ;
 .
@@ -263,3 +263,11 @@ hack:hasObjectKind
 .
 #rfds:label
 #v-s:parentUnit
+
+#-----дополнительный статус "зарегистрировано"
+hack:StatusRegistered
+  rdf:type v-s:Status ;
+  rdfs:label "Зарегистрировано"@ru ;
+  rdfs:label "Registered"@en ;
+  v-s:tag "default" ;
+.
