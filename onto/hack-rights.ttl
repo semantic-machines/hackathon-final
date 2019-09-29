@@ -70,3 +70,93 @@ d:krasavina_electricity
   v-s:parentOrganization d:org_RU1100220011;
   v-s:parentUnit d:org_RU1100220011;
 .
+
+d:krasavina_gas
+  a v-s:Appointment;
+  v-s:origin "admin"^^xsd:string;
+  v-s:employee d:org_RU1100220011_employee_3;
+  v-s:occupation d:GasSupplyRole;
+  v-s:parentOrganization d:org_RU1100220011;
+  v-s:parentUnit d:org_RU1100220011;
+.
+
+d:krasavina_coldWaterSupply
+  a v-s:Appointment;
+  v-s:origin "admin"^^xsd:string;
+  v-s:employee d:org_RU1100220011_employee_3;
+  v-s:occupation d:ColdWaterSupplyRole;
+  v-s:parentOrganization d:org_RU1100220011;
+  v-s:parentUnit d:org_RU1100220011;
+.
+
+d:krasavina_hotWaterSupply
+  a v-s:Appointment;
+  v-s:origin "admin"^^xsd:string;
+  v-s:employee d:org_RU1100220011_employee_3;
+  v-s:occupation d:HotWaterSupplyRole;
+  v-s:parentOrganization d:org_RU1100220011;
+  v-s:parentUnit d:org_RU1100220011;
+.
+
+d:krasavina_heating
+  a v-s:Appointment;
+  v-s:origin "admin"^^xsd:string;
+  v-s:employee d:org_RU1100220011_employee_3;
+  v-s:occupation d:HeatingRole;
+  v-s:parentOrganization d:org_RU1100220011;
+  v-s:parentUnit d:org_RU1100220011;
+.
+
+d:krasavina_construction
+  a v-s:Appointment;
+  v-s:origin "admin"^^xsd:string;
+  v-s:employee d:org_RU1100220011_employee_3;
+  v-s:occupation d:BuildingConstructionRole;
+  v-s:parentOrganization d:org_RU1100220011;
+  v-s:parentUnit d:org_RU1100220011;
+.
+
+d:krasavina_instrumentation
+  a v-s:Appointment;
+  v-s:origin "admin"^^xsd:string;
+  v-s:employee d:org_RU1100220011_employee_3;
+  v-s:occupation d:InstrumentationRole;
+  v-s:parentOrganization d:org_RU1100220011;
+  v-s:parentUnit d:org_RU1100220011;
+.
+
+d:krasavina_lifting
+  a v-s:Appointment;
+  v-s:origin "admin"^^xsd:string;
+  v-s:employee d:org_RU1100220011_employee_3;
+  v-s:occupation d:LiftingDeviceRole;
+  v-s:parentOrganization d:org_RU1100220011;
+  v-s:parentUnit d:org_RU1100220011;
+.
+
+d:krasavina_sewerage
+  a v-s:Appointment;
+  v-s:origin "admin"^^xsd:string;
+  v-s:employee d:org_RU1100220011_employee_3;
+  v-s:occupation d:SewerageRole;
+  v-s:parentOrganization d:org_RU1100220011;
+  v-s:parentUnit d:org_RU1100220011;
+.
+
+d:krasavina_ventilation
+  a v-s:Appointment;
+  v-s:origin "admin"^^xsd:string;
+  v-s:employee d:org_RU1100220011_employee_3;
+  v-s:occupation d:VentilationRole;
+  v-s:parentOrganization d:org_RU1100220011;
+  v-s:parentUnit d:org_RU1100220011;
+.
+
+d:krasavina_smokeRemoval
+  a v-s:Appointment;
+  v-s:origin "admin"^^xsd:string;
+  v-s:employee d:org_RU1100220011_employee_3;
+  v-s:occupation d:SmokeRemovalRole;
+  v-s:parentOrganization d:org_RU1100220011;
+  v-s:parentUnit d:org_RU1100220011;
+.
