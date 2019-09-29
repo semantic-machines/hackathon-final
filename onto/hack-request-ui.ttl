@@ -37,10 +37,10 @@ hack:RequestTemplate
   rdfs:label "Шаблон для класса hack:Request"@ru ;
   v-ui:template """
 <script>
-  if (individual.isNew()) {
-    $("#RegistrationNumber", template).hide();
-    individual["v-s:registrationDate"] = [new Date()];  
-  }
+  //~ if ( individual.isNew() ) {
+    //~ $("#RegistrationNumber", template).hide();
+    //~ individual["v-s:registrationDate"] = [new Date()];  
+  //~ }
 </script>
 <div>
   <div class="container sheet">
