@@ -62,7 +62,7 @@ hack:OutdatedRequestResultTemplate
       <th><span about="v-s:content" property="rdfs:label"></span></th>
       <th><span about="v-s:attachment" property="rdfs:label"></span></th>
       <th><span about="v-s:author" property="rdfs:label"></span></th>
-      <th><span about="v-wf:dateGiven" property="rdfs:label"></span></th>
+      <th data-orderby="v-wf:dateGiven"><span about="v-wf:dateGiven" property="rdfs:label"></span></th>
     </tr>
   </thead>
   <tbody class="result-container">
