@@ -24,7 +24,7 @@ hack:OutdatedRequest
   rdfs:label "Просроченные обращения"@ru ;
   rdfs:label "Outdated requests"@en ;
   v-fs:searchResultTemplate hack:OutdatedRequestResultTemplate ;
-  v-fs:fulltextQuery "'rdf:type'=='v-wf:DecisionForm' && 'v-wf:dateGiven'==[1971-01-01T00:00:00, {new Date().toISOString().substr(0,19)}]";
+  v-fs:fulltextQuery "'rdf:type'=='v-wf:DecisionForm' && 'v-wf:isCompleted'=='false' && 'v-wf:dateGiven'==[1971-01-01T00:00:00, {new Date().toISOString().substr(0,19)}]";
   v-fs:searchOnLoad true ;
   v-ui:hasTemplate hack:OutdatedRequestTemplate;
 .
