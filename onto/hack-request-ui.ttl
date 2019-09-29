@@ -195,7 +195,8 @@ hack:RequestTemplate
       startForm["v-wf:hasStatusWorkflow"] = [new veda.IndividualModel("v-wf:ToBeSent")];
       startForm["v-wf:StartForm_canEdit"] = [true];
       startForm["v-s:creator"] = [veda.appointment];
-      startForm["v-s:dateTo"] = [(+new Date())+86400000];
+      var date = Date.now()+86400000;
+      startForm["v-s:dateTo"] = [new Date(date)];
       startForm.save().then(function(saved) {
         console.log("StartForm: "+ saved.id);
       });
