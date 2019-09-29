@@ -61,7 +61,6 @@ The application is designed to improve the efficiency of the operators of the ma
 - Rank requests by priority.
 - Set the route and keep track of the request's execution.
   """@en ;
-  v-s:attachment hack:UserGuide_pdf ;
   v-s:hasSettings hack:RequestsManagementApplicationSettings ;
 .
 
