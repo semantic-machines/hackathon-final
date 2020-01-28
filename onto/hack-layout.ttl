@@ -19,15 +19,6 @@
   v-s:loadPriority 10 ;
 .
 
-cfg:VedaSystemAccount
-  rdf:type v-s:Account ;
-  v-s:author cfg:VedaSystem ;
-  v-s:login "veda" ;
-  v-s:password "123" ;
-  v-s:owner cfg:VedaSystem ;
-  rdfs:label "VedaSystem. Учетная запись"@ru ;
-  rdfs:label "VedaSystem. Account"@en ;
-.
 
 ### MAIN PAGE ###
 
